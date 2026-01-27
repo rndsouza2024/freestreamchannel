@@ -101,10 +101,10 @@ const Home: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-dark-bg pt-20">
-      <SEO 
-        title="Uwatchfree - Watch Movies, TV, Sports & IPTV Free"
-        description="Uwatchfree is your ultimate destination for free streaming. Watch the latest movies, trending TV shows, live sports events, and thousands of IPTV channels."
-        keywords={['free movies', 'streaming', 'watch sports', 'iptv', 'tv shows', 'live tv']}
+       <SEO 
+        title="Uwatchfree™ - Ultimate Media Experience"
+        description="Uwatchfree™ is a movie streaming site. Watch Free Movies, Live Sports & TV Shows"
+        keywords={['uwatchfree', 'movies', 'watch movie online', 'free movies', 'free movies online', 'free movie streaming', 'Uwatchfree Movies free streaming', 'download free']}
       />
       
       {error && (
@@ -135,7 +135,7 @@ const Home: React.FC = () => {
               No subscriptions, no credit card required.
             </p> */}
             <p className="text-xl text-gray-300 mb-10 max-w-3xl mx-auto">
-              Uwatchfree provides access to free movies, TV shows, and live sports streaming through a fast, lightweight web player, designed for seamless online viewing across devices.</p>
+              Uwatchfree™ is a movie streaming site. Watch Free Movies, Live Sports & TV Shows. Uwatchfree provides access to free movies, TV shows, and live sports streaming through a fast, lightweight web player, designed for seamless online viewing across devices.</p>
 
             <div className="flex flex-wrap gap-4 justify-center">
               <button 
