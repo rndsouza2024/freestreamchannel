@@ -840,10 +840,10 @@ const Navbar: React.FC<NavbarProps> = ({ onAuthToggle, isAuthenticated }) => {
                 tabIndex={0}
                 onKeyDown={(e) => e.key === 'Enter' && navigate('/')}
                 role="button"
-                aria-label="Go to UniWatch Home"
+                aria-label="Go to Uwatchfree Home"
               >
                 <span className="text-xl sm:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-indigo-500">
-                  UniWatch™
+                  Uwatchfree™
                 </span>
               </div>
 
@@ -899,7 +899,7 @@ const Navbar: React.FC<NavbarProps> = ({ onAuthToggle, isAuthenticated }) => {
 
               {/* Download APK Button */}
               <a
-                href='https://median.co/share/bnnzemj'
+                href='https://median.co/share/eeeplwx'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='hidden lg:flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-3 lg:px-4 py-2 rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-green-400 shadow-lg hover:shadow-green-500/20'
@@ -973,7 +973,7 @@ const Navbar: React.FC<NavbarProps> = ({ onAuthToggle, isAuthenticated }) => {
 
               {/* Mobile Download APK - Icon only */}
               <a
-                href='https://median.co/share/bnnzemj'
+                href='https://median.co/share/eeeplwx'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='p-2 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400'
@@ -1034,7 +1034,7 @@ const Navbar: React.FC<NavbarProps> = ({ onAuthToggle, isAuthenticated }) => {
 
               {/* Download APK Button for mobile menu */}
               <a
-                href='https://median.co/share/bnnzemj'
+                href='https://median.co/share/eeeplwx'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='flex items-center justify-center gap-3 w-full mt-3 px-4 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg font-medium'
@@ -1044,7 +1044,7 @@ const Navbar: React.FC<NavbarProps> = ({ onAuthToggle, isAuthenticated }) => {
 
               {/* App version and info */}
               <div className="mt-6 px-4 text-center">
-                <div className="text-xs text-gray-500">UniWatch v2.0.1</div>
+                <div className="text-xs text-gray-500">Uwatchfree v2.0.1</div>
                 <div className="text-xs text-gray-600 mt-1">© 2024 All rights reserved</div>
               </div>
             </div>
