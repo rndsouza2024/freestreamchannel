@@ -13,6 +13,31 @@ import MediaCard from './components/MediaCard';
 import { ArrowLeft, Home as HomeIcon, Loader2, ChevronDown } from 'lucide-react';
 import SocialShare from './components/SocialShare';
 
+
+/* -----------------------------
+   Clicky Analytics Injection
+------------------------------*/
+const useClickyAnalytics = () => {
+  useEffect(() => {
+    // Prevent duplicate injection
+    if (document.getElementById('clicky-main')) return;
+
+    const script1 = document.createElement('script');
+    script1.id = 'clicky-main';
+    script1.async = true;
+    script1.setAttribute('data-id', '101500311');
+    script1.src = '//static.getclicky.com/js';
+
+    const script2 = document.createElement('script');
+    script2.async = true;
+    script2.setAttribute('data-id', '101500311');
+    script2.src = '/f2e6ab9e6e0.js';
+
+    document.body.appendChild(script1);
+    document.body.appendChild(script2);
+  }, []);
+};
+
 // Helper function to get absolute image URL
 const getAbsoluteImageUrl = (imgPath: string) => {
   if (!imgPath || imgPath === 'undefined' || imgPath.trim() === '') {
