@@ -302,7 +302,7 @@ const Navbar: React.FC<NavbarProps> = ({ onAuthToggle, isAuthenticated }) => {
 
               {/* Download APK Button */}
               <a
-                href='https://median.co/share/bnnzemj'
+                href='https://median.co/share/eeeplwx'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='hidden lg:flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-3 lg:px-4 py-2 rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-green-400 shadow-lg hover:shadow-green-500/20'
@@ -445,7 +445,7 @@ const Navbar: React.FC<NavbarProps> = ({ onAuthToggle, isAuthenticated }) => {
 
               {/* Mobile Download APK - Icon only */}
               <a
-                href='https://median.co/share/bnnzemj'
+                href='https://median.co/share/eeeplwx'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='p-2 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400'
@@ -557,7 +557,7 @@ const Navbar: React.FC<NavbarProps> = ({ onAuthToggle, isAuthenticated }) => {
 
               {/* Download APK Button for mobile menu */}
               <a
-                href='https://median.co/share/bnnzemj'
+                href='https://median.co/share/eeeplwx'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='flex items-center justify-center gap-3 w-full mt-3 px-4 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg font-medium'
