@@ -12,11 +12,19 @@ import Terms from './pages/Terms';
 
 // Scroll to top component handles navigation state
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
   
   useEffect(() => {
+    // Force scroll to top on route change
     window.scrollTo(0, 0);
-  }, [pathname]);
+    
+    // Backup scroll after short delay to ensure DOM update has processed
+    const timer = setTimeout(() => {
+        window.scrollTo(0, 0);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [pathname, search]);
   
   return null;
 };

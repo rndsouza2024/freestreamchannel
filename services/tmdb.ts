@@ -33,7 +33,7 @@ export const UNIQUE_SPORTS: MediaItem[] = [
     poster_path: "https://femalecricket.com/wp-content/uploads/2026/01/WPL_Match-5-Royal-Challengers-Bengaluru-Women-vs-UP-Warriorz-Women-1200x788.jpg",
     backdrop_path: "https://femalecricket.com/wp-content/uploads/2026/01/WPL_Match-5-Royal-Challengers-Bengaluru-Women-vs-UP-Warriorz-Women-1200x788.jpg",
     // Starts 1 hour ago -> Should be LIVE
-    release_date: getRelativeTime(2, 30), 
+    release_date: getRelativeTime(9, 30), 
     vote_average: 9.2,
     duration: "Live",
     media_type: 'sports',
@@ -709,8 +709,8 @@ export const UNIQUE_MOVIES: MediaItem[] = [
       "Server 2": "https://cinemaos.tech/player/1382160",
       "Server 3":
         "https://zxcstream.xyz/player/movie/1382160/hindi?autoplay=false&back=true&server=0",
-      "Server 4 (Kannada)": "https://byseqekaho.com/e/eo0jjw0mwg9t",
-      "Server 5 (Hindi)": "https://byseqekaho.com/e/rfifotoan62n",
+      "Server 4 - Kannada": "https://byseqekaho.com/e/eo0jjw0mwg9t",
+      "Server 5 - Hindi": "https://byseqekaho.com/e/rfifotoan62n",
     },
     overview:
       "A captivating new project by Suraj Production and the Magical Composer’s Debut film, #45Themovie is set to redefine the cinema-watching experience with its unique narrative and compelling performances.",

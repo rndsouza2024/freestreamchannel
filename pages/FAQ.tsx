@@ -4,8 +4,8 @@ import { ChevronDown, ChevronUp, HelpCircle } from 'lucide-react';
 
 const faqs = [
   {
-    question: "Is Miraj Stream completely free?",
-    answer: "Yes, absolutely! Miraj Stream is a free-to-use platform. There are no hidden fees, no subscription plans, and you will never be asked to provide credit card details."
+    question: "Is UwatchFree Stream completely free?",
+    answer: "Yes, absolutely! UwatchFree Stream is a free-to-use platform. There are no hidden fees, no subscription plans, and you will never be asked to provide credit card details."
   },
   {
     question: "Do I need to create an account or log in?",
@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     question: "Is this website safe and legitimate?",
-    answer: "Yes, Miraj Stream is a safe platform. We are not a spam website and we do not host malicious software. We simply provide an interface to stream content available publicly on the web. We do not ask for any personal or financial information."
+    answer: "Yes, UwatchFree Stream is a safe platform. We are not a spam website and we do not host malicious software. We simply provide an interface to stream content available publicly on the web. We do not ask for any personal or financial information."
   },
   {
     question: "Do you host the content streamed on this site?",
@@ -43,7 +43,7 @@ const FAQ: React.FC = () => {
   return (
     <div className="min-h-screen bg-miraj-black pt-24 pb-12 px-4">
       <Helmet>
-        <title>FAQ | Miraj Stream</title>
+        <title>FAQ | UwatchFree Stream</title>
       </Helmet>
 
       <div className="max-w-3xl mx-auto">

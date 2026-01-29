@@ -6,7 +6,7 @@ const Terms: React.FC = () => {
   return (
     <div className="min-h-screen bg-miraj-black pt-24 pb-12 px-4">
       <Helmet>
-        <title>Terms of Service | Uwatchfree Stream</title>
+        <title>Terms of Service | UwatchFree Stream</title>
       </Helmet>
 
       <div className="max-w-4xl mx-auto">
@@ -20,7 +20,7 @@ const Terms: React.FC = () => {
           <section>
             <p className="text-sm text-gray-500 mb-4">Last Updated: January 1, 2026</p>
             <p className="mb-4">
-              Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the Uwatchfree Stream website. By accessing or using the Service, you agree to be bound by these Terms. If you disagree with any part of the terms, then you may not access the Service.
+              Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the UwatchFree Stream website. By accessing or using the Service, you agree to be bound by these Terms. If you disagree with any part of the terms, then you may not access the Service.
             </p>
           </section>
 
@@ -39,21 +39,21 @@ const Terms: React.FC = () => {
           <section>
             <h2 className="text-xl font-bold text-white mb-3">2. Service Access</h2>
             <p>
-              Uwatchfree Stream is a free-to-use service. You do not need to create an account, register, or provide personal details to access content. Access is granted on a temporary basis, and we reserve the right to withdraw or amend the service without notice.
+              UwatchFree Stream is a free-to-use service. You do not need to create an account, register, or provide personal details to access content. Access is granted on a temporary basis, and we reserve the right to withdraw or amend the service without notice.
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-bold text-white mb-3">3. Intellectual Property</h2>
             <p>
-              The design, layout, graphics, and original content of the website (excluding the third-party embedded media) are the property of Uwatchfree Stream. You may not reproduce, duplicate, copy, sell, or exploit any portion of the Service without express written permission.
+              The design, layout, graphics, and original content of the website (excluding the third-party embedded media) are the property of UwatchFree Stream. You may not reproduce, duplicate, copy, sell, or exploit any portion of the Service without express written permission.
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-bold text-white mb-3">4. Third-Party Links and Content</h2>
             <p>
-              Our Service contains links to third-party web sites or services that are not owned or controlled by Uwatchfree Stream. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party web sites or services. You acknowledge and agree that Uwatchfree Stream shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such web sites or services.
+              Our Service contains links to third-party web sites or services that are not owned or controlled by UwatchFree Stream. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party web sites or services. You acknowledge and agree that UwatchFree Stream shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such web sites or services.
             </p>
           </section>
 
@@ -67,7 +67,7 @@ const Terms: React.FC = () => {
           <section>
             <h2 className="text-xl font-bold text-white mb-3">6. Limitation of Liability</h2>
             <p>
-              In no event shall Uwatchfree Stream, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Service.
+              In no event shall UwatchFree Stream, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Service.
             </p>
           </section>
 

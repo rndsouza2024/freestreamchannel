@@ -6,7 +6,7 @@ const Privacy: React.FC = () => {
   return (
     <div className="min-h-screen bg-miraj-black pt-24 pb-12 px-4">
       <Helmet>
-        <title>Privacy Policy | Uwatchfree Stream</title>
+        <title>Privacy Policy | UwatchFree Stream</title>
       </Helmet>
 
       <div className="max-w-4xl mx-auto">
@@ -20,7 +20,7 @@ const Privacy: React.FC = () => {
           <section>
             <p className="text-sm text-gray-500 mb-4">Last Updated: January 1, 2026</p>
             <p className="mb-4">
-              At Uwatchfree Stream, we value your privacy. This Privacy Policy explains how we handle information when you visit our website. As a free streaming platform that does not require registration, our data collection is minimal.
+              At UwatchFree Stream, we value your privacy. This Privacy Policy explains how we handle information when you visit our website. As a free streaming platform that does not require registration, our data collection is minimal.
             </p>
           </section>
 
@@ -73,7 +73,7 @@ const Privacy: React.FC = () => {
           <section>
             <h2 className="text-xl font-bold text-white mb-3">5. Contact Us</h2>
             <p>
-              If you have any questions about this Privacy Policy, please contact us at: <a href="mailto:privacy@mirajstream.com" className="text-miraj-gold hover:underline">privacy@mirajstream.com</a>.
+              If you have any questions about this Privacy Policy, please contact us at: <a href="mailto:privacy@uwatchfree.stream" className="text-miraj-gold hover:underline">privacy@uwatchfree.stream</a>.
             </p>
           </section>
 

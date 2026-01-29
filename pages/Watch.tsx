@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useLayoutEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { fetchById, fetchMovies, fetchTVShows, fetchSports, fetchTVLive } from '../services/tmdb';
 import { MediaItem } from '../types';
@@ -36,12 +36,16 @@ const Watch: React.FC = () => {
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [timezoneOffset, setTimezoneOffset] = useState<number>(0);
 
+  // Dedicated scroll effect ensuring top position on ID change
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id, type]);
+
   // Force re-fetch when ID changes
   useEffect(() => {
     const loadData = async () => {
       setLoading(true);
       setMedia(null); // Clear previous media to force player unmount/remount
-      window.scrollTo(0, 0);
       
       try {
         if (id && type) {
@@ -84,7 +88,7 @@ const Watch: React.FC = () => {
     if (!media) return;
     const shareData = {
         title: media.title,
-        text: `Watch ${media.title} on Uwatchfree Stream. ${media.overview}`,
+        text: `Watch ${media.title} on UwatchFree Stream. ${media.overview}`,
         url: window.location.href,
     };
     if (navigator.share) {
@@ -166,7 +170,7 @@ const Watch: React.FC = () => {
     return (
         <div className="h-screen bg-black flex flex-col items-center justify-center text-miraj-gold gap-4">
             <div className="w-12 h-12 border-4 border-gray-800 border-t-miraj-gold rounded-full animate-spin"></div>
-            <p className="tracking-widest text-sm font-bold">LOADING...</p>
+            <p className="tracking-widest text-sm font-bold">LOADING UWATCHFREE STREAM</p>
         </div>
     );
   }
@@ -187,7 +191,7 @@ const Watch: React.FC = () => {
   return (
     <div className="bg-miraj-black min-h-screen pb-12 pt-20 md:pt-24">
       <Helmet>
-        <title>{media.title} | Uwatchfree Stream</title>
+        <title>{media.title} | UwatchFree Stream</title>
         <meta name="description" content={media.overview.substring(0, 150)} />
         <meta property="og:image" content={absolutePosterUrl} />
       </Helmet>
@@ -226,7 +230,9 @@ const Watch: React.FC = () => {
             </div>
 
             <div className="hidden lg:block animate-slide-up">
-                <img src={media.poster_path} alt={media.title} className="w-full rounded-xl shadow-2xl mb-6 border border-gray-800" />
+                <img src={media.poster_path} alt={media.title} className="w-full rounded-xl shadow-2xl mb-6 border border-gray-800"   style={{
+             filter: 'brightness(1.12) contrast(1.08) saturate(1.03)',
+              }}/>
             </div>
         </div>
 
@@ -279,12 +285,10 @@ const Watch: React.FC = () => {
                 </div>
             </div>
         )}
-         <p className="text-red-700 justify-center text-sm font-bold"> We DO NOT host nor transmit any audiovisual content itself and DO NOT control nor influence such content. We cannot accept any liability for the content transmitted by others. Any responsibility for this content lies with those who host or transmit it. We are not affiliated nor claim to be affiliated with any of the owners of streams and/or videos. All content is copyright of their respective owners.</p>
       </div>
       
       <ShareModal isOpen={isShareModalOpen} onClose={() => setIsShareModalOpen(false)} title={media.title} url={window.location.href} />
     </div>
-    
   );
 };
 

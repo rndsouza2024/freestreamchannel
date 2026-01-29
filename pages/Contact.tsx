@@ -22,7 +22,7 @@ const Contact: React.FC = () => {
   return (
     <div className="min-h-screen bg-miraj-black pt-24 pb-12 px-4">
       <Helmet>
-        <title>Contact Us | Miraj Stream</title>
+        <title>Contact Us | UwatchFree Stream</title>
       </Helmet>
 
       <div className="max-w-6xl mx-auto">
@@ -53,8 +53,8 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="text-white font-bold">Email Us</h3>
-                    <p className="text-gray-400 text-sm mt-1">support@mirajstream.com</p>
-                    <p className="text-gray-400 text-sm">business@mirajstream.com</p>
+                    <p className="text-gray-400 text-sm mt-1">support@uwatchfree.stream</p>
+                    <p className="text-gray-400 text-sm">business@uwatchfree.stream</p>
                   </div>
                 </div>
 

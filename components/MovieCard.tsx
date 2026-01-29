@@ -20,6 +20,9 @@ const MovieCard: React.FC<MovieCardProps> = ({ item, subtitle }) => {
                 alt={item.title} 
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 loading="lazy"
+                style={{
+                 filter: 'brightness(1.12) contrast(1.08) saturate(1.03)',
+                }}
                 onError={(e) => {
                   e.currentTarget.src = "https://placehold.co/500x750/1a1a1a/d4af37?text=No+Poster";
                 }}

@@ -136,7 +136,7 @@ const Home: React.FC = () => {
     return (
         <div className="h-screen w-full bg-miraj-black flex flex-col items-center justify-center gap-4">
              <div className="w-16 h-16 border-4 border-gray-800 border-t-miraj-gold rounded-full animate-spin"></div>
-             <p className="text-miraj-gold text-sm tracking-widest animate-pulse">LOADING EXPERIENCE</p>
+             <p className="text-miraj-gold text-sm tracking-widest animate-pulse">LOADING UWATCHFREE STREAM</p>
         </div>
     );
   }
@@ -152,7 +152,7 @@ const Home: React.FC = () => {
 
     return (
         <div className="bg-miraj-black min-h-screen pt-24 pb-20 px-4">
-            <Helmet><title>Search: {searchQuery} | Uwatchfree Stream</title></Helmet>
+            <Helmet><title>Search: {searchQuery} | UwatchFree Stream</title></Helmet>
             <div className="max-w-[1400px] mx-auto">
                 <div className="mb-8 border-b border-gray-800 pb-4">
                     <h1 className="text-2xl text-white font-bold">Search Results for: <span className="text-miraj-gold">"{searchQuery}"</span></h1>
@@ -181,11 +181,11 @@ const Home: React.FC = () => {
 
   // Generate SEO Meta Data
   const getPageTitle = () => {
-    if (path === '/movies') return 'Watch Latest Movies | Uwatchfree Stream';
-    if (path === '/tv') return 'Watch TV Shows | Uwatchfree Stream';
-    if (path === '/sports') return 'Live Sports Streaming | Uwatchfree Stream';
-    if (path === '/tv_live') return 'Live TV Channels | Uwatchfree Stream';
-    return 'Uwatchfree Stream | Premium Video Entertainment';
+    if (path === '/movies') return 'Watch Latest Movies | UwatchFree Stream';
+    if (path === '/tv') return 'Watch TV Shows | UwatchFree Stream';
+    if (path === '/sports') return 'Live Sports Streaming | UwatchFree Stream';
+    if (path === '/tv_live') return 'Live TV Channels | UwatchFree Stream';
+    return 'UwatchFree Stream | Premium Video Entertainment';
   };
 
   // Hero Items Logic
@@ -356,7 +356,6 @@ const Home: React.FC = () => {
                 </div>
             </div>
         )}
-        <p className="text-red-700 justify-center text-sm font-bold"> We DO NOT host nor transmit any audiovisual content itself and DO NOT control nor influence such content. We cannot accept any liability for the content transmitted by others. Any responsibility for this content lies with those who host or transmit it. We are not affiliated nor claim to be affiliated with any of the owners of streams and/or videos. All content is copyright of their respective owners.</p>
         {/* ================= END SPORTS SECTION ================= */}
 
         <PaginatedSection title="Live TV Channels" icon={Radio} items={tvLive} visible={showLive} />

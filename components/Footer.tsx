@@ -8,10 +8,10 @@ const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
-               <div className="flex items-center gap-1">
-                    <span className="text-miraj-gold font-extrabold text-2xl tracking-widest leading-none group-hover:text-white transition-colors">Uwatchfree</span>
-                </div>
-                 <span className="text-gray-400 text-[9px] tracking-[0.4em] font-medium group-hover:text-miraj-gold transition-colors text-center">STREAM</span>
+                <div className="flex items-center gap-1">
+                <span className="text-miraj-gold font-extrabold text-2xl tracking-widest leading-none group-hover:text-white transition-colors">UWATCHFREE</span>
+                  </div>
+                <span className="text-gray-400 text-[9px] tracking-[0.4em] font-medium group-hover:text-miraj-gold transition-colors text-center">STREAM</span>
                 <p className="text-gray-500 text-xs mt-4 leading-relaxed">
                     Experience cinema like never before. Premium streaming directly to your device with high-quality playback and exclusive content.
                 </p>
@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
             </div>
         </div>
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-600 text-xs">© 2026 Uwatchfree Stream. All Rights Reserved.</p>
+            <p className="text-gray-600 text-xs">© 2026 UwatchFree Stream. All Rights Reserved.</p>
             {/* <p className="text-gray-600 text-xs text-center md:text-right">Clone for Educational Purposes</p> */}
         </div>
       </div>
