@@ -287,6 +287,7 @@ const Watch: React.FC = () => {
                         <p className="p-8 text-center text-gray-500">No other events scheduled.</p>
                      )}
                 </div>
+                  <p className="text-sm items-center text-red-700 font-bold">We DO NOT host nor transmit any audiovisual content itself and DO NOT control nor influence such content. We cannot accept any liability for the content transmitted by others. Any responsibility for this content lies with those who host or transmit it. We are not affiliated nor claim to be affiliated with any of the owners of streams and/or videos. All content is copyright of their respective owners</p>
             </div>
         ) : (
             <div className="mt-16 border-t border-gray-800 pt-12">
