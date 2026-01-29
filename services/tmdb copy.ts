@@ -5,21 +5,16 @@ const BASE_URL = "https://api.themoviedb.org/3";
 const IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
 const BACKDROP_BASE = "https://image.tmdb.org/t/p/original";
 
-// FIXED TIME HELPER
-// This snaps the time to the current hour (e.g., if it's 14:45, it becomes 14:00).
-// This ensures that 'relative' times like "+2 hours" result in a FIXED timestamp (e.g., 16:00)
-// that does not drift or change every time you refresh the page within that hour.
-const getFixedMatchTime = (hoursAdd: number, minutesSet: number = 0) => {
+// Helper to generate dynamic ISO strings based on current time
+// Modified to support minutes for precise scheduling tests
+const getRelativeTime = (hoursOffset: number, minutesOffset: number = 0) => {
   const date = new Date();
-  date.setMinutes(0);      // Snap to top of the hour
-  date.setSeconds(0);      // Zero out seconds
-  date.setMilliseconds(0); // Zero out milliseconds
+  date.setMinutes(0); // Flatten minutes for cleaner testing baseline
+  date.setSeconds(0);
+  date.setMilliseconds(0);
   
-  // Add hours relative to the stable top-of-the-hour time
-  date.setHours(date.getHours() + hoursAdd);
-  
-  // Set the minutes explicitly (e.g., kick off at :30)
-  date.setMinutes(minutesSet);
+  date.setHours(date.getHours() + hoursOffset);
+  date.setMinutes(date.getMinutes() + minutesOffset);
   
   return date.toISOString();
 };
@@ -37,8 +32,8 @@ export const UNIQUE_SPORTS: MediaItem[] = [
     title: "Women's Premier League : Royal Challengers Bangalore W vs UP Warriorz W",
     poster_path: "https://femalecricket.com/wp-content/uploads/2026/01/WPL_Match-5-Royal-Challengers-Bengaluru-Women-vs-UP-Warriorz-Women-1200x788.jpg",
     backdrop_path: "https://femalecricket.com/wp-content/uploads/2026/01/WPL_Match-5-Royal-Challengers-Bengaluru-Women-vs-UP-Warriorz-Women-1200x788.jpg",
-    // Fixed Time: Current Hour - 1 (e.g. if now is 14:20, this was 13:00). Ensures it is LIVE.
-    release_date: getFixedMatchTime(7, 30), 
+    // Starts 1 hour ago -> Should be LIVE
+    release_date: getRelativeTime(7, 30), 
     vote_average: 9.2,
     duration: "Live",
     media_type: 'sports',
@@ -57,8 +52,9 @@ export const UNIQUE_SPORTS: MediaItem[] = [
     title: "La Liga: Real Madrid vs Barcelona",
     poster_path: "https://image.tmdb.org/t/p/w500/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg",
     backdrop_path: "https://image.tmdb.org/t/p/original/5YZbUmjbMa3ClvSW1Wj3D6XGolb.jpg",
-    // Fixed Time: Current Hour + 1, :30 minutes. (e.g. if now is 14:20, this is 15:30 fixed).
-    release_date: getFixedMatchTime(1, 30),
+    // Starts in 3 hours 30 Minutes -> Upcoming
+    // This tests if the UI correctly displays minutes (e.g., 08:30 instead of 08:00)
+    release_date: getRelativeTime(3, 30),
     vote_average: 9.5,
     duration: "Live",
     media_type: 'sports',
@@ -75,8 +71,9 @@ export const UNIQUE_SPORTS: MediaItem[] = [
     title: "NBA: Lakers vs Warriors",
     poster_path: "https://image.tmdb.org/t/p/w500/fiVW06jE7z9YnO4trhaMEdclSiC.jpg",
     backdrop_path: "https://image.tmdb.org/t/p/original/4XM8DUTQb3lhLemJC51Jx4hD5ri.jpg",
-    // Fixed Time: Current Hour + 4 hours.
-    release_date: getFixedMatchTime(4, 0),
+    // Starts at 23:30 (11:30 PM) UTC Today. 
+    // If you select GMT +2, this should show as Tomorrow 01:30 AM.
+    release_date: getSpecificTime(23, 30),
     vote_average: 8.9,
     duration: "Live",
     media_type: 'sports',
@@ -92,8 +89,9 @@ export const UNIQUE_SPORTS: MediaItem[] = [
     title: "F1: Japanese Grand Prix",
     poster_path: "https://image.tmdb.org/t/p/w500/uHavtqbnMDcwqVK9Y94ZQSWxtCw.jpg",
     backdrop_path: "https://image.tmdb.org/t/p/original/hkC4yNDFmW1yQuQhtZydMeRuaAb.jpg",
-    // Fixed Time: Current Hour + 8 hours.
-    release_date: getFixedMatchTime(8, 0),
+    // Starts at 01:00 (1 AM) UTC Tomorrow.
+    // If you select GMT -5, this should show as Today 08:00 PM.
+    release_date: new Date(new Date().setUTCHours(25, 0, 0, 0)).toISOString(),
     vote_average: 8.7,
     duration: "Live",
     media_type: 'sports',
@@ -109,8 +107,8 @@ export const UNIQUE_SPORTS: MediaItem[] = [
     title: "UFC 300: Pereira vs Hill",
     poster_path: "https://image.tmdb.org/t/p/w500/zjgWWOIsEqYNSa1fGRr82mBo3gv.jpg",
     backdrop_path: "https://image.tmdb.org/t/p/original/zjgWWOIsEqYNSa1fGRr82mBo3gv.jpg",
-    // Fixed Time: 24 hours ago exactly.
-    release_date: getFixedMatchTime(-24, 0),
+    // Started 24 hours ago
+    release_date: getRelativeTime(-24),
     vote_average: 9.0,
     duration: "Replay",
     media_type: 'sports',
@@ -321,6 +319,12 @@ export const UNIQUE_TV_LIVE: MediaItem[] = [
       "Live documentary channel featuring nature, science, and history content.",
   },
 ];
+
+
+
+
+
+
 // 15 UNIQUE MOVIES (ALL FROM TMDB)
 export const UNIQUE_MOVIES: MediaItem[] = [
   {
