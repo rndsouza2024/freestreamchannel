@@ -75,7 +75,7 @@ export const UNIQUE_SPORTS: MediaItem[] = [
   },
   {
     id: "farmers-insurance-open",
-    title: "PGA Tour Farmers Insurance Open",
+    title: "PGA Tour Farmers Insurance Open (2026)",
     poster_path: "https://espnpressroom.com/us/files/2026/01/Farmers-Graphic-2.png",
     backdrop_path: "https://espnpressroom.com/us/files/2026/01/Farmers-Graphic-2.png",
     // Fixed Time: Current Hour + 4 hours.
@@ -125,6 +125,38 @@ export const UNIQUE_SPORTS: MediaItem[] = [
     genres: ["Soccer", "UEFA Champions"],
     streams: {
        "Server 1 (Highlights)": "https://www.youtube.com/embed/dRd-sNzUlJk?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=dRd-sNzUlJk",
+    },
+    overview: "Full Event Replay. Main card and prelims.",
+  },
+  {
+    id: "match-ended-2",
+    title: "SPURS at ROCKETS | FULL GAME HIGHLIGHTS | January 28, 2026",
+    poster_path: "https://img.youtube.com/vi/KgNiXIRYgJ8/maxresdefault.jpg",
+    backdrop_path: "https://img.youtube.com/vi/KgNiXIRYgJ8/maxresdefault.jpg  ",
+    // Fixed Time: 24 hours ago exactly.
+    release_date: getFixedMatchTime(-4, 0),
+    vote_average: 9.0,
+    duration: "Replay",
+    media_type: 'sports',
+    genres: ["Basketball", "NBA"],
+    streams: {
+       "Server 1 (Highlights)": "https://www.youtube.com/embed/KgNiXIRYgJ8?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=KgNiXIRYgJ8",
+    },
+    overview: "Full Event Replay. Main card and prelims.",
+  },
+  {
+    id: "match-ended-3",
+    title: "BULLS at PACERS | FULL GAME HIGHLIGHTS | January 28, 2026",
+    poster_path: "https://img.youtube.com/vi/OVTaT_HAyos/maxresdefault.jpg",
+    backdrop_path: "https://img.youtube.com/vi/OVTaT_HAyos/maxresdefault.jpg",
+    // Fixed Time: 24 hours ago exactly.
+    release_date: getFixedMatchTime(-4, 0),
+    vote_average: 9.0,
+    duration: "Replay",
+    media_type: 'sports',
+    genres: ["Basketball", "NBA"],
+    streams: {
+       "Server 1 (Highlights)": "https://www.youtube.com/embed/OVTaT_HAyos?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=OVTaT_HAyos",
     },
     overview: "Full Event Replay. Main card and prelims.",
   },
