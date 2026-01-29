@@ -33,7 +33,7 @@ export const UNIQUE_SPORTS: MediaItem[] = [
     poster_path: "https://femalecricket.com/wp-content/uploads/2026/01/WPL_Match-5-Royal-Challengers-Bengaluru-Women-vs-UP-Warriorz-Women-1200x788.jpg",
     backdrop_path: "https://femalecricket.com/wp-content/uploads/2026/01/WPL_Match-5-Royal-Challengers-Bengaluru-Women-vs-UP-Warriorz-Women-1200x788.jpg",
     // Starts 1 hour ago -> Should be LIVE
-    release_date: getRelativeTime(9, 30), 
+    release_date: getRelativeTime(8, 30), 
     vote_average: 9.2,
     duration: "Live",
     media_type: 'sports',
