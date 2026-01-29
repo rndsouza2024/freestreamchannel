@@ -172,7 +172,7 @@ const Navbar: React.FC = () => {
             
             {/* Mobile Download APK Link */}
              <a
-                href='https://median.co/share/eeeplwx'
+                href='https://median.co/share/kremmkb'
                 target='_blank'
                 rel='noopener noreferrer'
                 onClick={() => setIsOpen(false)}
