@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Sitemap: https://uwatchfree.vercel.app/sitemap.xml
+Sitemap: https://uwatchfreestream.vercel.app/sitemap.xml
 
 User-agent: Googlebot
 Allow: /
