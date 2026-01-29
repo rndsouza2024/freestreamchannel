@@ -99,12 +99,15 @@ const Watch: React.FC = () => {
   };
 
   // Helper: Get Current Date in Selected Timezone (for Sport Header)
+  // FIXED: Strictly uses UTC to ensure deployment environment doesn't shift time
   const getHeaderDate = () => {
     const now = new Date();
-    const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-    const targetDate = new Date(utc + (3600000 * timezoneOffset));
+    const currentUTCTime = now.getTime();
+    const targetTimeMs = currentUTCTime + (timezoneOffset * 3600000);
+    const targetDate = new Date(targetTimeMs);
+    
     return targetDate.toLocaleDateString('en-GB', { 
-      weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' 
+      weekday: 'long', day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC'
     });
   };
 
@@ -120,14 +123,19 @@ const Watch: React.FC = () => {
 
     const offsetMs = timezoneOffset * 60 * 60 * 1000;
     const shiftedDate = new Date(eventTimeUTC + offsetMs);
+    
     const headerDateStr = getHeaderDate();
-    const itemDateStr = shiftedDate.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
+    const itemDateStr = shiftedDate.toLocaleDateString('en-GB', { 
+        weekday: 'long', day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC'
+    });
     const isToday = headerDateStr === itemDateStr;
 
     const hours = shiftedDate.getUTCHours();
     const minutes = shiftedDate.getUTCMinutes().toString().padStart(2, '0');
     const displayTime = `${hours.toString().padStart(2, '0')}:${minutes}`;
-    const displayDay = isToday ? '' : shiftedDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+    const displayDay = isToday ? '' : shiftedDate.toLocaleDateString('en-GB', { 
+        day: 'numeric', month: 'short', timeZone: 'UTC'
+    });
 
     return (
         <div key={item.id} className="flex flex-col md:flex-row items-start md:items-center gap-4 py-4 border-b border-gray-800 hover:bg-white/5 transition-colors px-4 group">
@@ -230,9 +238,7 @@ const Watch: React.FC = () => {
             </div>
 
             <div className="hidden lg:block animate-slide-up">
-                <img src={media.poster_path} alt={media.title} className="w-full rounded-xl shadow-2xl mb-6 border border-gray-800"   style={{
-             filter: 'brightness(1.12) contrast(1.08) saturate(1.03)',
-              }}/>
+                <img src={media.poster_path} alt={media.title} className="w-full rounded-xl shadow-2xl mb-6 border border-gray-800" />
             </div>
         </div>
 

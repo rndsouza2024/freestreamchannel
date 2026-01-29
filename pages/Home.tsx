@@ -201,18 +201,22 @@ const Home: React.FC = () => {
   // --------------------------------------------------------------------------------
   
   // Helper: Get Current Date in Selected Timezone for the Header
+  // FIXED: Uses strict UTC calculation to avoid browser timezone interference
   const getHeaderDate = () => {
     const now = new Date();
-    // Convert to UTC epoch
-    const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-    // Add offset hours
-    const targetDate = new Date(utc + (3600000 * timezoneOffset));
+    // Get absolute UTC timestamp
+    const currentUTCTime = now.getTime();
+    // Shift timestamp by offset hours (in milliseconds)
+    const targetTimeMs = currentUTCTime + (timezoneOffset * 3600000);
+    const targetDate = new Date(targetTimeMs);
     
+    // Format using UTC zone to reflect the shifted time accurately
     return targetDate.toLocaleDateString('en-GB', { 
       weekday: 'long', 
       day: 'numeric', 
       month: 'short', 
-      year: 'numeric' 
+      year: 'numeric',
+      timeZone: 'UTC'
     });
   };
 
@@ -231,18 +235,24 @@ const Home: React.FC = () => {
 
     // 3. Display Time Calculation (Relative to Offset)
     const offsetMs = timezoneOffset * 60 * 60 * 1000;
+    // shiftedDate represents the wall-clock time in the target timezone as a UTC timestamp
     const shiftedDate = new Date(eventTimeUTC + offsetMs);
     
     // Check if the event date matches "Today" in the selected timezone
     const headerDateStr = getHeaderDate();
-    const itemDateStr = shiftedDate.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
+    const itemDateStr = shiftedDate.toLocaleDateString('en-GB', { 
+        weekday: 'long', day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' 
+    });
     const isToday = headerDateStr === itemDateStr;
 
-    // Formatting
+    // Formatting using UTC methods to ensure stability
     const hours = shiftedDate.getUTCHours();
     const minutes = shiftedDate.getUTCMinutes().toString().padStart(2, '0');
     const displayTime = `${hours.toString().padStart(2, '0')}:${minutes}`;
-    const displayDay = isToday ? '' : shiftedDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+    
+    const displayDay = isToday ? '' : shiftedDate.toLocaleDateString('en-GB', { 
+        day: 'numeric', month: 'short', timeZone: 'UTC' 
+    });
 
     return (
         <div key={item.id} className="flex flex-col md:flex-row items-start md:items-center gap-4 py-6 border-b border-gray-800 hover:bg-white/5 transition-colors px-4 md:px-6 group">
