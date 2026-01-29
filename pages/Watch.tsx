@@ -34,6 +34,10 @@ const Watch: React.FC = () => {
   const [recommendations, setRecommendations] = useState<MediaItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  
+  // Real-time clock for status updates
+  const [currentTime, setCurrentTime] = useState(Date.now());
+  
   const [timezoneOffset, setTimezoneOffset] = useState<number>(0);
 
   // Dedicated scroll effect ensuring top position on ID change
@@ -81,6 +85,13 @@ const Watch: React.FC = () => {
       }
     };
     loadData();
+
+    // Ticker for auto status updates
+    const timer = setInterval(() => {
+      setCurrentTime(Date.now());
+    }, 60000);
+    return () => clearInterval(timer);
+
   }, [id, type]);
 
   // Handle Sharing
@@ -99,9 +110,8 @@ const Watch: React.FC = () => {
   };
 
   // Helper: Get Current Date in Selected Timezone (for Sport Header)
-  // FIXED: Strictly uses UTC to ensure deployment environment doesn't shift time
   const getHeaderDate = () => {
-    const now = new Date();
+    const now = new Date(currentTime);
     const currentUTCTime = now.getTime();
     const targetTimeMs = currentUTCTime + (timezoneOffset * 3600000);
     const targetDate = new Date(targetTimeMs);
@@ -113,13 +123,12 @@ const Watch: React.FC = () => {
 
   const renderSportsRow = (item: MediaItem) => {
     const eventTimeUTC = new Date(item.release_date).getTime();
-    const now = Date.now();
     const durationMs = 4 * 60 * 60 * 1000;
     const endTimeUTC = eventTimeUTC + durationMs;
 
     let status: 'LIVE' | 'ENDED' | 'UPCOMING' = 'UPCOMING';
-    if (now > endTimeUTC) status = 'ENDED';
-    else if (now >= eventTimeUTC && now <= endTimeUTC) status = 'LIVE';
+    if (currentTime > endTimeUTC) status = 'ENDED';
+    else if (currentTime >= eventTimeUTC && currentTime <= endTimeUTC) status = 'LIVE';
 
     const offsetMs = timezoneOffset * 60 * 60 * 1000;
     const shiftedDate = new Date(eventTimeUTC + offsetMs);
@@ -167,7 +176,7 @@ const Watch: React.FC = () => {
             <div className="w-full md:w-auto mt-2 md:mt-0 flex-shrink-0">
                 <Link to={`/watch/sports/${item.id}`} className={`flex items-center justify-center gap-2 w-full md:w-auto px-4 py-2 rounded font-bold text-xs uppercase transition-all ${status === 'LIVE' ? 'bg-miraj-red text-white hover:bg-red-700' : 'bg-miraj-gold text-black hover:bg-white'}`}>
                     <PlayCircle size={14} fill={status === 'LIVE' ? 'white' : 'black'} /> 
-                    {status === 'LIVE' ? 'Watch' : 'Reminder'}
+                    {status === 'LIVE' ? 'Watch' : 'Awaiting Live'}
                 </Link>
             </div>
         </div>

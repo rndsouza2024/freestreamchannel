@@ -100,6 +100,9 @@ const Home: React.FC = () => {
   const [tvLive, setTvLive] = useState<MediaItem[]>([]);
   const [loading, setLoading] = useState(true);
   
+  // Real-time clock for status updates
+  const [currentTime, setCurrentTime] = useState(Date.now());
+
   // Default to GMT 0
   const [timezoneOffset, setTimezoneOffset] = useState<number>(0);
   
@@ -130,6 +133,14 @@ const Home: React.FC = () => {
       }
     };
     loadData();
+
+    // Set up a ticker to update current time every minute
+    // This ensures statuses (Upcoming -> Live) update automatically
+    const timer = setInterval(() => {
+      setCurrentTime(Date.now());
+    }, 60000); // Check every minute
+
+    return () => clearInterval(timer);
   }, []);
 
   if (loading) {
@@ -197,13 +208,12 @@ const Home: React.FC = () => {
   else heroItems = [...movies.slice(0, 3), ...tvShows.slice(0, 2), ...sports.slice(0, 2)];
 
   // --------------------------------------------------------------------------------
-  // SPORTS SCHEDULE LOGIC (Text Based List)
+  // SPORTS SCHEDULE LOGIC
   // --------------------------------------------------------------------------------
   
   // Helper: Get Current Date in Selected Timezone for the Header
-  // FIXED: Uses strict UTC calculation to avoid browser timezone interference
   const getHeaderDate = () => {
-    const now = new Date();
+    const now = new Date(currentTime); // Use reactive currentTime
     // Get absolute UTC timestamp
     const currentUTCTime = now.getTime();
     // Shift timestamp by offset hours (in milliseconds)
@@ -224,18 +234,18 @@ const Home: React.FC = () => {
   const renderSportsRow = (item: MediaItem) => {
     // 1. Time Logic
     const eventTimeUTC = new Date(item.release_date).getTime();
-    const now = Date.now();
     const durationMs = 4 * 60 * 60 * 1000;
     const endTimeUTC = eventTimeUTC + durationMs;
 
-    // 2. Status Determination (Absolute Time)
+    // 2. Status Determination (Based on reactive currentTime)
     let status: 'LIVE' | 'ENDED' | 'UPCOMING' = 'UPCOMING';
-    if (now > endTimeUTC) status = 'ENDED';
-    else if (now >= eventTimeUTC && now <= endTimeUTC) status = 'LIVE';
+    if (currentTime > endTimeUTC) status = 'ENDED';
+    else if (currentTime >= eventTimeUTC && currentTime <= endTimeUTC) status = 'LIVE';
 
     // 3. Display Time Calculation (Relative to Offset)
+    // IMPORTANT: This strictly uses the item's fixed release_date. 
+    // It does not change with 'currentTime', only with 'timezoneOffset'.
     const offsetMs = timezoneOffset * 60 * 60 * 1000;
-    // shiftedDate represents the wall-clock time in the target timezone as a UTC timestamp
     const shiftedDate = new Date(eventTimeUTC + offsetMs);
     
     // Check if the event date matches "Today" in the selected timezone
@@ -292,7 +302,7 @@ const Home: React.FC = () => {
                 ) : (
                      <Link to={`/watch/sports/${item.id}`} className={`flex items-center justify-center gap-2 w-full md:w-auto px-8 py-3 rounded-lg font-bold text-sm uppercase transition-all shadow-[0_0_15px_rgba(0,0,0,0.5)] ${status === 'LIVE' ? 'bg-miraj-red text-white hover:bg-red-700 hover:shadow-[0_0_15px_rgba(229,9,20,0.4)]' : 'bg-miraj-gold text-black hover:bg-white'}`}>
                         <PlayCircle size={18} fill={status === 'LIVE' ? 'white' : 'black'} /> 
-                        {status === 'LIVE' ? 'Watch Live' : 'Set Reminder'}
+                        {status === 'LIVE' ? 'Watch Live' : 'Awaiting Live'}
                     </Link>
                 )}
             </div>
