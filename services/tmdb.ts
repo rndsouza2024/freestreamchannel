@@ -5,28 +5,19 @@ const BASE_URL = "https://api.themoviedb.org/3";
 const IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
 const BACKDROP_BASE = "https://image.tmdb.org/t/p/original";
 
-// FIXED TIME HELPER
-// This snaps the time to the current hour (e.g., if it's 14:45, it becomes 14:00).
-// This ensures that 'relative' times like "+2 hours" result in a FIXED timestamp (e.g., 16:00)
-// that does not drift or change every time you refresh the page within that hour.
+// STATIC TIME - NO DYNAMIC CALCULATION
+// These times are fixed and will not change on page refresh
 const getFixedMatchTime = (hoursAdd: number, minutesSet: number = 0) => {
-  const date = new Date();
-  date.setMinutes(0);      // Snap to top of the hour
-  date.setSeconds(0);      // Zero out seconds
-  date.setMilliseconds(0); // Zero out milliseconds
-  
-  // Add hours relative to the stable top-of-the-hour time
-  date.setHours(date.getHours() + hoursAdd);
-  
-  // Set the minutes explicitly (e.g., kick off at :30)
-  date.setMinutes(minutesSet);
-  
-  return date.toISOString();
+  // Return a static base time: Jan 29, 2026 08:00 UTC + offset
+  const baseTime = new Date("2026-01-30T08:00:00.000Z");
+  baseTime.setHours(baseTime.getHours() + hoursAdd);
+  baseTime.setMinutes(minutesSet);
+  return baseTime.toISOString();
 };
 
-// Helper for Specific UTC Time today (e.g., set to 23:00 UTC today to test date rollover)
+// Helper for Specific UTC Time (static, no runtime calculation)
 const getSpecificTime = (hour: number, minute: number = 0) => {
-    const date = new Date();
+    const date = new Date("2026-01-30T00:00:00.000Z");
     date.setUTCHours(hour, minute, 0, 0);
     return date.toISOString();
 }
@@ -34,50 +25,48 @@ const getSpecificTime = (hour: number, minute: number = 0) => {
 export const UNIQUE_SPORTS: MediaItem[] = [
   {
     id: "womens-premier-league",
-    title: "Women's Premier League : Royal Challengers Bangalore W vs UP Warriorz W",
-    poster_path: "https://femalecricket.com/wp-content/uploads/2026/01/WPL_Match-5-Royal-Challengers-Bengaluru-Women-vs-UP-Warriorz-Women-1200x788.jpg",
-    backdrop_path: "https://femalecricket.com/wp-content/uploads/2026/01/WPL_Match-5-Royal-Challengers-Bengaluru-Women-vs-UP-Warriorz-Women-1200x788.jpg",
+    title: "Women's Premier League : Gujarat Giants W vs Mumbai Indians W",
+    poster_path: "https://img.cricketnmore.com/uploads/2026/01/gujarat-giants-vs-mumbai-indians-match-19-wpl-2026-who-will-win-today-gg-w-vs-mi-w-match-mdl.jpg",
+    backdrop_path: "https://img.cricketnmore.com/uploads/2026/01/gujarat-giants-vs-mumbai-indians-match-19-wpl-2026-who-will-win-today-gg-w-vs-mi-w-match-mdl.jpg",
     // Fixed Time: Current Hour - 1 (e.g. if now is 14:20, this was 13:00). Ensures it is LIVE.
-    release_date: getFixedMatchTime(7, 30), 
+    release_date: getFixedMatchTime(6, 30), 
     vote_average: 9.2,
     duration: "Live",
     media_type: 'sports',
     genres: ["Cricket", "Women's Premier League"],
     streams: {
-      "Server 1 (Main)": "https://embedsports.top/embed/charlie/up-warriorz-vs-royal-challengers-bengaluru-1629480816/1",
-      "Server 2 (Backup)": "https://daddyhd.com/stream/stream-598.php",
-      "Server 3 (Backup)": "https://daddyhd.com/stream/stream-591.php",
+      "Server 1 (Main)": "https://embedsports.top/embed/charlie/gujarat-giants-vs-mumbai-indians-1629480889/1",
+      "Server 2 (Backup)": "https://daddyhd.com/stream/stream-346.php",
+      "Server 3 (Backup)": "https://daddyhd.com/stream/stream-590.php",
       "Server 4 (Backup)": "https://daddyhd.com/stream/stream-417.php",
       "Server 5 (Backup)": "https://daddyhd.com/stream/stream-36.php",
     },
-    overview: "Live coverage of the Women's Premier League : RCB (W) vs UPW (W). Title decider match.",
+    overview: "Live coverage of the Women's Premier League Gujarat Giants vs Mumbai Indians Match 19, WPL 2026, Who will win today GG-W vs MI-W match?",
   },
   {
     id: "twenty20",
-    title: "Twenty20 : South Africa vs West Indie",
-    poster_path: "https://www.icccricketschedule.com/_image?href=https%3A%2F%2Fimg.icccricketschedule.com%2Fuploads%2Fimages%2F202601%2Fsouth-africa-vs-west-indies-2026_1200x675_3e5557.jpg&w=1200&h=675&q=75&f=webp",
-    backdrop_path: "https://www.icccricketschedule.com/_image?href=https%3A%2F%2Fimg.icccricketschedule.com%2Fuploads%2Fimages%2F202601%2Fsouth-africa-vs-west-indies-2026_1200x675_3e5557.jpg&w=1200&h=675&q=75&f=webp",
+    title: "England tour of Sri Lanka 2026 | Twenty20 : England vs Sri Lanka",
+    poster_path: "https://images.slivcdn.com/videoasset_images/manage_file/1000013839/1768923753324600_SL_vs_EG_2026_GOB_Landscape_Thumb.jpg?w=1000&q=low",
+    backdrop_path: "https://images.slivcdn.com/videoasset_images/manage_file/1000013839/1768923753324600_SL_vs_EG_2026_GOB_Landscape_Thumb.jpg?w=1000&q=low",
     // Fixed Time: Current Hour + 1, :30 minutes. (e.g. if now is 14:20, this is 15:30 fixed).
-    release_date: getFixedMatchTime(9, 30),
+    release_date: getFixedMatchTime(6, 0),
     vote_average: 9.5,
     duration: "Live",
     media_type: 'sports',
     genres: ["Cricket", "Twenty20"],
     streams: {
-      "Server 1 (Main)": "https://embedsports.top/embed/charlie/south-africa-vs-west-indies-1629480817/1",
-      "Server 2 (Backup)": "https://daddyhd.com/stream/stream-346.php",
-      "Server 3 (Backup)": "https://daddyhd.com/stream/stream-65.php",
-      "Server 4 (Backup)": "https://daddyhd.com/stream/stream-38.php",
-      "Server 5 (Backup)": "https://daddyhd.com/stream/stream-368.php",
+      "Server 1 (Main)": "https://embedsports.top/embed/charlie/sri-lanka-vs-england-1629480887/1",
+      "Server 2 (Backup)": "https://daddyhd.com/stream/stream-31.php",
+      "Server 3 (Backup)": "https://daddyhd.com/stream/stream-368.php",
       "Server 6 (Backup)": "https://daddyhd.com/stream/stream-412.php",   
     },
-    overview: "T20 Live. Twenty20 : South Africa vs West Indie",
+    overview: "England tour of Sri Lanka 2026 | Twenty20 : England vs Sri Lanka",
   },
   {
-    id: "farmers-insurance-open",
-    title: "PGA Tour Farmers Insurance Open (2026)",
-    poster_path: "https://espnpressroom.com/us/files/2026/01/Farmers-Graphic-2.png",
-    backdrop_path: "https://espnpressroom.com/us/files/2026/01/Farmers-Graphic-2.png",
+    id: "australian-open-semi-final",
+    title: "Australian Open Semi-Final (2026)",
+    poster_path: "https://images.slivcdn.com/videoasset_images/manage_file/1000013951/1769076305688640_AO2026_GOB_Landscape_Thumb_SP_2.jpg?w=1000&q=low",
+    backdrop_path: "https://images.slivcdn.com/videoasset_images/manage_file/1000013951/1769076305688640_AO2026_GOB_Landscape_Thumb_SP_2.jpg?w=1000&q=low",
     // Fixed Time: Current Hour + 4 hours.
     release_date: getFixedMatchTime(9, 30),
     vote_average: 8.9,
@@ -94,71 +83,77 @@ export const UNIQUE_SPORTS: MediaItem[] = [
     overview: "Watch Live Golf: PGA Tour Farmers Insurance Open",
   },
   {
-    id: "match-early-test",
-    title: "TNA iMPACT! Wrestling: Early Test Match",
-    poster_path: "https://hips.hearstapps.com/hmg-prod/images/tna-impact-wrestling-6536da30b4f27.jpeg?resize=980:*",
-    backdrop_path: "https://hips.hearstapps.com/hmg-prod/images/tna-impact-wrestling-6536da30b4f27.jpeg?resize=980:*",
-    // Fixed Time: Current Hour + 8 hours.
-    release_date: getFixedMatchTime(18, 30),
-    vote_average: 8.7,
+    id: "farmers-insurance-open",
+    title: "PGA Tour Farmers Insurance Open (2026)",
+    poster_path: "https://espnpressroom.com/us/files/2026/01/Farmers-Graphic-2.png",
+    backdrop_path: "https://espnpressroom.com/us/files/2026/01/Farmers-Graphic-2.png",
+    // Fixed Time: Current Hour + 4 hours.
+    release_date: getFixedMatchTime(4, 0),
+    vote_average: 8.9,
     duration: "Live",
     media_type: 'sports',
-    genres: ["Fighting", "TNA Wrestling"],
+    genres: ["Golf", "PGA Tour"],
     streams: {
-      "Server 1 (Main)": "https://embedsports.top/embed/admin/ppv-tna-impact/1",
-      "Server 2 (Backup)": "https://embedsports.top/embed/admin/ppv-tna-impact/2",
-      "Server 3 (Backup)": "https://daddyhd.com/stream/stream-303.php",
-      "Server 4 (Backup)": "https://daddyhd.com/stream/stream-409.php",
+      "Server 1 (Main)": "https://embedsports.top/embed/charlie/farmers-insurance-open-featured-holes-3-8-11-and-16-first-round-1629480833/1",
+      "Server 2 (Backup)": "https://daddyhd.com/stream/stream-70.php",
+      "Server 3 (Backup)": "https://daddyhd.com/stream/stream-318.php",
+      "Server 4 (Backup)": "https://daddyhd.com/stream/stream-422.php",
+      "Server 5 (Backup)": "https://daddyhd.com/stream/stream-588.php",
     },
-    overview: "Live TNA Wrestling. Check TNA Wrestling schedule for more upcoming matches.",
+    overview: "Watch Live Golf: PGA Tour Farmers Insurance Open",
+  },
+  {
+    id: "wwe-friday-night-smackdown",
+    title: "WWE Friday Night SmackDown (2026)",
+    poster_path: "https://espnpressroom.com/us/files/2026/01/Farmers-Graphic-2.png",
+    backdrop_path: "https://espnpressroom.com/us/files/2026/01/Farmers-Graphic-2.png",
+    // Fixed Time: Current Hour + 4 hours.
+    release_date: getFixedMatchTime(10, 0),
+    vote_average: 8.9,
+    duration: "Live",
+    media_type: 'sports',
+    genres: ["Golf", "PGA Tour"],
+    streams: {
+      "Server 1 (Main)": "https://embedsports.top/embed/admin/ppv-wwe-friday-night-smackdown/1",
+      "Server 2 (Backup)": "https://embedsports.top/embed/admin/ppv-wwe-friday-night-smackdown/2",
+      "Server 3 (Backup)": "https://embedsports.top/embed/echo/wwe-friday-night-smackdown-wwe-009/1",
+      "Server 4 (Backup)": "https://embedsports.top/embed/echo/wwe-friday-night-smackdown-wwe-009/2",
+      "Server 5 (Backup)": "https://daddyhd.com/stream/stream-343.php",
+      "Server 6 (Backup)": "https://daddyhd.com/stream/stream-145.php",   
+    },
+    overview: "Watch WWE Friday Night SmackDown Live",
   },
   {
     id: "match-ended-1",
-    title: "Benfica vs Real Madrid - Key Moments - UEFA Champions League 2026",
-    poster_path: "https://www.aljazeera.com/wp-content/uploads/2026/01/2026-01-28T222717Z_126287702_UP1EM1S1PJ1XC_RTRMADP_3_SOCCER-CHAMPIONS-SLB-RMA-1769640390.jpg?resize=1920%2C1080",
-    backdrop_path: "https://www.aljazeera.com/wp-content/uploads/2026/01/2026-01-28T222717Z_126287702_UP1EM1S1PJ1XC_RTRMADP_3_SOCCER-CHAMPIONS-SLB-RMA-1769640390.jpg?resize=1920%2C1080",
+    title: "Pakistan vs Australia | Match 01 | T20I Series 2026 | Full Highlights",
+    poster_path: "https://img.youtube.com/vi/ajrYW7qbhmg/maxresdefault.jpg",
+    backdrop_path: "https://img.youtube.com/vi/ajrYW7qbhmg/maxresdefault.jpg",
     // Fixed Time: 24 hours ago exactly.
-    release_date: getFixedMatchTime(-4, 0),
+    release_date: getFixedMatchTime(-12, 0),
     vote_average: 9.0,
     duration: "Replay",
     media_type: 'sports',
-    genres: ["Soccer", "UEFA Champions"],
+    genres: ["Cricket", "T20I"],
     streams: {
-       "Server 1 (Highlights)": "https://www.youtube.com/embed/dRd-sNzUlJk?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=dRd-sNzUlJk",
+       "Server 1 (Highlights)": "https://www.youtube.com/embed/ajrYW7qbhmg?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=ajrYW7qbhmg",
     },
     overview: "Full Event Replay. Main card and prelims.",
   },
   {
     id: "match-ended-2",
-    title: "SPURS at ROCKETS | FULL GAME HIGHLIGHTS | January 28, 2026",
-    poster_path: "https://img.youtube.com/vi/KgNiXIRYgJ8/maxresdefault.jpg",
-    backdrop_path: "https://img.youtube.com/vi/KgNiXIRYgJ8/maxresdefault.jpg  ",
+    title: "Australian Open 2026 | Aryna Sabalenka vs Elina Svitolina | Full Highlights",
+    poster_path: "https://img.youtube.com/vi/tY5PBmtFb8w/maxresdefault.jpg",
+    backdrop_path: "https://img.youtube.com/vi/tY5PBmtFb8w/maxresdefault.jpg",
     // Fixed Time: 24 hours ago exactly.
-    release_date: getFixedMatchTime(-4, 0),
+    release_date: getFixedMatchTime(-16, 0),
     vote_average: 9.0,
     duration: "Replay",
     media_type: 'sports',
-    genres: ["Basketball", "NBA"],
+    genres: ["Tennis", "Australian Open"],
     streams: {
-       "Server 1 (Highlights)": "https://www.youtube.com/embed/KgNiXIRYgJ8?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=KgNiXIRYgJ8",
+       "Server 1 (Highlights)": "https://www.youtube.com/embed/tY5PBmtFb8w?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=tY5PBmtFb8w",
     },
-    overview: "Full Event Replay. Main card and prelims.",
-  },
-  {
-    id: "match-ended-3",
-    title: "BULLS at PACERS | FULL GAME HIGHLIGHTS | January 28, 2026",
-    poster_path: "https://img.youtube.com/vi/OVTaT_HAyos/maxresdefault.jpg",
-    backdrop_path: "https://img.youtube.com/vi/OVTaT_HAyos/maxresdefault.jpg",
-    // Fixed Time: 24 hours ago exactly.
-    release_date: getFixedMatchTime(-4, 0),
-    vote_average: 9.0,
-    duration: "Replay",
-    media_type: 'sports',
-    genres: ["Basketball", "NBA"],
-    streams: {
-       "Server 1 (Highlights)": "https://www.youtube.com/embed/OVTaT_HAyos?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=OVTaT_HAyos",
-    },
-    overview: "Full Event Replay. Main card and prelims.",
+    overview: "Full Event Replay. Australian Open 2026 | Aryna Sabalenka vs Elina Svitolina | Full Highlights",
   },
 ];
 
@@ -359,9 +354,243 @@ export const UNIQUE_TV_LIVE: MediaItem[] = [
     overview:
       "Live documentary channel featuring nature, science, and history content.",
   },
+  {
+    id: "bbc-earth-channel",
+    title: "BBC Earth Channel",
+    poster_path: "https://yt3.googleusercontent.com/EsHioubXC-qfNdbHyThN7rDTF7rfTzhl5A5u4hHuUAzslx9jgwtxl_2TN4RFqt3hA1jEwAGVgg=s900-c-k-c0x00ffffff-no-rj",
+    backdrop_path: "https://yt3.googleusercontent.com/EsHioubXC-qfNdbHyThN7rDTF7rfTzhl5A5u4hHuUAzslx9jgwtxl_2TN4RFqt3hA1jEwAGVgg=s900-c-k-c0x00ffffff-no-rj",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["BBC Earth", "Educational", "Live"],
+    streams: {
+      "Server 1": "https://amg00793-amg00793c6-firetv-us-4067.playouts.now.amagi.tv/playlist.m3u8"
+    },
+    overview:
+      "Live documentary channel featuring nature, science, and history content.",
+  },
+  {
+    id: "awe-channel",
+    title: "AWE Channel",
+    poster_path: "https://image.roku.com/developer_channels/prod/72cd4b2a026d9d68fadaae3b12227b2425bf28400a9fd8e679088d3b49c460d4.png",
+    backdrop_path: "https://image.roku.com/developer_channels/prod/72cd4b2a026d9d68fadaae3b12227b2425bf28400a9fd8e679088d3b49c460d4.png",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["BBC Earth", "Educational", "Live"],
+    streams: {
+      "Server 1": "https://a-cdn.klowdtv.com/live1/awe_720p/chunks.m3u8"
+    },
+    overview:
+      "Live documentary channel featuring nature, science, and history content.",
+  },
+  {
+    id: "law-and-crime-channel",
+    title: "Law and Crime Channel",
+    poster_path: "https://yt3.googleusercontent.com/CRP3YudPa55QypbDnIvuh3erLZTsn2HK8ESR-2fJFFiLJVf7US2CKQELCKK_UowmHA3wCjAdxg=s900-c-k-c0x00ffffff-no-rj",
+    backdrop_path: "https://yt3.googleusercontent.com/CRP3YudPa55QypbDnIvuh3erLZTsn2HK8ESR-2fJFFiLJVf7US2CKQELCKK_UowmHA3wCjAdxg=s900-c-k-c0x00ffffff-no-rj",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Law and Crime", "Educational", "Live"],
+    streams: {
+      "Server 1": "https://a-cdn.klowdtv.com/live3/law_720p/playlist.m3u8"
+    },
+    overview:
+      "Live documentary channel featuring nature, science, and history content.",
+  },
+{
+    id: "crime-investigation-channel",
+    title: "Crime + Investigation Channel",
+    poster_path: "https://www.crimeandinvestigation.co.uk/themes/custom/crimeandinvestigation/images/social-cards/ci-homepage.jpg",
+    backdrop_path: "https://www.crimeandinvestigation.co.uk/themes/custom/crimeandinvestigation/images/social-cards/ci-homepage.jpg",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Crime + Investigation", "Educational", "Live"],
+    streams: {
+      "Server 1": "https://fl31.moveonjoy.com/Crime_and_Investigation_Network/tracks-v1a1/mono.ts.m3u8"
+    },
+    overview:
+      "Live documentary channel featuring nature, science, and history content.",
+  },
+{
+    id: "true-crime-now-channel",
+    title: "True Crime Now Channel",
+    poster_path: "https://cdn.realscreen.com/wp/wp-content/uploads/2021/10/true-crime-now-logo-1.jpg",
+    backdrop_path: "https://cdn.realscreen.com/wp/wp-content/uploads/2021/10/true-crime-now-logo-1.jpg",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["True Crime Now", "Educational", "Live"],
+    streams: {
+      "Server 1": "https://amg00376-magellan-amg00376c12-samsung-au-1725.playouts.now.amagi.tv/ts-us-w2-n1/playlist/amg00376-magellantv-truecrimenowaunzin-samsungau/cb433e4f7b7b6fdccb993e6cd3f715a0d1076a8b5d32d03765f95cb52abc4013dce0ad92f24ef1684c8778873f5e32161e77b57dce7d01d9de71b8366d2211709188fa7ddd800278f298537f4de6286508ba1110d3224d218fa95223ad0998554953e400655372aab80af6294bd5f352c92074deb2dc653d635a419f435df5c30ff5aea3045add6fa6af1f4e873b47e5864498861bbb9d82539b469b77f0429d8fa2d886129f85c46aff53b330080b7224ccb246f9b1353771070b43fe441b047360e8aa87fb4a7cb5534248fdecb9c70f9d3deff9e805fd55c16db6409624822b8b04a2f347a3acc1bf08216be1ac5f10a4651e04ca7b1713c4fec8212c26674439bc7b594acc7fd1212a77b3f5c21785c41aac7b42efbb441222c99d499ad2e7cdbff0c57d952bcec8e38b7d6c7a235552c80df9da5ad2278b2cf38e0b770804048c8a45c883ee5b32494692cf0b874455ea8dcbcbf4260fe74c571ae469d25e454bc9376773ac6dda922e63842345d46169b5087bd00cacf81ff4a1daf70f74e08d900cac399dc060b8c10ba769334e11f3a37c2d22624990bf36436003802f82f4c5ee7005059687eef6d25c3502795a123b82ece37f8c9d824e3913d258326f641a75c45136087eace4ab482d8153dd9acf43dd2308337c976c284a/25/1920x1080_5500000/index.m3u8"
+    },
+    overview:
+      "Live documentary channel featuring nature, science, and history content.",
+  },
+  {
+    id: "investigation-discovery-channel",
+    title: "Investigation Discovery Channel",
+    poster_path: "https://variety.com/wp-content/uploads/2014/07/investigation-discovery-logo.jpg?w=1000&h=563&crop=1",
+    backdrop_path: "https://variety.com/wp-content/uploads/2014/07/investigation-discovery-logo.jpg?w=1000&h=563&crop=1",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Investigation Discovery", "Educational", "Live"],
+    streams: {
+    "Server 1": "https://daddyhd.com/stream/stream-324.php",
+    },
+    overview:
+      "Live documentary channel featuring nature, science, and history content.",
+  },
+  {
+    id: "amc-channel",
+    title: "AMC Channel",
+    poster_path: "https://play-lh.googleusercontent.com/g7K2KCxcNoOV4bgerqP5yDmRpBImqMGcV99Zvd9vYOQ-v6zDj9f_gyU0EaE5OM2yBrU=w600-h300-pc0xffffff-pd",
+    backdrop_path: "https://play-lh.googleusercontent.com/g7K2KCxcNoOV4bgerqP5yDmRpBImqMGcV99Zvd9vYOQ-v6zDj9f_gyU0EaE5OM2yBrU=w600-h300-pc0xffffff-pd",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Investigation Discovery", "Educational", "Live"],
+    streams: {
+    "Server 1": "https://daddyhd.com/stream/stream-303.php",
+    },
+    overview:
+      "Live documentary channel featuring nature, science, and history content.",
+  },  
+
 ];
 // 15 UNIQUE MOVIES (ALL FROM TMDB)
 export const UNIQUE_MOVIES: MediaItem[] = [
+ {
+    id: "1112564",
+    title: "Vaa Vaathiyaar (2026)",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/47uIUf9KCfDzxQXixw8lrvYl8C8.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/qPNIwdR3y965KMsiweyuXdjDRXR.jpg",
+    release_date: "2026-01-16",
+    vote_average: 6.4,
+    duration: "2h 40m",
+    media_type: 'movie',
+    genres: ["Comedy ", "Drama", "Romance"],
+    streams: {
+      "Server 1":
+        "https://short.icu/Dzw1i6pcO?thumbnail=https://media.themoviedb.org/t/p/w780/qPNIwdR3y965KMsiweyuXdjDRXR.jpg",
+      "Server 2": "https://byseqekaho.com/e/80ishvgy6dmt",
+       "Server 3 - HINDI":
+        "https://short.icu/xIULE72j87?thumbnail=https://media.themoviedb.org/t/p/w780/qPNIwdR3y965KMsiweyuXdjDRXR.jpg",
+      "Server 4 - HINDI": "https://byseqekaho.com/e/p6tgekufv9cb",
+    },
+    overview:
+      "After being raised as the reincarnation of a famous actor, a man finds himself clashing with his grandfather's expectations of him.",
+  },
+  {
+    id: "1168190",
+    title: "The Wrecking Crew (2026)",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/gbVwHl4YPSq6BcC92TQpe7qUTh6.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/cz4vLJrmaV1zJlRYbxqtvLzeLWB.jpg",
+    release_date: "2026-01-16",
+    vote_average: 6.4,
+    duration: "2h 40m",
+    media_type: 'movie',
+    genres: ["Crime ", "Action", "Mystery"],
+    streams: {
+      "Server 1": "https://xprime.today/watch/1168190",
+      "Server 2": "https://cinemaos.tech/player/1168190",
+      "Server 3":
+        "https://zxcstream.xyz/player/movie/1168190/english?autoplay=false&back=true&server=0",
+      "Server 4 - HINDI":
+        "https://short.icu/fhssp61ba?thumbnail=https://media.themoviedb.org/t/p/w780/cz4vLJrmaV1zJlRYbxqtvLzeLWB.jpg",
+      "Server 5 - HINDI": "https://byseqekaho.com/e/u5zmr36q8vog",
+      "Server 4 - TAMIL":
+        "https://short.icu/oVB40tLFR?thumbnail=https://media.themoviedb.org/t/p/w780/cz4vLJrmaV1zJlRYbxqtvLzeLWB.jpg",
+      "Server 4 - KANNADA":
+        "https://short.icu/7S1E2a4bT?thumbnail=https://media.themoviedb.org/t/p/w780/cz4vLJrmaV1zJlRYbxqtvLzeLWB.jpg",
+      "Server 6": "https://www.cinezo.net/watch/movie/1168190",
+      "Server 7": "https://vidsrc-embed.ru/embed/movie/1168190",
+      "Server 8": "https://api.cinezo.net/embed/tmdb-movie-1168190",
+    },
+    overview:
+      "Estranged half-brothers Jonny and James reunite after their father's mysterious death. As they search for the truth, buried secrets reveal a conspiracy threatening to tear their family apart.",
+  },
+  {
+    id: "1552952",
+    title: "Dhraupathi 2 (2026)",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/vojJemS5USdagshMLWS8JyrU8x6.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/vojJemS5USdagshMLWS8JyrU8x6.jpg",
+    release_date: "2026-01-16",
+    vote_average: 6.4,
+    duration: "2h 40m",
+    media_type: 'movie',
+    genres: ["Action ", "Drama", "History"],
+    streams: {
+      "Server 1":
+        "https://short.icu/11VUo0mkc?thumbnail=https://media.themoviedb.org/t/p/w780/vojJemS5USdagshMLWS8JyrU8x6.jpg",
+      "Server 2": "https://byseqekaho.com/e/q96pfror03po",
+    },
+    overview:
+      " 14th century AD, people were suffering from the brutality of the Madurai Sultanate and the Delhi Sultan. The Hoysala Emperor Vallalar III protected his empire and people with diplomacy. The sacrifice and betrayal of some changed the course of a kingdom. Insidious interventions disrupt the lives of people and the stability of the state.",
+  },
+  {
+    id: "1552952",
+    title: "Jockey (2026)",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/69zi48P9NIwPq7qdssxQ8qqbBNG.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/69zi48P9NIwPq7qdssxQ8qqbBNG.jpg",
+    release_date: "2026-01-16",
+    vote_average: 6.4,
+    duration: "2h 40m",
+    media_type: 'movie',
+    genres: ["Action ", "Drama", "Thriller"],
+    streams: {
+      "Server 1":
+        "https://short.icu/8W2HhRv30?thumbnail=https://media.themoviedb.org/t/p/w780/69zi48P9NIwPq7qdssxQ8qqbBNG.jpg",
+      "Server 2": "https://byseqekaho.com/e/a1p51n0oaksv",
+    },
+    overview:
+      "We don't have an overview translated in English. Help us expand our database by adding one.",
+  },
+  {
+    id: "1613346",
+    title: "Landlord (2026)",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/l3NGOzBnchp957poN8mBoZuWVHX.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/irXzev38Yf3UJ25PXtsnFg6KVQC.jpg",
+    release_date: "2026-01-16",
+    vote_average: 6.4,
+    duration: "2h 40m",
+    media_type: 'movie',
+    genres: ["Action ", "Drama", "Thriller"],
+    streams: {
+      "Server 1": "https://xprime.today/watch/1613346",
+      "Server 2": "https://cinemaos.tech/player/1613346",
+      "Server 3":
+        "https://zxcstream.xyz/player/movie/1613346/kannada?autoplay=false&back=true&server=0",
+      "Server 4":
+        "https://short.icu/OHi7E2c2Q?thumbnail=https://media.themoviedb.org/t/p/w780/irXzev38Yf3UJ25PXtsnFg6KVQC.jpg",
+      "Server 5": "https://byseqekaho.com/e/4dsgif4rh5lc",
+      "Server 6": "https://www.cinezo.net/watch/movie/1613346",
+      "Server 7": "https://vidsrc-embed.ru/embed/movie/1613346",
+      "Server 8": "https://api.cinezo.net/embed/tmdb-movie-1613346",
+    },
+    overview:
+      "In a village crushed under a brutal landlord's rule, fear silences the poor, and justice is denied. When a young woman constable challenges the system and an innocent family is burnt alive, outrage erupts into a violent uprising. What follows is a costly fight to reclaim dignity, justice, and the power of the Constitution.",
+  },
   {
     id: "1236153",
     title: "Mercy (2026)",
@@ -1184,6 +1413,31 @@ export const UNIQUE_MOVIES: MediaItem[] = [
 
 // 15 UNIQUE TV SHOWS (ALL FROM TMDB)
 export const UNIQUE_TV_SHOWS: MediaItem[] = [
+  {
+    id: "254071",
+    title: "Wonder Man S01 (2026)",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/6yy9nQlFt2l6UVWzrfhszFCaZ5C.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/3xdtP9D78ZFFBwIBXf3XWWQiqMB.jpg",
+    release_date: "2026-01-08",
+    vote_average: 7.2,
+    duration: "45m",
+    media_type: 'tv',
+    streams: {
+      "Server 1":
+        "https://zxcstream.xyz/player/tv/198178/s=1/e=1/english?autoplay=false&back=true&server=0",
+      "Server 2": "https://xprime.today/watch/198178/1/1",
+      "Server 3 ": "https://api.cinezo.net/embed/tmdb-tv-198178/1/1",
+      "Server 4 ": "https://www.cinezo.net/watch/tv/198178?season=1&episode=1",
+      "Server 5 - HINDI":
+        "https://short.icu/Sl7KwC5M7?thumbnail=https://media.themoviedb.org/t/p/w780/3xdtP9D78ZFFBwIBXf3XWWQiqMB.jpg",
+       "Server 6 - HINDI": "https://byseqekaho.com/e/jm9h9ts4zkvl",   
+    },
+    genres: ["Comedy", "Drama", "Thriller"],
+    overview:
+      "Simon and Trevor, two actors at opposite ends of their careers, chase life-changing roles.",
+  },
   {
     id: "254071",
     title: "Steal S01 (2026)",

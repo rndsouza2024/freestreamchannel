@@ -66,10 +66,19 @@ const Watch: React.FC = () => {
             default: recs = await fetchMovies();
           }
 
-          // For sports, sort by time and get next events
+          // For sports, filter out ended events and sort by time
           if (type === 'sports') {
+              const now = Date.now();
+              const durationMs = 4 * 60 * 60 * 1000; // 4 hours event duration
+              
               recs = recs
                 .filter(r => r.id !== id)
+                // Filter out events that have already ended
+                .filter(r => {
+                  const eventTimeUTC = new Date(r.release_date).getTime();
+                  const endTimeUTC = eventTimeUTC + durationMs;
+                  return now <= endTimeUTC; // Only show events that haven't ended yet
+                })
                 .sort((a, b) => new Date(a.release_date).getTime() - new Date(b.release_date).getTime())
                 .slice(0, 10);
           } else {
@@ -284,7 +293,7 @@ const Watch: React.FC = () => {
                             {recommendations.map(renderSportsRow)}
                         </div>
                      ) : (
-                        <p className="p-8 text-center text-gray-500">No other events scheduled.</p>
+                        <p className="p-8 text-center text-gray-500">No upcoming events scheduled.</p>
                      )}
                 </div>
                   <p className="text-sm items-center text-red-700 font-bold">We DO NOT host nor transmit any audiovisual content itself and DO NOT control nor influence such content. We cannot accept any liability for the content transmitted by others. Any responsibility for this content lies with those who host or transmit it. We are not affiliated nor claim to be affiliated with any of the owners of streams and/or videos. All content is copyright of their respective owners</p>
