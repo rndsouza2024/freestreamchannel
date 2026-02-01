@@ -1,0 +1,1132 @@
+import { Movie, TVShow, ContentDetails, CastMember, MediaItem } from '../types';
+
+// PRODUCTION READY: Checks environment variables first, falls back to hardcoded key for demo/dev.
+const API_KEY = (import.meta as any).env?.VITE_TMDB_API_KEY || 'be3e130c5ee08bf14bc9078514f1999a';
+const ACCESS_TOKEN = (import.meta as any).env?.VITE_TMDB_ACCESS_TOKEN || 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiZTNlMTMwYzVlZTA4YmYxNGJjOTA3ODUxNGYxOTk5YSIsIm5iZiI6MTcwNzkxNjc1Ni4xNDksInN1YiI6IjY1Y2NiZGQ0NGEwYjE5MDE4NmNmMTljYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.WePxGQ9q3fHgGVce48l20ac7N0qLLd1QRxUw48PD5LE';
+
+const BASE_URL = 'https://api.themoviedb.org/3';
+const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
+
+// --- DATA DEFINITIONS ---
+
+const getFixedMatchTime = (hoursAdd: number, minutesSet = 0) => {
+  const baseTime = new Date("2026-01-30T08:00:00.000Z");
+  baseTime.setHours(baseTime.getHours() + hoursAdd);
+  baseTime.setMinutes(minutesSet);
+  return baseTime.toISOString();
+};
+
+const SPORTS_BASE: MediaItem[] = [
+  {
+    id: "womens-premier-league",
+    title: "Women's Premier League : Gujarat Giants W vs Mumbai Indians W",
+    poster_path: "https://img.cricketnmore.com/uploads/2026/01/gujarat-giants-vs-mumbai-indians-match-19-wpl-2026-who-will-win-today-gg-w-vs-mi-w-match-mdl.jpg",
+    backdrop_path: "https://img.cricketnmore.com/uploads/2026/01/gujarat-giants-vs-mumbai-indians-match-19-wpl-2026-who-will-win-today-gg-w-vs-mi-w-match-mdl.jpg",
+    release_date: getFixedMatchTime(6, 30), 
+    vote_average: 9.2,
+    duration: "Live",
+    media_type: 'sports',
+    genres: [{ id: 1, name: "Cricket" }, { id: 2, name: "Women's Premier League" }],
+    streams: {
+      "Server 1 (Main)": "https://embedsports.top/embed/charlie/gujarat-giants-vs-mumbai-indians-1629480889/1",
+      "Server 2 (Backup)": "https://daddyhd.com/stream/stream-346.php",
+    },
+    overview: "Live coverage of the Women's Premier League Gujarat Giants vs Mumbai Indians Match 19, WPL 2026.",
+  },
+  {
+    id: "twenty20",
+    title: "England tour of Sri Lanka 2026 | Twenty20 : England vs Sri Lanka",
+    poster_path: "https://images.slivcdn.com/videoasset_images/manage_file/1000013839/1768923753324600_SL_vs_EG_2026_GOB_Landscape_Thumb.jpg?w=1000&q=low",
+    backdrop_path: "https://images.slivcdn.com/videoasset_images/manage_file/1000013839/1768923753324600_SL_vs_EG_2026_GOB_Landscape_Thumb.jpg?w=1000&q=low",
+    release_date: getFixedMatchTime(6, 0),
+    vote_average: 9.5,
+    duration: "Live",
+    media_type: 'sports',
+    genres: [{ id: 1, name: "Cricket" }, { id: 2, name: "Twenty20" }],
+    streams: {
+      "Server 1 (Main)": "https://embedsports.top/embed/charlie/sri-lanka-vs-england-1629480887/1",
+      "Server 2 (Backup)": "https://daddyhd.com/stream/stream-31.php",
+    },
+    overview: "England tour of Sri Lanka 2026 | Twenty20 : England vs Sri Lanka",
+  },
+   {
+    id: "australian-open-semi-final",
+    title: "Australian Open Semi-Final (2026)",
+    poster_path: "https://images.slivcdn.com/videoasset_images/manage_file/1000013951/1769076305688640_AO2026_GOB_Landscape_Thumb_SP_2.jpg?w=1000&q=low",
+    backdrop_path: "https://images.slivcdn.com/videoasset_images/manage_file/1000013951/1769076305688640_AO2026_GOB_Landscape_Thumb_SP_2.jpg?w=1000&q=low",
+    release_date: getFixedMatchTime(9, 30),
+    vote_average: 8.9,
+    duration: "Live",
+    media_type: 'sports',
+    genres: [{ id: 1, name: "Golf" }, { id: 2, name: "PGA Tour" }],
+    streams: {
+      "Server 1 (Main)": "https://embedsports.top/embed/charlie/farmers-insurance-open-featured-holes-3-8-11-and-16-first-round-1629480833/1",
+    },
+    overview: "Watch Live Golf: PGA Tour Farmers Insurance Open",
+  },
+];
+
+export const UNIQUE_SPORTS: MediaItem[] = [
+    ...SPORTS_BASE
+];
+
+const TV_LIVE_BASE: MediaItem[] = [
+  {
+    id: "alzazeera-news-channel-hd",
+    title: "Al Jazeera News Live HD",
+    poster_path: "https://www.vhv.rs/dpng/d/492-4928236_al-jazeera-news-logo-hd-png-download.png",
+    backdrop_path: "https://www.vhv.rs/dpng/d/492-4928236_al-jazeera-news-logo-hd-png-download.png",
+    release_date: "2026-01-20",
+    vote_average: 7.8,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: [{ id: 1, name: "Al Jazeera" }, { id: 2, name: "Live" }, { id: 3, name: "News" }],
+    streams: {
+      "Server 1": "https://d1cy85syyhvqz5.cloudfront.net/v1/master/7b67fbda7ab859400a821e9aa0deda20ab7ca3d2/aljazeeraLive/AJE/index.m3u8",
+    },
+    overview: "Al Jazeera Live HD",
+  },
+  {
+    id: "cnn-international-channel-hd",
+    title: "CNN International Live HD",
+    poster_path: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/CNN_International_logo.svg/960px-CNN_International_logo.svg.png",
+    backdrop_path: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/CNN_International_logo.svg/960px-CNN_International_logo.svg.png",
+    release_date: "2026-01-20",
+    vote_average: 7.8,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: [{ id: 1, name: "CNN" }, { id: 2, name: "Live" }, { id: 3, name: "News" }],
+    streams: {
+      "Server 1": "https://amg01918-cnnus-amg01918c1-vizio-us-1813.playouts.now.amagi.tv/playlist/amg01918-cnnus-cnnheadlines-vizious/playlist.m3u8",
+    },
+    overview: "CNN International Live HD",
+  },
+  {
+    id: "abc-channel-hd",
+    title: "ABC Live HD",
+    poster_path: "https://i.pinimg.com/736x/16/3b/41/163b41fe4cc84461bfa46445bb7e8e04.jpg",
+    backdrop_path: "https://i.pinimg.com/736x/16/3b/41/163b41fe4cc84461bfa46445bb7e8e04.jpg",
+    release_date: "2026-01-20",
+    vote_average: 7.8,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["ABC", "Live", "News"],
+    streams: {
+      "Server 1": "https://content.uplynk.com/channel/3324f2467c414329b3b0cc5cd987b6be.m3u8",
+    },
+    overview:
+      "Watch the Latest world news updates Channel live in high definition. Enjoy a wide range of news updates from various genres, all in stunning HD quality.",
+  },
+  {
+    id: "euronews-channel-hd",
+    title: "Euronews Live HD",
+    poster_path: "https://upload.wikimedia.org/wikipedia/commons/3/3c/Euronews_Logo_2025.svg",
+    backdrop_path: "https://upload.wikimedia.org/wikipedia/commons/3/3c/Euronews_Logo_2025.svg",
+    release_date: "2026-01-20",
+    vote_average: 7.8,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Euronews", "Live", "News"],
+    streams: {
+      "Server 1": "https://amg00882-amg00882c2-lg-au-4259.playouts.now.amagi.tv/playlist.m3u8",
+    },
+    overview:
+      "Watch the Latest world news updates Channel live in high definition. Enjoy a wide range of news updates from various genres, all in stunning HD quality.",
+  },
+  {
+    id: "bbcnews-channel-hd",
+    title: "BBC News Live HD",
+    poster_path: "https://i.pinimg.com/736x/59/98/4d/59984d90139cb8e9ac6bbed0e849efc8.jpg",
+    backdrop_path: "https://i.pinimg.com/736x/59/98/4d/59984d90139cb8e9ac6bbed0e849efc8.jpg",
+    release_date: "2026-01-20",
+    vote_average: 7.8,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["BBC News", "Live", "News"],
+    streams: {
+      "Server 1": "https://vs-hls-push-ww-live.akamaized.net/x=4/i=urn:bbc:pips:service:bbc_news_channel_hd/t=3840/v=pv14/b=5070016/main.m3u8",
+    },
+    overview:
+      "Watch the Latest world news updates Channel live in high definition. Enjoy a wide range of news updates from various genres, all in stunning HD quality.",
+  },
+  {
+    id: "reuters-news-channel-hd",
+    title: "Reuters News Live HD",
+    poster_path: "https://i.pinimg.com/564x/25/03/11/250311255660f18f2d603fa7e415a82f.jpg",
+    backdrop_path: "https://i.pinimg.com/564x/25/03/11/250311255660f18f2d603fa7e415a82f.jpg",
+    release_date: "2026-01-20",
+    vote_average: 7.8,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Reuters News", "Live", "News"],
+    streams: {
+      "Server 1": "https://amg00453-reuters-amg00453c1-vizio-us-2107.playouts.now.amagi.tv/playlist/amg00453-reuters-reuters-vizious/playlist.m3u8",
+    },
+    overview:
+      "Watch the Latest world news updates Channel live in high definition. Enjoy a wide range of news updates from various genres, all in stunning HD quality.",
+  },
+  {
+    id: "usa-today-news-channel-hd",
+    title: "USA Today News Live HD",
+    poster_path: "https://w7.pngwing.com/pngs/109/179/png-transparent-usa-today-mountain-view-key-west-newspaper-business-usc-logo-blue-text-trademark.png",
+    backdrop_path: "https://w7.pngwing.com/pngs/109/179/png-transparent-usa-today-mountain-view-key-west-newspaper-business-usc-logo-blue-text-trademark.png",
+    release_date: "2026-01-20",
+    vote_average: 7.8,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["USA Today News", "Live", "News"],
+    streams: {
+      "Server 1": "https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg00731-gannettcoinc-usatodaynews-vizious/playlist.m3u8",
+    },
+    overview:
+      "Watch the Latest world news updates Channel live in high definition. Enjoy a wide range of news updates from various genres, all in stunning HD quality.",
+  },
+  {
+    id: "fox-weather-channel-hd",
+    title: "Fox Weather Live HD",
+    poster_path: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Fox_Weather_logo.svg/500px-Fox_Weather_logo.svg.png",
+    backdrop_path: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Fox_Weather_logo.svg/500px-Fox_Weather_logo.svg.png",
+    release_date: "2026-01-20",
+    vote_average: 7.8,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Fox Weather", "Live", "News"],
+    streams: {
+      "Server 1": "https://247wlive.foxweather.com/stream/index.m3u8",
+    },
+    overview:
+      "Watch the Latest world news updates Channel live in high definition. Enjoy a wide range of news updates from various genres, all in stunning HD quality.",
+  },
+  {
+    id: "go2travel-live-channel",
+    title: "Go2Travel Live Channel",
+    poster_path: "https://play-lh.googleusercontent.com/fAQewlj4O6OWRCReMV-ysG2Ip3i7Yz3TBxhFEeipV0BqK9nQk_siCt36ksBIZGmglGUt",
+    backdrop_path: "https://play-lh.googleusercontent.com/fAQewlj4O6OWRCReMV-ysG2Ip3i7Yz3TBxhFEeipV0BqK9nQk_siCt36ksBIZGmglGUt",
+    release_date: "2026-01-20",
+    vote_average: 8.3,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Go2Travel", "Live", "Entertainment"],
+    streams: {
+      "Server 1": "https://go2thls.wns.live/hls/stream.m3u8"
+     
+    },
+    overview: "Live comedy shows, stand-up specials, and funny content 24/7.",
+  },
+   {
+    id: "crime-investigation-live-channel",
+    title: "Crime + Investigation",
+    poster_path: "/images/tv/investigationdiscovery.jpg",
+    backdrop_path: "/images/tv/investigationdiscovery.jpg",
+    release_date: "2026-01-20",
+    vote_average: 8.3,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Drama", "Live", "Entertainment"],
+    streams: {
+      "Server 1": "https://fl31.moveonjoy.com/Crime_and_Investigation_Network/tracks-v1a1/mono.ts.m3u8",
+      "Server 2": "https://amg00376-magellan-amg00376c12-samsung-au-1725.playouts.now.amagi.tv/ts-us-w2-n1/playlist/amg00376-magellantv-truecrimenowaunzin-samsungau/cb433e4f7b7b6fdccb993e6cd3f715a0d1076a8b5d32d03765f95cb52abc4013dce0ad92f24ef1684c8778873f5e32161e77b57dce7d01d9de71b8366d2211709188fa7ddd800278f298537f4de6286508ba1110d3224d218fa95223ad0998554953e400655372aab80af6294bd5f352c92074deb2dc653d635a419f435df5c30ff5aea3045add6fa6af1f4e873b47e5864498861bbb9d82539b469b77f0429d8fa2d886129f85c46aff53b330080b7224ccb246f9b1353771070b43fe441b047360e8aa87fb4a7cb5534248fdecb9c70f9d3deff9e805fd55c16db6409624822b8b04a2f347a3acc1bf08216be1ac5f10a4651e04ca7b1713c4fec8212c26674439bc7b594acc7fd1212a77b3f5c21785c41aac7b42efbb441222c99d499ad2e7cdbff0c57d952bcec8e38b7d6c7a235552c80df9da5ad2278b2cf38e0b770804048c8a45c883ee5b32494692cf0b874455ea8dcbcbf4260fe74c571ae469d25e454bc9376773ac6dda922e63842345d46169b5087bd00cacf81ff4a1daf70f74e08d900cac399dc060b8c10ba769334e11f3a37c2d22624990bf36436003802f82f4c5ee7005059687eef6d25c3502795a123b82ece37f8c9d824e3913d258326f641a75c45136087eace4ab482d8153dd9acf43dd2308337c976c284a/25/1920x1080_5500000/index.m3u8",
+      "Server 3": "https://a-cdn.klowdtv.com/live3/law_720p/playlist.m3u8",
+      "Server 4": "https://langleyproductions-cops-2-eu.rakuten.wurl.tv/playlist.m3u8",
+      "Server 5": "https://daddyhd.com/stream/stream-332.php",
+      "Server 6": "https://daddyhd.com/stream/stream-665.php",
+    },
+    overview: "Live comedy shows, stand-up specials, and funny content 24/7.",
+  },
+  {
+    id: "hallmark-movies",
+    title: "Hallmark Movies Mysteries",
+    poster_path: "https://i.ebayimg.com/images/g/ePMAAOSwTgxnQ2mv/s-l1200.jpg",
+    backdrop_path: "https://i.ebayimg.com/images/g/ePMAAOSwTgxnQ2mv/s-l1200.jpg",
+    release_date: "2024-01-20",
+    vote_average: 8.3,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Movies", "Live", "Entertainment"],
+    streams: {
+      "Server 1": "https://fl61.moveonjoy.com/HALLMARK_MOVIES_MYSTERIES/tracks-v1a1/mono.ts.m3u8"     
+    },
+    overview: "Live comedy shows, stand-up specials, and funny content 24/7.",
+  },
+  {
+    id: "history-usa-channel",
+    title: "History USA Channel",
+    poster_path: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/History_%282021%29.svg/250px-History_%282021%29.svg.png",
+    backdrop_path: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/History_%282021%29.svg/250px-History_%282021%29.svg.png",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["History USA", "Educational", "Live"],
+    streams: {
+      "Server 1": "https://fl7.moveonjoy.com/history_channel/tracks-v1a1/mono.ts.m3u8"
+    },
+    overview:
+      "Live documentary channel featuring nature, science, and history content.",
+  },
+  {
+    id: "bbc-earth-channel",
+    title: "BBC Earth Channel",
+    poster_path: "https://yt3.googleusercontent.com/EsHioubXC-qfNdbHyThN7rDTF7rfTzhl5A5u4hHuUAzslx9jgwtxl_2TN4RFqt3hA1jEwAGVgg=s900-c-k-c0x00ffffff-no-rj",
+    backdrop_path: "https://yt3.googleusercontent.com/EsHioubXC-qfNdbHyThN7rDTF7rfTzhl5A5u4hHuUAzslx9jgwtxl_2TN4RFqt3hA1jEwAGVgg=s900-c-k-c0x00ffffff-no-rj",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["BBC Earth", "Educational", "Live"],
+    streams: {
+      "Server 1": "https://amg00793-amg00793c6-firetv-us-4067.playouts.now.amagi.tv/playlist.m3u8"
+    },
+    overview:
+      "Live documentary channel featuring nature, science, and history content.",
+  },
+  {
+    id: "awe-channel",
+    title: "AWE Channel",
+    poster_path: "https://image.roku.com/developer_channels/prod/72cd4b2a026d9d68fadaae3b12227b2425bf28400a9fd8e679088d3b49c460d4.png",
+    backdrop_path: "https://image.roku.com/developer_channels/prod/72cd4b2a026d9d68fadaae3b12227b2425bf28400a9fd8e679088d3b49c460d4.png",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["BBC Earth", "Educational", "Live"],
+    streams: {
+      "Server 1": "https://a-cdn.klowdtv.com/live1/awe_720p/chunks.m3u8"
+    },
+    overview:
+      "Live documentary channel featuring nature, science, and history content.",
+  },
+  {
+    id: "law-and-crime-channel",
+    title: "Law and Crime Channel",
+    poster_path: "https://assets.goal.com/images/v3/blt4e17f2541596f307/law%20and%20crime%20network%20logo.jpg?auto=webp&format=pjpg&width=3840&quality=60",
+    backdrop_path: "https://assets.goal.com/images/v3/blt4e17f2541596f307/law%20and%20crime%20network%20logo.jpg?auto=webp&format=pjpg&width=3840&quality=60",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Law and Crime", "Educational", "Live"],
+    streams: {
+      "Server 1": "https://a-cdn.klowdtv.com/live3/law_720p/playlist.m3u8"
+    },
+    overview:
+      "Live documentary channel featuring nature, science, and history content.",
+  },
+{
+    id: "crime-investigation-channel",
+    title: "Crime + Investigation Channel",
+    poster_path: "https://www.crimeandinvestigation.co.uk/themes/custom/crimeandinvestigation/images/social-cards/ci-homepage.jpg",
+    backdrop_path: "https://www.crimeandinvestigation.co.uk/themes/custom/crimeandinvestigation/images/social-cards/ci-homepage.jpg",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Crime + Investigation", "Educational", "Live"],
+    streams: {
+      "Server 1": "https://fl31.moveonjoy.com/Crime_and_Investigation_Network/tracks-v1a1/mono.ts.m3u8"
+    },
+    overview:
+      "Live documentary channel featuring nature, science, and history content.",
+  },
+{
+    id: "true-crime-now-channel",
+    title: "True Crime Now Channel",
+    poster_path: "https://cdn.realscreen.com/wp/wp-content/uploads/2021/10/true-crime-now-logo-1.jpg",
+    backdrop_path: "https://cdn.realscreen.com/wp/wp-content/uploads/2021/10/true-crime-now-logo-1.jpg",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["True Crime Now", "Educational", "Live"],
+    streams: {
+      "Server 1": "https://amg00376-magellan-amg00376c12-samsung-au-1725.playouts.now.amagi.tv/ts-us-w2-n1/playlist/amg00376-magellantv-truecrimenowaunzin-samsungau/cb433e4f7b7b6fdccb993e6cd3f715a0d1076a8b5d32d03765f95cb52abc4013dce0ad92f24ef1684c8778873f5e32161e77b57dce7d01d9de71b8366d2211709188fa7ddd800278f298537f4de6286508ba1110d3224d218fa95223ad0998554953e400655372aab80af6294bd5f352c92074deb2dc653d635a419f435df5c30ff5aea3045add6fa6af1f4e873b47e5864498861bbb9d82539b469b77f0429d8fa2d886129f85c46aff53b330080b7224ccb246f9b1353771070b43fe441b047360e8aa87fb4a7cb5534248fdecb9c70f9d3deff9e805fd55c16db6409624822b8b04a2f347a3acc1bf08216be1ac5f10a4651e04ca7b1713c4fec8212c26674439bc7b594acc7fd1212a77b3f5c21785c41aac7b42efbb441222c99d499ad2e7cdbff0c57d952bcec8e38b7d6c7a235552c80df9da5ad2278b2cf38e0b770804048c8a45c883ee5b32494692cf0b874455ea8dcbcbf4260fe74c571ae469d25e454bc9376773ac6dda922e63842345d46169b5087bd00cacf81ff4a1daf70f74e08d900cac399dc060b8c10ba769334e11f3a37c2d22624990bf36436003802f82f4c5ee7005059687eef6d25c3502795a123b82ece37f8c9d824e3913d258326f641a75c45136087eace4ab482d8153dd9acf43dd2308337c976c284a/25/1920x1080_5500000/index.m3u8"
+    },
+    overview:
+      "Live documentary channel featuring nature, science, and history content.",
+  },
+  {
+    id: "investigation-discovery-channel",
+    title: "Investigation Discovery Channel",
+    poster_path: "https://variety.com/wp-content/uploads/2014/07/investigation-discovery-logo.jpg?w=1000&h=563&crop=1",
+    backdrop_path: "https://variety.com/wp-content/uploads/2014/07/investigation-discovery-logo.jpg?w=1000&h=563&crop=1",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Investigation Discovery", "Educational", "Live"],
+    streams: {
+    "Server 1": "https://daddyhd.com/stream/stream-324.php",
+    },
+    overview:
+      "Live documentary channel featuring nature, science, and history content.",
+  },
+  {
+    id: "amc-channel",
+    title: "AMC Channel",
+    poster_path: "https://play-lh.googleusercontent.com/g7K2KCxcNoOV4bgerqP5yDmRpBImqMGcV99Zvd9vYOQ-v6zDj9f_gyU0EaE5OM2yBrU=w600-h300-pc0xffffff-pd",
+    backdrop_path: "https://play-lh.googleusercontent.com/g7K2KCxcNoOV4bgerqP5yDmRpBImqMGcV99Zvd9vYOQ-v6zDj9f_gyU0EaE5OM2yBrU=w600-h300-pc0xffffff-pd",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Investigation Discovery", "Educational", "Live"],
+    streams: {
+    "Server 1": "https://daddyhd.com/stream/stream-303.php",
+    },
+    overview:
+      "Live documentary channel featuring nature, science, and history content.",
+  },  
+{
+    id: "adult-channel-01",
+    title: "Adult Channel 01",
+    poster_path: "/18only.png",
+    backdrop_path: "/18only.png",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+    "Server 1": "https://daddyhd.com/stream/stream-501.php",
+    },
+    overview:
+      "Live Adult channel featuring Hot, sexy and Mind Blowing content.",
+  },
+  {
+    id: "adult-channel-02",
+    title: "Adult Channel 02",
+    poster_path: "/18only.png",
+    backdrop_path: "/18only.png",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+    "Server 1": "https://daddyhd.com/stream/stream-502.php",
+    },
+    overview:
+      "Live Adult channel featuring Hot, sexy and Mind Blowing content.",
+  },
+  {
+    id: "adult-channel-03",
+    title: "Adult Channel 03",
+    poster_path: "/18only.png",
+    backdrop_path: "/18only.png",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+    "Server 1": "https://daddyhd.com/stream/stream-503.php",
+    },
+    overview:
+      "Live Adult channel featuring Hot, sexy and Mind Blowing content.",
+  },
+  {
+    id: "adult-channel-04",
+    title: "Adult Channel 04",
+    poster_path: "/18only.png",
+    backdrop_path: "/18only.png",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+    "Server 1": "https://daddyhd.com/stream/stream-504.php",
+    },
+    overview:
+      "Live Adult channel featuring Hot, sexy and Mind Blowing content.",
+  },
+  {
+    id: "adult-channel-05",
+    title: "Adult Channel 05",
+    poster_path: "/18only.png",
+    backdrop_path: "/18only.png",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+    "Server 1": "https://daddyhd.com/stream/stream-505.php",
+    },
+    overview:
+      "Live Adult channel featuring Hot, sexy and Mind Blowing content.",
+  },
+  {
+    id: "adult-channel-06",
+    title: "Adult Channel 06",
+    poster_path: "/18only.png",
+    backdrop_path: "/18only.png",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+    "Server 1": "https://daddyhd.com/stream/stream-506.php",
+    },
+    overview:
+      "Live Adult channel featuring Hot, sexy and Mind Blowing content.",
+  },
+  {
+    id: "adult-channel-07",
+    title: "Adult Channel 07",
+    poster_path: "/18only.png",
+    backdrop_path: "/18only.png",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+    "Server 1": "https://daddyhd.com/stream/stream-507.php",
+    },
+    overview:
+      "Live Adult channel featuring Hot, sexy and Mind Blowing content.",
+  },
+  {
+    id: "adult-channel-08",
+    title: "Adult Channel 08",
+    poster_path: "/18only.png",
+    backdrop_path: "/18only.png",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+    "Server 1": "https://daddyhd.com/stream/stream-508.php",
+    },
+    overview:
+      "Live Adult channel featuring Hot, sexy and Mind Blowing content.",
+  },
+  {
+    id: "adult-channel-09",
+    title: "Adult Channel 09",
+    poster_path: "/18only.png",
+    backdrop_path: "/18only.png",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+    "Server 1": "https://daddyhd.com/stream/stream-509.php",
+    },
+    overview:
+      "Live Adult channel featuring Hot, sexy and Mind Blowing content.",
+  },
+  {
+    id: "adult-channel-10",
+    title: "Adult Channel 10",
+    poster_path: "/18only.png",
+    backdrop_path: "/18only.png",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+    "Server 1": "https://daddyhd.com/stream/stream-510.php",
+    },
+    overview:
+      "Live Adult channel featuring Hot, sexy and Mind Blowing content.",
+  },
+  {
+    id: "adult-channel-11",
+    title: "Adult Channel 11",
+    poster_path: "/18only.png",
+    backdrop_path: "/18only.png",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+    "Server 1": "https://daddyhd.com/stream/stream-511.php",
+    },
+    overview:
+      "Live Adult channel featuring Hot, sexy and Mind Blowing content.",
+  },
+  {
+    id: "adult-channel-12",
+    title: "Adult Channel 12",
+    poster_path: "/18only.png",
+    backdrop_path: "/18only.png",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+    "Server 1": "https://daddyhd.com/stream/stream-512.php",
+    },
+    overview:
+      "Live Adult channel featuring Hot, sexy and Mind Blowing content.",
+  },
+  {
+    id: "adult-channel-13",
+    title: "Adult Channel 13",
+    poster_path: "/18only.png",
+    backdrop_path: "/18only.png",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+    "Server 1": "https://daddyhd.com/stream/stream-513.php",
+    },
+    overview:
+      "Live Adult channel featuring Hot, sexy and Mind Blowing content.",
+  },
+  {
+    id: "adult-channel-14",
+    title: "Adult Channel 14",
+    poster_path: "/18only.png",
+    backdrop_path: "/18only.png",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+    "Server 1": "https://daddyhd.com/stream/stream-514.php",
+    },
+    overview:
+      "Live Adult channel featuring Hot, sexy and Mind Blowing content.",
+  },
+  {
+    id: "adult-channel-15",
+    title: "Adult Channel 15",
+    poster_path: "/18only.png",
+    backdrop_path: "/18only.png",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+    "Server 1": "https://daddyhd.com/stream/stream-515.php",
+    },
+    overview:
+      "Live Adult channel featuring Hot, sexy and Mind Blowing content.",
+  },
+  {
+    id: "adult-channel-16",
+    title: "Adult Channel 16",
+    poster_path: "/18only.png",
+    backdrop_path: "/18only.png",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+    "Server 1": "https://daddyhd.com/stream/stream-516.php",
+    },
+    overview:
+      "Live Adult channel featuring Hot, sexy and Mind Blowing content.",
+  },
+  {
+    id: "adult-channel-17",
+    title: "Adult Channel 17",
+    poster_path: "/18only.png",
+    backdrop_path: "/18only.png",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+    "Server 1": "https://daddyhd.com/stream/stream-517.php",
+    },
+    overview:
+      "Live Adult channel featuring Hot, sexy and Mind Blowing content.",
+  },
+  {
+    id: "adult-channel-18",
+    title: "Adult Channel 18",
+    poster_path: "/18only.png",
+    backdrop_path: "/18only.png",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+    "Server 1": "https://daddyhd.com/stream/stream-518.php",
+    },
+    overview:
+      "Live Adult channel featuring Hot, sexy and Mind Blowing content.",
+  },
+  {
+    id: "adult-channel-19",
+    title: "Adult Channel 19",
+    poster_path: "/18only.png",
+    backdrop_path: "/18only.png",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+    "Server 1": "https://daddyhd.com/stream/stream-519.php",
+    },
+    overview:
+      "Live Adult channel featuring Hot, sexy and Mind Blowing content.",
+  },
+  {
+    id: "adult-channel-20",
+    title: "Adult Channel 20",
+    poster_path: "/18only.png",
+    backdrop_path: "/18only.png",
+    release_date: "2024-01-20",
+    vote_average: 8.4,
+    duration: "24/7",
+    media_type: 'tv_live',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+    "Server 1": "https://daddyhd.com/stream/stream-520.php",
+    },
+    overview:
+      "Live Adult channel featuring Hot, sexy and Mind Blowing content.",
+  },
+  
+];
+
+export const UNIQUE_TV_LIVE: MediaItem[] = [
+    ...TV_LIVE_BASE
+];
+
+const MOVIES_BASE: MediaItem[] = [
+ {
+    id: "840464",
+    title: "Greenland-2 Migration (2026)",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/dtPwBZjzqTaObjG4fKStRkBq1uu.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/tyjXlexbNZQ0ZT1KEJslQtBirqc.jpg",
+    release_date: "2026-01-16",
+    vote_average: 6.4,
+    duration: "2h 40m",
+    media_type: 'movie',
+    genres: [{ id: 1, name: "Adventure" }, { id: 2, name: "Thriller" }, { id: 3, name: "Mystery" }],
+    streams: {
+      "Server 1": "https://stmix.io/e/SalwmX8W01k4B",
+      "Server 2": "https://cinemaos.tech/player/840464",
+      "Server 3 ": "https://xprime.today/watch/840464",
+      "Server 4": "https://www.cinezo.net/watch/movie/840464",
+      "Server 5": "https://vidsrc-embed.ru/embed/movie/840464",
+      "Server 6": "https://api.cinezo.net/embed/tmdb-movie-840464",
+    },
+    overview:
+      "Having found the safety of the Greenland bunker after the comet Clarke decimated the Earth, the Garrity family must now risk everything to embark on a perilous journey across the wasteland of Europe to find a new home.",
+  },
+  {
+    id: "1249508",
+    title: "Grizzly Night (2026)",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/3ppOwa6PEtGsIiDPdZHUbEqgIY7.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/i275mAQP4KhPtYUpMUgBGMmK4WN.jpg",
+    release_date: "2026-01-16",
+    vote_average: 6.4,
+    duration: "2h 40m",
+    media_type: 'movie',
+    genres: [{ id: 1, name: "Horror" }, { id: 2, name: "Adventure" }, { id: 3, name: "Mystery" }],
+    streams: {
+      "Server 1": "https://stmix.io/e/7GZi2cqHskcwn",
+      "Server 2": "https://cinemaos.tech/player/1249508",
+      "Server 3 ": "https://xprime.today/watch/1249508",
+    },
+    overview: "Grizzly Night (2026)",
+  },
+  {
+    id: "chemistry-part-2",
+    title: "Chemistry Part 2 (2026)",
+    poster_path:
+      "https://m.media-amazon.com/images/M/MV5BYzBiMWY2ZWEtYTNjOC00ZTg0LWJlMGQtODU1N2UwYWM3MDAyXkEyXkFqcGc@._V1_.jpg",
+    backdrop_path:
+      "https://media-files.atrangii.in/media-metadata/6979de0ef60fc20caae469ce",
+    release_date: "2026-01-26",
+    vote_average: 6.2,
+    duration: "1h 19m",
+    media_type: 'movie',
+    genres: [{ id: 1, name: "Adult" }, { id: 2, name: "Romance" }, { id: 3, name: "Drama" }],
+    streams: {
+     "Server 1": "https://stmix.io/e/PNUePFxDwvjVx",
+      "Server 2": "https://short.icu/QYmidACiu?thumbnail=https://media-files.atrangii.in/media-metadata/6979de0ef60fc20caae469ce",
+    },
+    overview: "Chemistry Part 2",
+  },
+  {
+    id: "1339876",
+    title: "Mardaani 3 (2026)",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/jLo8qcDOw9CD1COzMLBouOqHtqX.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/q0aIpg6hiM9PafhGUknEPDBA6bW.jpg",
+    release_date: "2026-01-16",
+    vote_average: 6.4,
+    duration: "2h 40m",
+    media_type: 'movie',
+    genres: [{ id: 1, name: "Crime" }, { id: 2, name: "Action" }, { id: 3, name: "Mystery" }],
+    streams: {
+      "Server 1": "https://stmix.io/e/kYuQQzKDopYa",
+      "Server 2": "https://cinemaos.tech/player/1339876-3",
+      "Server 3": "https://zxcstream.xyz/player/movie/1339876-3/hindi?autoplay=false&back=true&server=0",
+    },
+    overview: "Mardaani 3 (2026)",
+  },
+  {
+    id: "786567",
+    title: "Gandhi Talks (2026)",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/p4iQT3s97T3gQOLhTj0UplzYMOj.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/4Cqad6ZpWJRhBumGE1QwHs9pVuB.jpg",
+    release_date: "2026-01-16",
+    vote_average: 6.4,
+    duration: "2h 40m",
+    media_type: 'movie',
+    genres: ["Drama ", "Silence", "Mystery"],
+    streams: {
+      "Server 1": "https://stmix.io/e/BbQpHGHdJKZGn",
+      "Server 2": "https://cinemaos.tech/player/786567",
+      "Server 3":
+        "https://zxcstream.xyz/player/movie/786567/english?autoplay=false&back=true&server=0",
+      "Server 4 - MAIN":
+        "https://short.icu/PhuS5WVOq?thumbnail=https://media.themoviedb.org/t/p/w780/4Cqad6ZpWJRhBumGE1QwHs9pVuB.jpg",
+      "Server 5": "https://byseqekaho.com/e/oi0zc05mbgjt",
+      "Server 6": "https://www.cinezo.net/watch/movie/786567",
+      "Server 7": "https://vidsrc-embed.ru/embed/movie/786567",
+      "Server 8": "https://api.cinezo.net/embed/tmdb-movie-786567",
+    },
+    overview:
+      "A silent black comedy, about the monetary needs of a character & how it impacts the others. A young, unemployed graduate Mahadev’s struggle to land a job through any means possible and crosses paths with a businessman and petty thief. A subject wherein silence speaks much louder than words. Although a work of fiction by the writer, all the characters in the film are sketched out to seem very real and relatable ensuring an enriching journey as well a laugh riot as the cat and mouse guffaws amongst them unfold. Gandhi Talks aims at telling a story by switching off the device of dialogue, which is not only scary but also interesting and challenging.",
+  }
+];
+
+export const UNIQUE_MOVIES: MediaItem[] = [
+    ...MOVIES_BASE
+];
+
+const TV_SHOWS_BASE: MediaItem[] = [
+  {
+    id: "249766",
+    title: "Daldal S01 (2025)",
+    name: "Daldal S01 (2025)",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/wvAwkKeIs7bkb6EJAYRzpANhfxM.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/bd0usdz6dgmEE6HVhEhepR5r6MP.jpg",
+    release_date: "2025-01-08",
+    vote_average: 7.2,
+    duration: "45m",
+    media_type: 'tv',
+    streams: {
+      "Server 1": "https://stmix.io/e/4OtUU7kOtUK87",
+      "Server 2": "https://xprime.today/watch/249766/1/1",
+      },
+    genres: [{ id: 1, name: "Drama" }, { id: 2, name: "Thriller" }, { id: 3, name: "Mystery" }],
+    overview:
+      "Haunted by the guilt of her past and dealing with the demons of her present, a newly-appointed DCP, Rita Ferreira, must embark on an investigation of a series of murders that puts her on a collision course with a cold-blooded serial killer.",
+  },
+  {
+    id: "91239",
+    title: "Bridgerton S04 (2026)",
+    name: "Bridgerton",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/uXTg565ahu9RwonCX1V2Hex1NU6.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/6umsRLI7t0ydFwCl0JNEIO0q2LH.jpg",
+    release_date: "2026-01-08",
+    vote_average: 7.2,
+    duration: "45m",
+    media_type: 'tv',
+    streams: {
+      "Server 1":
+        "https://zxcstream.xyz/player/tv/91239/s=1/e=1/english?autoplay=false&back=true&server=0",
+      "Server 2": "https://xprime.today/watch/91239/1/1",
+      "Server 3 - HINDI": "https://stmix.io/e/hriMo9qTXqA9U",
+      "Server 4": "https://api.cinezo.net/embed/tmdb-tv-91239/1/1",
+      "Server 5 ": "https://www.cinezo.net/watch/tv/91239?season=1&episode=1",
+    },
+    genres: [{ id: 1, name: "Crime" }, { id: 2, name: "Drama" }, { id: 3, name: "Mystery" }],
+    overview:
+      "Wealth, lust, and betrayal set in the backdrop of Regency era England, seen through the eyes of the powerful Bridgerton family.",
+  }
+];
+
+export const UNIQUE_TV_SHOWS: MediaItem[] = [
+    ...TV_SHOWS_BASE
+];
+
+
+/**
+ * Robust Image URL Generator
+ * 1. Checks for HTTP/HTTPS (External Links)
+ * 2. Checks for specific local assets (Public folder)
+ * 3. Defaults to TMDB API path
+ */
+export const getImageUrl = (path: string | null, size: 'w500' | 'original' = 'w500') => {
+  if (!path) return 'https://picsum.photos/500/750'; 
+  
+  // External Links (Static Data)
+  if (path.startsWith('http') || path.startsWith('https')) {
+    return path;
+  }
+  
+  // Local Assets (Public Folder) - Add any other local prefixes here
+  if (path.startsWith('/images/') || path === '/18only.png' || path === '/logo.png') {
+    return path;
+  }
+
+  // TMDB API Paths (standard /path.jpg)
+  // Ensure we don't double slash if path already has it, though TMDB usually returns with /
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  return `${IMAGE_BASE_URL}/${size}${cleanPath}`;
+};
+
+// --- API FUNCTIONS ---
+
+const fetchTMDB = async (endpoint: string, params: Record<string, string> = {}) => {
+  const queryParams = new URLSearchParams({
+    language: 'en-US',
+    ...params,
+  });
+  
+  const headers = {
+    accept: 'application/json',
+    Authorization: `Bearer ${ACCESS_TOKEN}`
+  };
+  
+  const response = await fetch(`${BASE_URL}${endpoint}?${queryParams}`, {
+    method: 'GET',
+    headers: headers
+  });
+
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  return response.json();
+};
+
+export const getTrending = async (page = 1): Promise<(Movie | TVShow)[]> => {
+  try {
+    const data = await fetchTMDB('/trending/all/day', { page: page.toString() });
+    return data.results;
+  } catch (e) {
+    // Return empty array to strictly follow "ONLY API DATA" rule
+    return [];
+  }
+};
+
+export const getMovies = async (category: 'popular' | 'top_rated' | 'upcoming' = 'popular', page = 1): Promise<Movie[]> => {
+  try {
+    const data = await fetchTMDB(`/movie/${category}`, { page: page.toString() });
+    return data.results.map((m: any) => ({ ...m, media_type: 'movie' }));
+  } catch (e) {
+    return UNIQUE_MOVIES.filter(m => m.media_type === 'movie') as Movie[];
+  }
+};
+
+export const getTVShows = async (category: 'popular' | 'top_rated' | 'on_the_air' = 'popular', page = 1): Promise<TVShow[]> => {
+  try {
+    const data = await fetchTMDB(`/tv/${category}`, { page: page.toString() });
+    return data.results.map((s: any) => ({ ...s, media_type: 'tv' }));
+  } catch (e) {
+    return UNIQUE_TV_SHOWS.filter(s => s.media_type === 'tv') as TVShow[];
+  }
+};
+
+export const getSports = async (): Promise<MediaItem[]> => {
+    return UNIQUE_SPORTS;
+}
+
+export const getLiveTV = async (): Promise<MediaItem[]> => {
+    return UNIQUE_TV_LIVE;
+}
+
+// Helper utility to shuffle array
+const shuffleArray = <T>(array: T[]): T[] => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+};
+
+export const getDetails = async (type: string, id: number | string): Promise<ContentDetails> => {
+  // 1. Find the static item if it exists
+  let staticItem: MediaItem | undefined;
+  if (type === 'movie') staticItem = UNIQUE_MOVIES.find(m => String(m.id) === String(id));
+  else if (type === 'tv') staticItem = UNIQUE_TV_SHOWS.find(s => String(s.id) === String(id));
+  else if (type === 'sports') staticItem = UNIQUE_SPORTS.find(s => String(s.id) === String(id));
+  else if (type === 'tv_live') staticItem = UNIQUE_TV_LIVE.find(s => String(s.id) === String(id));
+
+  // 2. Determine if we should fetch fresh metadata from API
+  // We fetch if it's a standard numeric ID (Movie/TV) to get better synopsis/metadata
+  // We handle the suffixed IDs (e.g., '123_2') by stripping suffix for API lookup
+  const cleanId = String(id).split('_')[0];
+  const isNumericId = !isNaN(Number(cleanId));
+  let apiData: any = null;
+
+  if (isNumericId && (type === 'movie' || type === 'tv')) {
+      try {
+          apiData = await fetchTMDB(`/${type}/${cleanId}`);
+      } catch (e) {
+          console.warn("API fetch failed for details, falling back to static if available");
+      }
+  }
+
+  // 3. Merge Logic
+  if (staticItem) {
+      // Normalize genres for static item
+      const staticGenres = Array.isArray(staticItem.genres) 
+        ? staticItem.genres.map((g, i) => typeof g === 'string' ? { id: i, name: g } : g)
+        : [];
+      
+      const staticDetails: ContentDetails = {
+          ...staticItem,
+          genres: staticGenres as {id: number, name: string}[],
+          streams: staticItem.streams,
+          number_of_seasons: 1 
+      };
+
+      if (apiData) {
+          // SUPERIOR MERGE: Use API metadata (Title, Overview, Runtime) but KEEP Static Streams
+          return {
+              ...apiData,
+              // Keep original ID to ensure routing consistency if it was a suffixed ID
+              id: id, 
+              streams: staticItem.streams, // Crucial: Keep our custom streams
+          };
+      }
+      
+      return staticDetails;
+  }
+
+  // 4. If no static item, just return API data (or throw)
+  if (apiData) return apiData;
+
+  throw new Error("Content not found");
+};
+
+export const getCast = async (type: 'movie' | 'tv', id: number | string): Promise<CastMember[]> => {
+  try {
+    const cleanId = String(id).split('_')[0];
+    const data = await fetchTMDB(`/${type}/${cleanId}/credits`);
+    return data.cast; // Return all, let UI slice it
+  } catch (e) {
+    return [];
+  }
+};
+
+export const getRecommendations = async (type: string, id: string | number): Promise<MediaItem[]> => {
+  let results: MediaItem[] = [];
+  const cleanId = String(id).split('_')[0];
+
+  // 1. Try API for Movies/TV (Aggressive Fetching)
+  if (type === 'movie' || type === 'tv') {
+      try {
+          // A. Try direct recommendations first
+          let data = await fetchTMDB(`/${type}/${cleanId}/recommendations`);
+          
+          // B. If not enough results (< 5), try 'similar' endpoint
+          if (!data.results || data.results.length < 5) {
+             const similarData = await fetchTMDB(`/${type}/${cleanId}/similar`);
+             if (similarData.results) {
+                 data.results = [...(data.results || []), ...similarData.results];
+             }
+          }
+
+          // C. If STILL not enough, fetch 'popular' as a hard fallback to ensure grid is full
+          if (!data.results || data.results.length < 5) {
+             const popularData = await fetchTMDB(`/${type}/popular`);
+             if (popularData.results) {
+                // Filter out the current movie if it happens to be in popular
+                const popularFiltered = popularData.results.filter((i: any) => String(i.id) !== String(cleanId));
+                data.results = [...(data.results || []), ...popularFiltered];
+             }
+          }
+
+          if (data.results && data.results.length > 0) {
+              // D. Deduplicate items by ID
+              const uniqueItems = new Map();
+              data.results.forEach((item: any) => uniqueItems.set(item.id, item));
+              results = Array.from(uniqueItems.values()).map((item: any) => ({ ...item, media_type: type }));
+          }
+      } catch(e) {
+          console.error("API Error in recommendations", e);
+      }
+  }
+
+  // 2. Fallback to Static Lists (Sports, Live TV, or if API completely failed)
+  if (results.length === 0) {
+      if (type === 'sports') results = [...UNIQUE_SPORTS];
+      else if (type === 'tv_live') results = [...UNIQUE_TV_LIVE];
+      else if (type === 'movie') results = [...UNIQUE_MOVIES]; 
+      else if (type === 'tv') results = [...UNIQUE_TV_SHOWS];
+  }
+
+  // 3. Filter out current item to avoid duplicate
+  results = results.filter(i => String(i.id) !== String(id));
+
+  // 4. Randomize / Shuffle (Essential requirement)
+  results = shuffleArray(results);
+
+  // 5. Return safe slice (15 to allow grid to fill nicely on different screens)
+  return results.slice(0, 15);
+}
+
+/**
+ * ROBUST SEARCH FUNCTION
+ * 1. Searches Local Static Data (UNIQUE_...)
+ * 2. Searches TMDB API
+ * 3. Merges results
+ */
+export const searchContent = async (query: string): Promise<MediaItem[]> => {
+  if (!query) return [];
+  const lowerQuery = query.toLowerCase();
+
+  // 1. Search Static/Local Data first
+  const localResults = [
+    ...UNIQUE_MOVIES,
+    ...UNIQUE_TV_SHOWS,
+    ...UNIQUE_SPORTS,
+    ...UNIQUE_TV_LIVE
+  ].filter(item => 
+    (item.title && item.title.toLowerCase().includes(lowerQuery)) || 
+    (item.name && item.name.toLowerCase().includes(lowerQuery))
+  );
+
+  try {
+      // 2. Search TMDB API
+      const data = await fetchTMDB('/search/multi', { query });
+      const apiResults = data.results.filter((item: any) => item.media_type === 'movie' || item.media_type === 'tv');
+      
+      // 3. Merge and Deduplicate (Prioritize local if needed, but simple merge is fine)
+      const combined = [...localResults, ...apiResults];
+      
+      // Dedupe by ID
+      const uniqueMap = new Map();
+      combined.forEach(item => {
+          if(!uniqueMap.has(item.id)) {
+              uniqueMap.set(item.id, item);
+          }
+      });
+      
+      return Array.from(uniqueMap.values()) as MediaItem[];
+
+  } catch (e) {
+      console.error("Search API failed, returning local only", e);
+      return localResults;
+  }
+};
