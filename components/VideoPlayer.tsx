@@ -835,6 +835,24 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
             </div>
         )}
 
+        {/* Server Selector - Integrated into Top Bar */}
+        {streams.length > 1 && (
+            <div className="relative shadow-lg group/select">
+                <Server size={12} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none group-hover/select:text-miraj-gold transition-colors" />
+                <select
+                    value={activeServer}
+                    onChange={(e) => setActiveServer(Number(e.target.value))}
+                    className="bg-black/60 backdrop-blur-md text-miraj-gold text-[10px] font-bold border border-white/20 rounded-full px-2 py-1.5 pl-7 pr-4 outline-none focus:border-miraj-gold cursor-pointer appearance-none max-w-[100px] sm:max-w-[140px] truncate hover:bg-black/80 transition-colors"
+                >
+                    {streams.map((s, i) => (
+                        <option key={s.id} value={i} className="bg-gray-900 text-white">
+                            {s.name.startsWith('Server') ? s.name : `Server ${i + 1}`}
+                        </option>
+                    ))}
+                </select>
+            </div>
+        )}
+
         {/* Fullscreen */}
         <button 
             onClick={handleFullscreen} 
@@ -845,35 +863,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
         </button>
     </div>
   );
-
-  // Server Button List
-  const ServerList = () => {
-    if (streams.length <= 1) return null;
-    return (
-        <div className="w-full mt-4 px-2">
-            <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-2">
-                {streams.map((s, i) => (
-                    <button
-                        key={s.id}
-                        onClick={() => setActiveServer(i)}
-                        className={`
-                            flex items-center justify-center gap-2 px-3 py-3 rounded-lg text-xs font-bold transition-all border
-                            ${activeServer === i 
-                                ? 'bg-miraj-gold text-black border-miraj-gold shadow-[0_0_15px_rgba(251,191,36,0.5)]' 
-                                : 'bg-miraj-gray text-gray-300 border-white/10 hover:border-miraj-gold hover:text-white hover:bg-white/5'
-                            }
-                        `}
-                    >
-                        <Server size={14} className="flex-shrink-0" />
-                        <span className="truncate">
-                            {s.name.startsWith('Server') ? s.name : `Server ${i + 1}`}
-                        </span>
-                    </button>
-                ))}
-            </div>
-        </div>
-    );
-  };
 
   if (streams.length === 0) {
     return (
@@ -921,9 +910,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
         {renderVideoPlayer()}
       </div>
     </div>
-    
-    {/* Explicit Server Buttons Row Below Player */}
-    <ServerList />
     </div>
   );
 };
