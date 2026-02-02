@@ -55,23 +55,29 @@ const SEO: React.FC<SEOProps> = ({
     });
 
     // Handle Dynamic Schema Injection
+    // We remove the old script entirely and create a new one to force the crawler to re-evaluate
     const scriptId = 'dynamic-json-ld';
-    let script = document.getElementById(scriptId);
+    const existingScript = document.getElementById(scriptId);
+    if (existingScript) {
+      existingScript.remove();
+    }
 
     if (schema) {
-      if (!script) {
-        script = document.createElement('script');
-        script.id = scriptId;
-        script.setAttribute('type', 'application/ld+json');
-        document.head.appendChild(script);
-      }
+      const script = document.createElement('script');
+      script.id = scriptId;
+      script.setAttribute('type', 'application/ld+json');
       script.textContent = JSON.stringify(schema);
-    } else {
-      // Cleanup if no schema provided for this page
-      if (script) {
-        script.remove();
-      }
+      document.head.appendChild(script);
     }
+
+    // Cleanup function not strictly necessary for script removal as we handle it at start of effect,
+    // but good practice to clean up when unmounting if leaving the page.
+    return () => {
+        const scriptToRemove = document.getElementById(scriptId);
+        if (scriptToRemove) {
+            scriptToRemove.remove();
+        }
+    };
 
   }, [title, description, image, type, schema]);
 

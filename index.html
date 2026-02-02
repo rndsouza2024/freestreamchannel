@@ -99,31 +99,41 @@
 }
 </script>
      <!-- Global Schema Markup -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "UwatchFree Stream",
-  "url": "https://uwatchfree-official.vercel.app/",
-  "logo": "https://uwatchfree-official.vercel.app/logo.png",
-  "sameAs": [
-    "https://twitter.com/UwatchFree Stream"
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "UwatchFree Stream",
-  "url": "https://uwatchfree-official.vercel.app/",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://uwatchfree-official.vercel.app/search?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://uwatchfree-official.vercel.app/#organization",
+          "name": "Uwatchfree Stream",
+          "url": "https://uwatchfree-official.vercel.app",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://uwatchfree-official.vercel.app/logo.png"
+          },
+          "sameAs": [
+            "https://twitter.com/Uwatchfree Stream"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://uwatchfree-official.vercel.app/#website",
+          "url": "https://uwatchfree-official.vercel.app/",
+          "name": "Uwatchfree Stream",
+          "publisher": {
+            "@id": "https://uwatchfree-official.vercel.app/#organization"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://uwatchfree-official.vercel.app/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+      ]
+    }
+    </script>
+
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-T2Z6QBBYR8"></script>
 <script>
