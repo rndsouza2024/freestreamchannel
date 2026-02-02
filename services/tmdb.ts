@@ -705,46 +705,137 @@ export const UNIQUE_TV_LIVE: MediaItem[] = [
 
 const MOVIES_BASE: MediaItem[] = [
  {
-    id: "840464",
-    title: "Greenland-2 Migration (2026)",
+    id: "1112564",
+    title: "Vaa Vaathiyaar (2026)",
     poster_path:
-      "https://image.tmdb.org/t/p/w500/dtPwBZjzqTaObjG4fKStRkBq1uu.jpg",
+      "https://image.tmdb.org/t/p/w500/47uIUf9KCfDzxQXixw8lrvYl8C8.jpg",
     backdrop_path:
-      "https://image.tmdb.org/t/p/original/tyjXlexbNZQ0ZT1KEJslQtBirqc.jpg",
+      "https://image.tmdb.org/t/p/original/qPNIwdR3y965KMsiweyuXdjDRXR.jpg",
     release_date: "2026-01-16",
     vote_average: 6.4,
     duration: "2h 40m",
     media_type: 'movie',
-    genres: [{ id: 1, name: "Adventure" }, { id: 2, name: "Thriller" }, { id: 3, name: "Mystery" }],
+    genres: ["Comedy ", "Drama", "Romance"],
     streams: {
-      "Server 1": "https://stmix.io/e/SalwmX8W01k4B",
-      "Server 2": "https://cinemaos.tech/player/840464",
-      "Server 3 ": "https://xprime.today/watch/840464",
-      "Server 4": "https://www.cinezo.net/watch/movie/840464",
-      "Server 5": "https://vidsrc-embed.ru/embed/movie/840464",
-      "Server 6": "https://api.cinezo.net/embed/tmdb-movie-840464",
-    },
+      "Server 1- Multi-Lang":
+        "https://stmix.io/e/XvqZsVUzrTfYy",    
+        },
     overview:
-      "Having found the safety of the Greenland bunker after the comet Clarke decimated the Earth, the Garrity family must now risk everything to embark on a perilous journey across the wasteland of Europe to find a new home.",
+      "After being raised as the reincarnation of a famous actor, a man finds himself clashing with his grandfather's expectations of him.",
   },
   {
-    id: "1249508",
-    title: "Grizzly Night (2026)",
+    id: "1614077",
+    title: "Sulutan (2025)",
     poster_path:
-      "https://image.tmdb.org/t/p/w500/3ppOwa6PEtGsIiDPdZHUbEqgIY7.jpg",
+      "https://image.tmdb.org/t/p/w500/kd11696ab32WhHUeq5ZkWi9k09Y.jpg",
     backdrop_path:
-      "https://image.tmdb.org/t/p/original/i275mAQP4KhPtYUpMUgBGMmK4WN.jpg",
+      "https://image.tmdb.org/t/p/original/kd11696ab32WhHUeq5ZkWi9k09Y.jpg",
+    release_date: "2026-01-26",
+    vote_average: 6.2,
+    duration: "1h 19m",
+    media_type: 'movie',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+      "Server 1": "https://stmix.io/e/KzdrsSXHjFgKS",
+      "Server 2": "https://cinemaos.tech/player/1614077",
+      "Server 3":
+        "https://zxcstream.xyz/player/movie/1614077/tagalog?autoplay=false&back=true&server=0",
+      "Server 4": "https://xprime.today/watch/1614077",
+      "Server 5": "https://www.cinezo.net/watch/movie/1614077",
+      "Server 6": "https://vidsrc-embed.ru/embed/movie/1614077",
+      "Server 7": "https://api.cinezo.net/embed/tmdb-movie-1614077",   
+    },
+    overview:
+      "Lena and Mara are drawn into a secret affair that defies boundaries and threatens everything they’ve built. When Mara uncovers her groom’s betrayal, she finds solace in Lena, a newfound friend who soon becomes something more. As passion and secrecy collide, their choices endanger careers, fracture relationships, and lead to devastating consequences.",
+  },
+  {
+    id: "1555917",
+    title: "The Secret of Maria Makinang (2025)",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/aaIyWoyk13wp2SmzVTA1X2VSLaz.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/aaIyWoyk13wp2SmzVTA1X2VSLaz.jpg",
+    release_date: "2025-10-22",
+    vote_average: 5.1,
+    duration: "1h 19m",
+    media_type: 'movie',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+      "Server 1": "https://stmix.io/v/BA8XvvvsU7zmm",
+      "Server 2": "https://cinemaos.tech/player/1555917",
+      "Server 3":
+        "https://zxcstream.xyz/player/movie/1555917/tagalog?autoplay=false&back=true&server=0",
+      "Server 4": "https://xprime.today/watch/1555917",
+      "Server 5": "https://www.cinezo.net/watch/movie/1555917",
+      "Server 6": "https://vidsrc-embed.ru/embed/movie/1555917",
+      "Server 7": "https://api.cinezo.net/embed/tmdb-movie-1555917",
+      "Server 8": "http://byseqekaho.com/e/h4zfrz9rchim/",
+    },
+    overview:
+      "It tells the story of Maria, a young woman who appears only during the full moon. She falls for a man named Danilo, and their love is tested through time, because for Danilo, decades have passed, but for Maria, it has only been a few moments.",
+  },
+  {
+    id: "1597538",
+    title: "Angkinin Mo Ako (2025)",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/2YZ24F49pRkNb45YWI6yckrTYE.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/2YZ24F49pRkNb45YWI6yckrTYE.jpg",
+    release_date: "2025-10-23",
+    vote_average: 5.1,
+    duration: "1h 10m",
+    media_type: 'movie',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+      "Server 1": "https://stmix.io/e/vAlUJTcd8elxH",
+      "Server 2": "https://cinemaos.tech/player/1597538",
+      "Server 3":
+        "https://zxcstream.xyz/player/movie/1597538/tagalog?autoplay=false&back=true&server=0",
+      "Server 4": "https://xprime.today/watch/1597538",
+      "Server 5": "https://www.cinezo.net/watch/movie/1597538",
+      "Server 6": "https://vidsrc-embed.ru/embed/movie/1597538",
+      "Server 7": "https://api.cinezo.net/embed/tmdb-movie-1597538",
+      "Server 8": "https://byseqekaho.com/e/7j7jdm0pcl8o",
+    },
+    overview:
+      "Cess Garcia and VMX’s next big thing Dara Lima star in a steamy drama about two sisters and the man who sparks their sensual awakening. A female lawyer hires a young man as tutor for her younger sister but unknown to her, their review sessions are becoming wild",
+  },
+  {
+    id: "1612071",
+    title: "Elaichi: Ek Prem Katha (2026)",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/uaHRJYzURYiNyZmF0p0bTiQMpOK.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/uaHRJYzURYiNyZmF0p0bTiQMpOK.jpg",
+    release_date: "2025-10-23",
+    vote_average: 5.1,
+    duration: "1h 10m",
+    media_type: 'movie',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+      "Server 1": "https://short.icu/tQkMTCEon?thumbnail=https://media.themoviedb.org/t/p/w780/zaciqbV1bdUlbvrjUmPynXx9rdr.jpg",
+    },
+    overview:
+      "In Elaichi, the spice of desire, Sonal’s quiet domestic life explodes into nights of burning lust when a chance encounter with a younger actor turns into a frivolous sexual affair - pushing her deeper into obsession until her family, her body, and her soul are scorched by betrayal.`",
+  },
+  {
+    id: "Anaconda-2025-multi-lang",
+    title: "Anaconda (2025) Multi-Lang",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/qxMv3HwAB3XPuwNLMhVRg795Ktp.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/swxhEJsAWms6X1fDZ4HdbvYBSf9.jpg",
     release_date: "2026-01-16",
     vote_average: 6.4,
     duration: "2h 40m",
     media_type: 'movie',
-    genres: [{ id: 1, name: "Horror" }, { id: 2, name: "Adventure" }, { id: 3, name: "Mystery" }],
+    genres: ["Adventure ", "Comedy", "Mystery"],
     streams: {
-      "Server 1": "https://stmix.io/e/7GZi2cqHskcwn",
-      "Server 2": "https://cinemaos.tech/player/1249508",
-      "Server 3 ": "https://xprime.today/watch/1249508",
-    },
-    overview: "Grizzly Night (2026)",
+      "Server 1 - Multi-Lang": "https://stmix.io/e/wSmdv3CDpCNml",
+      "Server 2 - Multi-Lang": "https://byseqekaho.com/e/ubqlst0a8wuc",
+      },
+    overview:
+      "A group of friends facing mid-life crises head to the rainforest with the intention of remaking their favorite movie from their youth, only to find themselves in a fight for their lives against natural disasters, giant snakes and violent criminals",
   },
   {
     id: "chemistry-part-2",
@@ -763,6 +854,52 @@ const MOVIES_BASE: MediaItem[] = [
       "Server 2": "https://short.icu/QYmidACiu?thumbnail=https://media-files.atrangii.in/media-metadata/6979de0ef60fc20caae469ce",
     },
     overview: "Chemistry Part 2",
+  },
+  {
+    id: "generation-gap-part-2",
+    title: "Generation Gap Part 2 (2026)",
+    poster_path:
+      "https://m.media-amazon.com/images/M/MV5BMGFhYWQ3YjktNzg3OC00NmJlLTg4NWQtMzcyYWIwNjNkYTIwXkEyXkFqcGc@._V1_.jpg",
+    backdrop_path:
+      "https://i.ytimg.com/vi/ID1smTZldw0/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB3JVPV9kENRBn5u8fWkxQdl4K0_w",
+    release_date: "2026-01-26",
+    vote_average: 6.2,
+    duration: "1h 19m",
+    media_type: 'movie',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+      "Server 1": "https://stmix.io/e/nKnly2xFa69Fs",
+      "Server 2": "https://short.icu/nzkD33Ujr?thumbnail=https://img.youtube.com/vi/ID1smTZldw0/maxresdefault.jpg",
+      "Server 3": "https://byseqekaho.com/e/w0nud4ssbmbt",
+      },
+    overview:
+      "A steamy affair between Mrs. Poonam and her nephew (Vipin) begins to develop a gap when they both have different expectations from each other.",
+  },
+  {
+    id: "1213898",
+    title: "Border 2 (2026)",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/hju9XncHxUxUS1GAJ4YqpdFCa5t.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/hju9XncHxUxUS1GAJ4YqpdFCa5t.jpg",
+    release_date: "2026-01-23",
+    vote_average: 5.1,
+    duration: "3h 19m",
+    media_type: 'movie',
+    genres: ["War", "Action", "Drama"],
+    streams: {
+      "Server 1": "https://xprime.today/watch/1213898",
+      "Server 2": "https://cinemaos.tech/player/1213898",
+      "Server 3":
+        "https://zxcstream.xyz/player/movie/1213898/hindi?autoplay=false&back=true&server=0",
+      "Server 4":
+        "https://short.icu/fCjlBHVLI?thumbnail=https://media.themoviedb.org/t/p/w780/nPuXMmWmHJySh0cyOs0MjEQA67w.jpg",
+      "Server 5": "https://www.cinezo.net/watch/movie/1213898",
+      "Server 6": "https://vidsrc-embed.ru/embed/movie/1213898",
+      "Server 7": "https://api.cinezo.net/embed/tmdb-movie-1213898",
+    },
+    overview:
+      "During the events of the 1971 Indo-Pak war, a new generation of young Indian warriors were getting ready to defend the nation from an even bigger threat to the Indian motherland.",
   },
   {
     id: "1339876",
@@ -809,7 +946,26 @@ const MOVIES_BASE: MediaItem[] = [
     },
     overview:
       "A silent black comedy, about the monetary needs of a character & how it impacts the others. A young, unemployed graduate Mahadev’s struggle to land a job through any means possible and crosses paths with a businessman and petty thief. A subject wherein silence speaks much louder than words. Although a work of fiction by the writer, all the characters in the film are sketched out to seem very real and relatable ensuring an enriching journey as well a laugh riot as the cat and mouse guffaws amongst them unfold. Gandhi Talks aims at telling a story by switching off the device of dialogue, which is not only scary but also interesting and challenging.",
-  }
+  },
+  {
+    id: "1621394",
+    title: "Sirena (2025)",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/vOI7DzSJQylwqo1UgiIBZIftY7h.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/bbjLZffHvztUrq4IfoepMzhE4VR.jpg",
+    release_date: "2026-01-26",
+    vote_average: 6.2,
+    duration: "1h 19m",
+    media_type: 'movie',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+      "Server 1": "https://stmix.io/e/5XJazmKmm5l5Y",
+      "Server 2": "https://byseqekaho.com/e/35nhuh8xcxvs",
+       },
+    overview:
+      "Lena and Mara are drawn into a secret affair that defies boundaries and threatens everything they’ve built. When Mara uncovers her groom’s betrayal, she finds solace in Lena, a newfound friend who soon becomes something more. As passion and secrecy collide, their choices endanger careers, fracture relationships, and lead to devastating consequences.",
+  },
 ];
 
 export const UNIQUE_MOVIES: MediaItem[] = [
@@ -838,29 +994,155 @@ const TV_SHOWS_BASE: MediaItem[] = [
       "Haunted by the guilt of her past and dealing with the demons of her present, a newly-appointed DCP, Rita Ferreira, must embark on an investigation of a series of murders that puts her on a collision course with a cold-blooded serial killer.",
   },
   {
-    id: "91239",
-    title: "Bridgerton S04 (2026)",
-    name: "Bridgerton",
+    id: "311632",
+    title: "Space Gen: Chandrayaan S01 (2026)",
     poster_path:
-      "https://image.tmdb.org/t/p/w500/uXTg565ahu9RwonCX1V2Hex1NU6.jpg",
+      "https://image.tmdb.org/t/p/w500/d6WIr1vycFCCdYewgRf8dpWxQQE.jpg",
     backdrop_path:
-      "https://image.tmdb.org/t/p/original/6umsRLI7t0ydFwCl0JNEIO0q2LH.jpg",
+      "https://image.tmdb.org/t/p/original/d6WIr1vycFCCdYewgRf8dpWxQQE.jpg",
     release_date: "2026-01-08",
     vote_average: 7.2,
     duration: "45m",
     media_type: 'tv',
     streams: {
-      "Server 1":
-        "https://zxcstream.xyz/player/tv/91239/s=1/e=1/english?autoplay=false&back=true&server=0",
-      "Server 2": "https://xprime.today/watch/91239/1/1",
-      "Server 3 - HINDI": "https://stmix.io/e/hriMo9qTXqA9U",
-      "Server 4": "https://api.cinezo.net/embed/tmdb-tv-91239/1/1",
-      "Server 5 ": "https://www.cinezo.net/watch/tv/91239?season=1&episode=1",
+      "Server 1": "https://stmix.io/e/2zYH1fFQgKys",
+      "Server 2": "https://xprime.today/watch/311632/1/1",
+      "Server 3": "https://byseqekaho.com/e/yxv57pc9qtxs",
+      "Server 4 ": "https://api.cinezo.net/embed/tmdb-tv-311632/1/1",
+      "Server 5 ": "https://www.cinezo.net/watch/tv/311632?season=1&episode=1",
     },
-    genres: [{ id: 1, name: "Crime" }, { id: 2, name: "Drama" }, { id: 3, name: "Mystery" }],
+    genres: ["Sci-Fi", "Drama", "Mystery"],
     overview:
-      "Wealth, lust, and betrayal set in the backdrop of Regency era England, seen through the eyes of the powerful Bridgerton family.",
-  }
+      "Indian space engineers face mounting pressure to redeem themselves following the Chandrayaan 2 lunar mission's unexpected outcome.",
+  },
+  {
+    id: "308482",
+    title: 'Taskaree: The Smuggler"s Web S01 (2026)',
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/25fKRXvQLBq4nXu9vjOVJcvCiiD.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/25fKRXvQLBq4nXu9vjOVJcvCiiD.jpg",
+    release_date: "2026-01-08",
+    vote_average: 7.2,
+    duration: "45m",
+    media_type: 'tv',
+    streams: {
+      "Server 1":"https://stmix.io/e/YJ80jBb6C9B5",
+      "Server 2": "https://xprime.today/watch/308482/1/1",
+      "Server 3": "https://byseqekaho.com/e/wrnmbynqqeyk",
+      "Server 4 ": "https://api.cinezo.net/embed/tmdb-tv-308482/1/1",
+      "Server 5 ": "https://www.cinezo.net/watch/tv/308482?season=1&episode=1",
+    },
+    genres: ["Crime", "Drama", "Mystery"],
+    overview:
+      "A dedicated customs officer and his team take on a notorious smuggler leading a powerful syndicate, but unexpected obstacles threaten their mission.",
+  },
+  {
+    id: "297594",
+    title: "Bindiya Ke Bahubali S02 (2026)",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/eSJGKRff52Pg2SfOiIdC4IlMMQR.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/eSJGKRff52Pg2SfOiIdC4IlMMQR.jpg",
+    release_date: "2026-01-08",
+    vote_average: 7.2,
+    duration: "45m",
+    media_type: 'tv',
+    streams: {
+      "Server 1": "https://stmix.io/e/PaMIpZTnAE7b",
+      "Server 2": "https://xprime.today/watch/297594/2/1",
+      "Server 3": "https://byseqekaho.com/e/hv81w9p30urb",
+      "Server 4 ": "https://api.cinezo.net/embed/tmdb-tv-297594/2/1",
+      "Server 5 ": "https://www.cinezo.net/watch/tv/297594?season=2&episode=1",
+    },
+    genres: ["Drama", "Crime", "Mystery"],
+    overview:
+      "With humour, absurdity and family cat and mouse at its center, this is a tale of family gangsters in a fictitious madhouse city, Bindiya. As the current Don is put behind bars, the gangster familys alliances shift, new love, friendships, and betrayals explode until Bindiya becomes a full-blown circus-where love is a deal, power is personal, and every one has a card and blood on their hands.",
+  },
+  {
+    id: "311171",
+    title: "Bhootiyapa (2025)",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/4NGdzyuffqhb1jMEvTfri3jn5Fj.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/4NGdzyuffqhb1jMEvTfri3jn5Fj.jpg",
+    release_date: "2025-01-08",
+    vote_average: 7.2,
+    duration: "45m",
+    media_type: 'tv',
+    streams: {
+      "Server 1":
+        "https://stmix.io/e/euvvLY1BD8F7",
+      "Server 2": "https://xprime.today/watch/311171/1/1",
+      "Server 3": "https://byseqekaho.com/e/f1i18ua20w0r",
+      "Server 4": "https://short.icu/5ALJ-TlBZ?thumbnail=https://media.themoviedb.org/t/p/w780/eQJUKQMl0SvoHiYwAW2E0VoAwR2.jpg"
+    },
+    genres: ["Drama", "Crime", "Mystery"],
+    overview:
+      "Bhootiyapa revolves around a film crew documenting the untold stories of these ghosts, who, despite their spectral existence, have tales to tell about love, loss and laughter. Each ghost, from a different era, adds a layer of mystery and mirth to the story, revealing how life after death can be as vibrant and surprising as mortal life itself.",
+  },
+  {
+    id: "243826",
+    title: "Pharma (2025)",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/hQWT47GFQyvO1tFqx6IgCOvrrr8.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/hQWT47GFQyvO1tFqx6IgCOvrrr8.jpg",
+    release_date: "2025-01-08",
+    vote_average: 7.2,
+    duration: "45m",
+    media_type: 'tv',
+    streams: {
+      "Server 1":
+      "https://zxcstream.xyz/player/tv/243826/s=1/e=1/hindi?autoplay=false&back=true&server=0",
+      "Server 2": "https://xprime.today/watch/243826/1/1",
+      "Server 3 - HINDI": "https://short.icu/PqYLFFeKU?thumbnail=https://media.themoviedb.org/t/p/w780/n1qDEYpr3pq7bJ9GGaF9zVNjdNq.jpg"
+    },
+    genres: ["Drama", "Crime", "Mystery"],
+    overview:
+      "A young medical representative struggles against the pharma game, masters it and eventually fights against it.",
+  },
+  {
+    id: "the-night-manager-s02-2026",
+    title: "The Night Manager S02 (2026)",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/1MccRnw41qQjREuZkovqP2UX1i3.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/lJoaiZcYMc8RkmPLROcdS2WQxn9.jpg",
+    release_date: "2026-01-08",
+    vote_average: 7.2,
+    duration: "45m",
+    media_type: 'tv',
+    streams: {
+      "Server 1 - HINDI": "https://byseqekaho.com/e/p9vhhvpow8rk",
+      "Server 2 - HINDI":
+        "https://short.icu/ndrmOyAuX?thumbnail=https://media.themoviedb.org/t/p/w780/lJoaiZcYMc8RkmPLROcdS2WQxn9.jpg",
+    },
+    genres: ["Spy", "Crime", "Mystery"],
+    overview:
+      "Former British soldier Jonathan Pine navigates the shadowy recesses of Whitehall and Washington where an unholy alliance operates between the intelligence community and the secret arms trade. To infiltrate the inner circle of lethal arms dealer Richard Onslow Roper, Pine must himself become a criminal.",
+  },
+    {
+    id: "cheekatilo-2026",
+    title: "Cheekatilo (2026)",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/pO86EjZb7QyGYk5RW4Xm4UWe5Uv.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/iHT55IAd2qErJKhH8vCGKbZSniU.jpg",
+    release_date: "2026-01-08",
+    vote_average: 7.2,
+    duration: "45m",
+    media_type: 'tv',
+    streams: {
+      "Server 1 - Multi-Lang": "https://stmix.io/e/F8buk6C8LoTbE",
+      "Server 2 - Multi-Lang": "https://byseqekaho.com/e/yjf50n6tpbkh",
+      "Server 3 ":
+        "https://short.icu/ME-KYdtBuU?thumbnail=https://media.themoviedb.org/t/p/w780/iHT55IAd2qErJKhH8vCGKbZSniU.jpg",
+    },
+    genres: ["Spy", "Crime", "Mystery"],
+    overview:
+      "When crime anchor Sandhya’s best friend is found dead under suspicious circumstances, she embarks on a dangerous investigation that collides with a dark past. As secrets unravel, Sandhya must face her trauma and rise as a fearless voice for the silenced.",
+  },
 ];
 
 export const UNIQUE_TV_SHOWS: MediaItem[] = [
