@@ -40,7 +40,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     cinema: 'brightness(0.95) contrast(1.2) saturate(0.9) sepia(0.1)',
     hdr: 'brightness(1.1) contrast(1.3) saturate(1.3)',
     vivid: 'brightness(1.15) saturate(1.5) contrast(1.1)',
-    sports: 'saturate(1.4) contrast(1.2) brightness(1.1)',
+    // sports: 'saturate(1.4) contrast(1.2) brightness(1.1)',
     sharp: 'brightness(1.1) contrast(1.4) saturate(1.1)',
     gaming: 'brightness(1.05) contrast(1.2) saturate(1.5)',
     sports: 'brightness(1.15) contrast(1.25) saturate(1.5)',
