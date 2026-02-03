@@ -560,7 +560,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const currentStream = streams[activeServer];
 
   return (
-    <div className="relative w-full mt-4 sm:mt-0">
+    <div className="relative w-full mt-8 sm:mt-0">
       {/* Back Button - Repositioned below navbar with proper spacing */}
       <div className="mb-3 sm:mb-4">
         <button 
