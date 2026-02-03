@@ -109,11 +109,12 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     
     if (type === 'tv') {
       return [
-        { id: 'f-1', name: 'Server 1', url: `https://zxcstream.xyz/player/tv/${tmdbId}/s=${season}/e=${episode}/english?autoplay=false&back=true&server=0`, quality: 'HD', type: 'iframe' },
-        { id: 'f-2', name: 'Server 2', url: `https://xprime.today/watch/${tmdbId}/${season}/${episode}`, quality: 'HD', type: 'iframe' },
-        { id: 'f-3', name: 'Server 3', url: `https://api.cinezo.net/embed/tmdb-tv-${tmdbId}/${season}/${episode}`, quality: 'HD', type: 'iframe' },
-        { id: 'f-4', name: 'Server 4', url: `https://www.cinezo.net/watch/tv/${tmdbId}?season=${season}&episode=${episode}`, quality: 'HD', type: 'iframe' },
-        { id: 'f-5', name: 'Server 5', url: `https://vidsrc-embed.ru/embed/tv/${tmdbId}/${season}/${episode}`, quality: 'HD', type: 'iframe' },
+        
+        { id: 'f-1', name: 'Server 1', url: `https://xprime.today/watch/${tmdbId}/${season}/${episode}`, quality: 'HD', type: 'iframe' },
+        { id: 'f-2', name: 'Server 2', url: `https://api.cinezo.net/embed/tmdb-tv-${tmdbId}/${season}/${episode}`, quality: 'HD', type: 'iframe' },
+        { id: 'f-3', name: 'Server 3', url: `https://www.cinezo.net/watch/tv/${tmdbId}?season=${season}&episode=${episode}`, quality: 'HD', type: 'iframe' },
+        { id: 'f-4', name: 'Server 4', url: `https://vidsrc-embed.ru/embed/tv/${tmdbId}/${season}/${episode}`, quality: 'HD', type: 'iframe' },
+        { id: 'f-5', name: 'Server 5', url: `https://zxcstream.xyz/player/tv/${tmdbId}/s=${season}/e=${episode}/english?autoplay=false&back=true&server=0`, quality: 'HD', type: 'iframe' },
       ];
     }
 
