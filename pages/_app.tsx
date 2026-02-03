@@ -85,6 +85,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       const adScript2 = document.createElement('script');
       adScript2.innerHTML = `(function(s){s.dataset.zone='10550378',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`;
       document.head.appendChild(adScript2);
+
+      // Load third ad script
+      const adScript3 = document.createElement('script');
+      adScript3.innerHTML = `(function(s){s.dataset.zone='207021',s.src='https://quge5.com/88/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`;
+      document.head.appendChild(adScript3);
     };
 
     // Load ads after page is fully loaded
