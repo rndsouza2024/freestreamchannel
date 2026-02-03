@@ -1052,20 +1052,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
             </select>
             <ChevronDown size={10} className="xs:w-3 xs:h-3 absolute right-1 xs:right-1.5 top-1/2 -translate-y-1/2 text-miraj-gold pointer-events-none transition-transform duration-200 group-hover/filter:translate-y-[1px]" />
           </div>
-          
-          <div className="w-[1px] h-3 xs:h-4 bg-white/30 flex-shrink-0" />
-          
-          <button 
-            onClick={toggleFullscreen} 
-            className="p-1 xs:p-1.5 bg-black/70 backdrop-blur-md rounded-full border border-white/30 hover:text-miraj-gold text-white transition-all duration-300 shadow-lg flex-shrink-0 hover:bg-black/90 hover:scale-110 active:scale-95 touch-manipulation min-h-[32px] min-w-[32px] flex items-center justify-center"
-            aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
-          >
-            {isFullscreen ? (
-              <Minimize2 size={14} className="xs:w-[15px] xs:h-[15px] sm:w-4 sm:h-4 transition-transform duration-300"/>
-            ) : (
-              <Maximize2 size={14} className="xs:w-[15px] xs:h-[15px] sm:w-4 sm:h-4 transition-transform duration-300"/>
-            )}
-          </button>
         </div>
       </div>
 
@@ -1076,6 +1062,21 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
         onMouseMove={handleUserActivity}
         onTouchStart={handleUserActivity}
       >
+        {/* Fullscreen Button - Floating inside player center, appears on hover */}
+        <div className={`absolute inset-0 z-50 pointer-events-none flex items-center justify-center transition-opacity duration-300 ${showControls ? 'opacity-100' : 'opacity-0'}`}>
+          <button 
+            onClick={toggleFullscreen} 
+            className="pointer-events-auto p-3 sm:p-4 bg-black/80 backdrop-blur-md rounded-full border-2 border-white/40 hover:border-miraj-gold hover:text-miraj-gold text-white transition-all duration-300 shadow-2xl hover:bg-black/90 hover:scale-110 active:scale-95 touch-manipulation min-h-[56px] min-w-[56px] sm:min-h-[64px] sm:min-w-[64px] flex items-center justify-center"
+            aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+          >
+            {isFullscreen ? (
+              <Minimize2 size={24} className="sm:w-7 sm:h-7 transition-transform duration-300"/>
+            ) : (
+              <Maximize2 size={24} className="sm:w-7 sm:h-7 transition-transform duration-300"/>
+            )}
+          </button>
+        </div>
+
         {/* Loading Spinner */}
         {isLoading && (
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 z-20 pointer-events-none">
