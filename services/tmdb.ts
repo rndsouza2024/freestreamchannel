@@ -968,6 +968,80 @@ export const UNIQUE_MOVIES: MediaItem[] = [
        },
     overview:
       "Lena and Mara are drawn into a secret affair that defies boundaries and threatens everything they’ve built. When Mara uncovers her groom’s betrayal, she finds solace in Lena, a newfound friend who soon becomes something more. As passion and secrecy collide, their choices endanger careers, fracture relationships, and lead to devastating consequences.",
+  },
+  {
+    id: "the-wrecking-crew-2026-multi-lang",
+    title: "The Wrecking Crew (2026) Multi-Lang",
+    poster_path:
+      "https://media.themoviedb.org/t/p/w500/gbVwHl4YPSq6BcC92TQpe7qUTh6.jpg",
+    backdrop_path:
+      "https://media.themoviedb.org/t/p/w780/e4OnHU8HNAhdS6C4Ypk6NA26kPQ.jpg",
+    release_date: "2026-01-16",
+    vote_average: 6.4,
+    duration: "2h 40m",
+    media_type: 'movie',
+    genres: ["Adventure ", "Comedy", "Mystery"],
+    streams: {
+      "Server 1 - Multi-Lang": "https://stmix.io/e/LOMcIVE2bYo9n",
+      "Server 2 - Multi-Lang": "https://byseqekaho.com/e/286iv24wz00l",
+      },
+    overview:
+      "Estranged half-brothers Jonny and James reunite after their father's mysterious death. As they search for the truth, buried secrets reveal a conspiracy threatening to tear their family apart.",
+  },
+  {
+    id: "maaldar-2026",
+    title: "Maaldar (2026)",
+    poster_path:  "/images/movie/mal.jpg",
+    backdrop_path: "/images/movie/maldar.jpg",
+    release_date: "2026-01-26",
+    vote_average: 6.2,
+    duration: "1h 19m",
+    media_type: 'movie',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+      "Server 1": "https://stmix.io/e/lYENS9mtvukML",
+      "Server 2": "https://byseqekaho.com/e/aq6rr0tgebsi",
+       },
+    overview:
+      "Lena and Mara are drawn into a secret affair that defies boundaries and threatens everything they’ve built. When Mara uncovers her groom’s betrayal, she finds solace in Lena, a newfound friend who soon becomes something more. As passion and secrecy collide, their choices endanger careers, fracture relationships, and lead to devastating consequences.",
+  },
+  {
+    id: "speed-faster-2026",
+    title: "Speed Faster (2026) ",
+    poster_path:
+      "https://media.themoviedb.org/t/p/w500/dKYp9uUlDufvL0gWHve8nuzePdk.jpg",
+    backdrop_path:
+      "https://media.themoviedb.org/t/p/w780/nUMclZJRRwREfeP8liJ7LOddjnY.jpg",
+    release_date: "2026-01-16",
+    vote_average: 6.4,
+    duration: "2h 40m",
+    media_type: 'movie',
+    genres: ["Adventure ", "Comedy", "Mystery"],
+    streams: {
+      "Server 1": "https://stmix.io/e/cTWgLAJ4I50v7",
+      "Server 2": "https://byseqekaho.com/e/ptpj1jv2799q",
+      },
+    overview:
+      "Ace and his crew of elite street racers are forced into a high-stakes mission when a shadowy organization threatens someone close to him. In the aftermath of Four Amigos, they find themselves working for the infamous Church of Assassins, tasked with pulling off an impossible job. But as they push their limits, they uncover a chilling truth-failure was always part of the plan. Betrayal, speed, and survival collide in this adrenaline-fueled thriller where the real race isn't just for victory, but for their lives.",
+  },
+  {
+    id: "missing-the-boat-2026",
+    title: "Missing the Boat (2026) ",
+    poster_path:
+      "https://media.themoviedb.org/t/p/w500/2Lw8nVKLNvvfAG46fn2nAJwBrPg.jpg",
+    backdrop_path:
+      "https://media.themoviedb.org/t/p/w780/5Xiqdj6eiitWtyPmy0zakV3GYf.jpg",
+    release_date: "2026-01-16",
+    vote_average: 6.4,
+    duration: "2h 40m",
+    media_type: 'movie',
+    genres: ["Adventure ", "Comedy", "Mystery"],
+    streams: {
+      "Server 1": "https://stmix.io/e/acWrQSPMfmrqZ",
+      "Server 2": "https://byseqekaho.com/e/vo038510cxcp",
+      },
+    overview:
+      "Strangers Kelly and Parker both end up on the same Italian cruise, but after missing the boat during a stop, they're forced to team up and race across southern Italy to catch up.",
   }
 ];
 
@@ -1140,6 +1214,27 @@ export const UNIQUE_TV_SHOWS: MediaItem[] = [
     genres: ["Spy", "Crime", "Mystery"],
     overview:
       "When crime anchor Sandhya’s best friend is found dead under suspicious circumstances, she embarks on a dangerous investigation that collides with a dark past. As secrets unravel, Sandhya must face her trauma and rise as a fearless voice for the silenced.",
+  },
+  {
+    id: "wonder-man-2026",
+    title: "Wonder Man (2026) S01 Hindi Dubbed Series",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/2XSHwBHIvIDPpbcH4ntQIItlThG.jpg",
+    backdrop_path:
+      "https://image.tmdb.org/t/p/original/los8S8iCRn5Q7irl0LNAp6C6Gmz.jpg",
+    release_date: "2026-01-08",
+    vote_average: 7.2,
+    duration: "45m",
+    media_type: 'tv',
+    streams: {
+      "Server 1 - Multi-Lang": "https://stmix.io/e/KkIRxv3mQDeP",
+      "Server 2 - Multi-Lang": "https://byseqekaho.com/e/jm9h9ts4zkvl",
+      "Server 3 ":
+        "https://short.icu/Sl7KwC5M7?thumbnail=https://media.themoviedb.org/t/p/w780/los8S8iCRn5Q7irl0LNAp6C6Gmz.jpg",
+    },
+    genres: ["Spy", "Crime", "Mystery"],
+    overview:
+      "Simon and Trevor, two actors at opposite ends of their careers, chase life-changing roles.",
   }
 ];
 
