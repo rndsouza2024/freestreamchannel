@@ -1,5 +1,5 @@
 // import React, { useState, useEffect, useMemo, useRef } from 'react';
-// import { AlertCircle, Zap, Palette, ChevronDown, ArrowLeft, RotateCcw, Globe, Tv, Maximize2, Minimize2 } from 'lucide-react';
+// import { AlertCircle, ChevronDown, ArrowLeft, Maximize2, Minimize2 } from 'lucide-react';
 // import { useRouter } from 'next/router';
 // import { StreamSource } from '../types';
 // import { UNIQUE_MOVIES, UNIQUE_TV_SHOWS, UNIQUE_SPORTS, UNIQUE_TV_LIVE } from '../services/tmdb';
@@ -43,18 +43,11 @@
 //     sports: 'saturate(1.4) contrast(1.2) brightness(1.1)',
 //     sharp: 'brightness(1.1) contrast(1.4) saturate(1.1)',
 //     gaming: 'brightness(1.05) contrast(1.2) saturate(1.5)',
-//     sports: 'brightness(1.15) contrast(1.25) saturate(1.5)',
 //     night: 'brightness(0.8) contrast(1.1) sepia(0.2)',
 //     grayscale: 'grayscale(1)',
-//     // sepia: 'sepia(1)',
-//     // invert: 'invert(1)',
 //     warm: 'sepia(0.4) saturate(1.2)',
 //     cool: 'hue-rotate(30deg) saturate(1.1)',
-//     // retro: 'sepia(0.5) contrast(0.9) brightness(0.9)',
-//     // matrix: 'invert(0.1) sepia(0.8) saturate(2.5) hue-rotate(90deg) contrast(1.2)',
 //     dream: 'blur(0.5px) brightness(1.1) saturate(1.2)',
-//     // midnight: 'brightness(0.6) contrast(1.3) hue-rotate(240deg)',
-//     // dawn: 'brightness(1.1) saturate(0.8) sepia(0.3)',
 //   };
 
 //   const handleUserActivity = () => {
@@ -109,11 +102,12 @@
     
 //     if (type === 'tv') {
 //       return [
-//         { id: 'f-1', name: 'Server 1', url: `https://zxcstream.xyz/player/tv/${tmdbId}/s=${season}/e=${episode}/english?autoplay=false&back=true&server=0`, quality: 'HD', type: 'iframe' },
-//         { id: 'f-2', name: 'Server 2', url: `https://xprime.today/watch/${tmdbId}/${season}/${episode}`, quality: 'HD', type: 'iframe' },
-//         { id: 'f-3', name: 'Server 3', url: `https://api.cinezo.net/embed/tmdb-tv-${tmdbId}/${season}/${episode}`, quality: 'HD', type: 'iframe' },
-//         { id: 'f-4', name: 'Server 4', url: `https://www.cinezo.net/watch/tv/${tmdbId}?season=${season}&episode=${episode}`, quality: 'HD', type: 'iframe' },
-//         { id: 'f-5', name: 'Server 5', url: `https://vidsrc-embed.ru/embed/tv/${tmdbId}/${season}/${episode}`, quality: 'HD', type: 'iframe' },
+      
+//         { id: 'f-1', name: 'Server 1', url: `https://xprime.today/watch/${tmdbId}/${season}/${episode}`, quality: 'HD', type: 'iframe' },
+//         { id: 'f-2', name: 'Server 2', url: `https://api.cinezo.net/embed/tmdb-tv-${tmdbId}/${season}/${episode}`, quality: 'HD', type: 'iframe' },
+//         { id: 'f-3', name: 'Server 3', url: `https://www.cinezo.net/watch/tv/${tmdbId}?season=${season}&episode=${episode}`, quality: 'HD', type: 'iframe' },
+//         { id: 'f-4', name: 'Server 4', url: `https://vidsrc-embed.ru/embed/tv/${tmdbId}/${season}/${episode}`, quality: 'HD', type: 'iframe' },
+//         { id: 'f-5', name: 'Server 5', url: `https://zxcstream.xyz/player/tv/${tmdbId}/s=${season}/e=${episode}/english?autoplay=false&back=true&server=0`, quality: 'HD', type: 'iframe' },
 //       ];
 //     }
 
@@ -202,164 +196,178 @@
 //   const currentStream = streams[activeServer];
 
 //   return (
-//     <div 
+//     <div className="relative w-full mt-8 sm:mt-0">
+//       {/* Back Button - Repositioned below navbar with proper spacing */}
+//       <div className="mb-3 sm:mb-4">
+//         <button 
+//           onClick={() => router.back()} 
+//           className="flex items-center gap-2 px-4 py-2.5 sm:py-3 bg-black/95 backdrop-blur-md rounded-lg sm:rounded-xl border-2 border-white/20 sm:border hover:bg-miraj-red text-white transition-all duration-300 shadow-2xl hover:shadow-2xl hover:scale-105 active:scale-95 group touch-manipulation min-h-[48px] sm:min-h-0"
+//           aria-label="Go back"
+//         >
+//           <ArrowLeft size={20} className="sm:w-5 sm:h-5 transition-transform duration-300 group-hover:-translate-x-1 flex-shrink-0" />
+//           <span className="font-bold text-sm sm:text-sm tracking-wide">BACK</span>
+//         </button>
+//       </div>
+
+//       {/* Player Container - Original functionality preserved */}
+//       <div 
 //         ref={containerRef} 
 //         className={`relative bg-black group w-full overflow-hidden transition-all duration-500 ${isFullscreen ? 'fixed inset-0 z-[100]' : 'aspect-video rounded-xl border border-white/10 shadow-2xl'}`}
 //         onMouseMove={handleUserActivity}
 //         onTouchStart={handleUserActivity}
-//     >
+//       >
+//         {/* Floating Controls */}
 //         <div className={`absolute inset-0 z-50 pointer-events-none transition-opacity duration-300 ${showControls ? 'opacity-100' : 'opacity-0'}`}>
-            
-//             {/* Optimized Top Control Bar - Reduced Height & Better Mobile Layout */}
-//             <div className="absolute top-0 inset-x-0 p-2 sm:p-3 md:p-4 bg-gradient-to-b from-black/95 via-black/50 to-transparent pointer-events-auto">
-//                 <div className="max-w-6xl mx-auto flex items-center justify-between gap-2">
-                    
-//                     {/* Left: Back Button & Title */}
-//                     <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 flex-shrink">
-//                         <button 
-//                           onClick={() => router.back()} 
-//                           className="p-1.5 sm:p-2 bg-black/70 backdrop-blur-md rounded-full border border-white/10 hover:bg-miraj-red text-white transition-all shadow-lg flex-shrink-0"
-//                           aria-label="Go back"
-//                         >
-//                             <ArrowLeft size={14} className="sm:w-4 sm:h-4"/>
-//                         </button>
-//                         <div className="truncate min-w-0 hidden sm:block">
-//                             <p className="text-[9px] font-bold text-miraj-gold tracking-wider uppercase leading-tight">
-//                               {type === 'sports' ? 'LIVE SPORTS' : 
-//                                type === 'tv_live' ? 'LIVE TV' : 
-//                                type.toUpperCase()}
-//                             </p>
-//                             <h4 className="text-white text-[11px] font-bold truncate max-w-[120px] md:max-w-xs leading-tight">{title}</h4>
-//                         </div>
-//                     </div>
-
-//                     {/* CENTER: Compact Controls */}
-//                     <div className="flex items-center gap-1 sm:gap-1.5 bg-black/50 backdrop-blur-xl px-1.5 py-1 sm:py-1.5 rounded-full border border-white/10 shadow-2xl">
-//                         {streams.length > 1 && (
-//                             <div className="relative">
-//                                 <select 
-//                                   value={activeServer} 
-//                                   onChange={(e) => setActiveServer(Number(e.target.value))} 
-//                                   className="bg-transparent text-white text-[9px] sm:text-[10px] font-black border-none rounded-full py-1 pl-2 pr-5 sm:pr-6 focus:outline-none appearance-none cursor-pointer uppercase tracking-tight"
-//                                   aria-label="Select server"
-//                                 >
-//                                     {streams.map((s, i) => (
-//                                       <option key={i} value={i} className="bg-miraj-black">
-//                                         {s.name || `Server ${i + 1}`}
-//                                       </option>
-//                                     ))}
-//                                 </select>
-//                                 <ChevronDown size={10} className="absolute right-1 sm:right-1.5 top-1/2 -translate-y-1/2 text-miraj-gold pointer-events-none" />
-//                             </div>
-//                         )}
-                        
-//                         {streams.length > 1 && (
-//                           <div className="w-[1px] h-3 bg-white/10" />
-//                         )}
-                        
-//                         <div className="relative">
-//                             <select 
-//                               value={videoFilter} 
-//                               onChange={(e) => setVideoFilter(e.target.value)} 
-//                               className="bg-transparent text-white text-[9px] sm:text-[10px] font-black border-none rounded-full py-1 pl-2 pr-5 sm:pr-6 focus:outline-none appearance-none cursor-pointer uppercase tracking-tight"
-//                               aria-label="Select video filter"
-//                             >
-//                                 {Object.keys(filterPresets).map(p => (
-//                                   <option key={p} value={p} className="bg-miraj-black">{p}</option>
-//                                 ))}
-//                             </select>
-//                             <ChevronDown size={10} className="absolute right-1 sm:right-1.5 top-1/2 -translate-y-1/2 text-miraj-gold pointer-events-none" />
-//                         </div>
-                        
-//                         <div className="w-[1px] h-3 bg-white/10" />
-                        
-//                         <button 
-//                           onClick={toggleFullscreen} 
-//                           className="p-1 sm:p-1.5 bg-black/60 backdrop-blur-md rounded-full border border-white/10 hover:text-miraj-gold text-white transition-all shadow-lg flex-shrink-0"
-//                           aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
-//                         >
-//                             {isFullscreen ? (
-//                               <Minimize2 size={14} className="sm:w-4 sm:h-4"/>
-//                             ) : (
-//                               <Maximize2 size={14} className="sm:w-4 sm:h-4"/>
-//                             )}
-//                         </button>
-//                     </div>
-
-//                     {/* Right: Empty spacer for balance on desktop */}
-//                     <div className="hidden sm:block w-[80px] md:w-[120px]"></div>
+          
+//           {/* Top Control Bar - Centered on mobile */}
+//           <div className="absolute top-0 inset-x-0 p-2 sm:p-3 md:p-4 bg-gradient-to-b from-black/95 via-black/50 to-transparent pointer-events-auto">
+//             <div className="max-w-6xl mx-auto flex items-center justify-center sm:justify-between gap-2">
+              
+//               {/* Left: Title display - Hidden on mobile, visible on desktop */}
+//               <div className="hidden sm:flex items-center gap-2 min-w-0 flex-shrink">
+//                 <div className="truncate min-w-0">
+//                   <p className="text-[9px] font-bold text-miraj-gold tracking-wider uppercase leading-tight">
+//                     {type === 'sports' ? 'LIVE SPORTS' : 
+//                      type === 'tv_live' ? 'LIVE TV' : 
+//                      type.toUpperCase()}
+//                   </p>
+//                   <h4 className="text-white text-[11px] font-bold truncate max-w-[120px] md:max-w-xs leading-tight">{title}</h4>
 //                 </div>
+//               </div>
+
+//               {/* CENTER: Compact Controls - Centered on mobile */}
+//               <div className="flex items-center gap-1 sm:gap-1.5 bg-black/60 backdrop-blur-xl px-2 py-1.5 sm:py-1.5 rounded-full border border-white/20 shadow-2xl">
+//                 {streams.length > 1 && (
+//                   <div className="relative group/select">
+//                     <select 
+//                       value={activeServer} 
+//                       onChange={(e) => setActiveServer(Number(e.target.value))} 
+//                       className="bg-transparent text-white text-[10px] sm:text-[10px] font-black border-none rounded-full py-1 pl-2 pr-6 sm:pr-6 focus:outline-none appearance-none cursor-pointer uppercase tracking-tight transition-all duration-200 hover:text-miraj-gold"
+//                       aria-label="Select server"
+//                     >
+//                       {streams.map((s, i) => (
+//                         <option key={i} value={i} className="bg-miraj-black">
+//                           {s.name || `Server ${i + 1}`}
+//                         </option>
+//                       ))}
+//                     </select>
+//                     <ChevronDown size={12} className="absolute right-1.5 top-1/2 -translate-y-1/2 text-miraj-gold pointer-events-none transition-transform duration-200 group-hover/select:translate-y-[1px]" />
+//                   </div>
+//                 )}
+                
+//                 {streams.length > 1 && (
+//                   <div className="w-[1px] h-4 bg-white/20" />
+//                 )}
+                
+//                 <div className="relative group/filter">
+//                   <select 
+//                     value={videoFilter} 
+//                     onChange={(e) => setVideoFilter(e.target.value)} 
+//                     className="bg-transparent text-white text-[10px] sm:text-[10px] font-black border-none rounded-full py-1 pl-2 pr-6 sm:pr-6 focus:outline-none appearance-none cursor-pointer uppercase tracking-tight transition-all duration-200 hover:text-miraj-gold"
+//                     aria-label="Select video filter"
+//                   >
+//                     {Object.keys(filterPresets).map(p => (
+//                       <option key={p} value={p} className="bg-miraj-black">{p}</option>
+//                     ))}
+//                   </select>
+//                   <ChevronDown size={12} className="absolute right-1.5 top-1/2 -translate-y-1/2 text-miraj-gold pointer-events-none transition-transform duration-200 group-hover/filter:translate-y-[1px]" />
+//                 </div>
+                
+//                 <div className="w-[1px] h-4 bg-white/20" />
+                
+//                 <button 
+//                   onClick={toggleFullscreen} 
+//                   className="p-1.5 sm:p-1.5 bg-black/60 backdrop-blur-md rounded-full border border-white/20 hover:text-miraj-gold text-white transition-all duration-300 shadow-lg flex-shrink-0 hover:bg-black/80 hover:scale-110 active:scale-95"
+//                   aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+//                 >
+//                   {isFullscreen ? (
+//                     <Minimize2 size={16} className="sm:w-4 sm:h-4 transition-transform duration-300"/>
+//                   ) : (
+//                     <Maximize2 size={16} className="sm:w-4 sm:h-4 transition-transform duration-300"/>
+//                   )}
+//                 </button>
+//               </div>
+
+//               {/* Right: Empty spacer for balance on desktop */}
+//               <div className="hidden sm:block w-[80px] md:w-[120px]"></div>
 //             </div>
+//           </div>
 //         </div>
 
 //         {/* Loading Spinner */}
 //         {isLoading && (
-//             <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 z-20 pointer-events-none">
-//                 <div className="w-8 h-8 sm:w-10 sm:h-10 border-3 sm:border-4 border-white/5 border-t-miraj-gold rounded-full animate-spin mb-2 sm:mb-3"/>
-//                 <span className="text-miraj-gold text-[10px] sm:text-xs font-bold tracking-[0.2em] sm:tracking-[0.3em] animate-pulse px-4 text-center">
-//                   {type === 'sports' ? 'LOADING LIVE SPORTS...' : 
-//                    type === 'tv_live' ? 'CONNECTING TO LIVE TV...' : 'LOADING STREAM...'}
-//                 </span>
-//             </div>
+//           <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 z-20 pointer-events-none">
+//             <div className="w-10 h-10 sm:w-10 sm:h-10 border-4 border-white/5 border-t-miraj-gold rounded-full animate-spin mb-3"/>
+//             <span className="text-miraj-gold text-[11px] sm:text-xs font-bold tracking-[0.2em] sm:tracking-[0.3em] animate-pulse px-4 text-center">
+//               {type === 'sports' ? 'LOADING LIVE SPORTS...' : 
+//                type === 'tv_live' ? 'CONNECTING TO LIVE TV...' : 'LOADING STREAM...'}
+//             </span>
+//           </div>
 //         )}
         
 //         {/* Error State */}
 //         {playerError && (
-//             <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/95 z-40 p-4 sm:p-6 text-center">
-//                 <AlertCircle size={32} className="sm:w-10 sm:h-10 text-miraj-red mb-2 sm:mb-3" />
-//                 <h3 className="text-base sm:text-lg font-bold text-white mb-1 sm:mb-2">Stream Unavailable</h3>
-//                 <p className="text-gray-400 mb-3 sm:mb-4 max-w-md text-xs sm:text-sm px-4">
-//                   This server might be temporarily offline. Please try another server or check back later.
-//                 </p>
-//                 {streams.length > 1 && (
-//                   <button 
-//                     onClick={() => setActiveServer(s => (s + 1) % streams.length)} 
-//                     className="bg-miraj-gold text-black px-5 sm:px-6 py-2 sm:py-2.5 rounded-full font-bold hover:bg-yellow-500 transition-colors text-xs sm:text-sm"
-//                   >
-//                     Try Next Server ({streams.length - 1} remaining)
-//                   </button>
-//                 )}
-//             </div>
+//           <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/95 z-40 p-4 sm:p-6 text-center">
+//             <AlertCircle size={40} className="sm:w-10 sm:h-10 text-miraj-red mb-3" />
+//             <h3 className="text-lg sm:text-lg font-bold text-white mb-2">Stream Unavailable</h3>
+//             <p className="text-gray-400 mb-4 max-w-md text-sm sm:text-sm px-4">
+//               This server might be temporarily offline. Please try another server or check back later.
+//             </p>
+//             {streams.length > 1 && (
+//               <button 
+//                 onClick={() => setActiveServer(s => (s + 1) % streams.length)} 
+//                 className="bg-miraj-gold text-black px-6 sm:px-6 py-2.5 sm:py-2.5 rounded-full font-bold hover:bg-yellow-500 transition-all duration-300 hover:scale-105 active:scale-95 text-sm sm:text-sm"
+//               >
+//                 Try Next Server ({streams.length - 1} remaining)
+//               </button>
+//             )}
+//           </div>
 //         )}
 
 //         {/* Player Render */}
 //         <div className="w-full h-full flex items-center justify-center">
-//             {currentStream.type === 'iframe' ? (
-//                 <iframe 
-//                   key={currentStream.url} 
-//                   src={currentStream.url} 
-//                   className="w-full h-full border-0" 
-//                   allowFullScreen 
-//                   style={{ filter: filterPresets[videoFilter] }} 
-//                   onLoad={() => setIsLoading(false)}
-//                   title={`${title} Player`}
-//                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-//                   referrerPolicy="strict-origin-when-cross-origin"
-//                 />
-//             ) : (
-//                 <video 
-//                   ref={videoRef} 
-//                   className="w-full h-full bg-black" 
-//                   controls 
-//                   playsInline 
-//                   autoPlay 
-//                   style={{ filter: filterPresets[videoFilter] }} 
-//                   onWaiting={() => setIsLoading(true)} 
-//                   onPlaying={() => setIsLoading(false)}
-//                   onError={() => {
-//                     setPlayerError(true);
-//                     setIsLoading(false);
-//                   }}
-//                   poster="/video-poster.jpg"
-//                   aria-label={`${title} video player`}
-//                 />
-//             )}
+//           {currentStream.type === 'iframe' ? (
+//             <iframe 
+//               key={currentStream.url} 
+//               src={currentStream.url} 
+//               className="w-full h-full border-0" 
+//               allowFullScreen 
+//               style={{ filter: filterPresets[videoFilter] }} 
+//               onLoad={() => setIsLoading(false)}
+//               title={`${title} Player`}
+//               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+//               referrerPolicy="strict-origin-when-cross-origin"
+//             />
+//           ) : (
+//             <video 
+//               ref={videoRef} 
+//               className="w-full h-full bg-black" 
+//               controls 
+//               playsInline 
+//               autoPlay 
+//               style={{ filter: filterPresets[videoFilter] }} 
+//               onWaiting={() => setIsLoading(true)} 
+//               onPlaying={() => setIsLoading(false)}
+//               onError={() => {
+//                 setPlayerError(true);
+//                 setIsLoading(false);
+//               }}
+//               poster="/video-poster.jpg"
+//               aria-label={`${title} video player`}
+//             />
+//           )}
 //         </div>
+//       </div>
 //     </div>
 //   );
 // };
 
 // export default VideoPlayer;
+
+
+
+
+
 
 
 import React, { useState, useEffect, useMemo, useRef } from 'react';
@@ -466,12 +474,11 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     
     if (type === 'tv') {
       return [
-      
-        { id: 'f-1', name: 'Server 1', url: `https://xprime.today/watch/${tmdbId}/${season}/${episode}`, quality: 'HD', type: 'iframe' },
-        { id: 'f-2', name: 'Server 2', url: `https://api.cinezo.net/embed/tmdb-tv-${tmdbId}/${season}/${episode}`, quality: 'HD', type: 'iframe' },
-        { id: 'f-3', name: 'Server 3', url: `https://www.cinezo.net/watch/tv/${tmdbId}?season=${season}&episode=${episode}`, quality: 'HD', type: 'iframe' },
-        { id: 'f-4', name: 'Server 4', url: `https://vidsrc-embed.ru/embed/tv/${tmdbId}/${season}/${episode}`, quality: 'HD', type: 'iframe' },
-        { id: 'f-5', name: 'Server 5', url: `https://zxcstream.xyz/player/tv/${tmdbId}/s=${season}/e=${episode}/english?autoplay=false&back=true&server=0`, quality: 'HD', type: 'iframe' },
+        { id: 'f-1', name: 'Server 1', url: `https://zxcstream.xyz/player/tv/${tmdbId}/s=${season}/e=${episode}/english?autoplay=false&back=true&server=0`, quality: 'HD', type: 'iframe' },
+        { id: 'f-2', name: 'Server 2', url: `https://xprime.today/watch/${tmdbId}/${season}/${episode}`, quality: 'HD', type: 'iframe' },
+        { id: 'f-3', name: 'Server 3', url: `https://api.cinezo.net/embed/tmdb-tv-${tmdbId}/${season}/${episode}`, quality: 'HD', type: 'iframe' },
+        { id: 'f-4', name: 'Server 4', url: `https://www.cinezo.net/watch/tv/${tmdbId}?season=${season}&episode=${episode}`, quality: 'HD', type: 'iframe' },
+        { id: 'f-5', name: 'Server 5', url: `https://vidsrc-embed.ru/embed/tv/${tmdbId}/${season}/${episode}`, quality: 'HD', type: 'iframe' },
       ];
     }
 
@@ -583,30 +590,30 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
         {/* Floating Controls */}
         <div className={`absolute inset-0 z-50 pointer-events-none transition-opacity duration-300 ${showControls ? 'opacity-100' : 'opacity-0'}`}>
           
-          {/* Top Control Bar - Centered on mobile */}
-          <div className="absolute top-0 inset-x-0 p-2 sm:p-3 md:p-4 bg-gradient-to-b from-black/95 via-black/50 to-transparent pointer-events-auto">
-            <div className="max-w-6xl mx-auto flex items-center justify-center sm:justify-between gap-2">
+          {/* Top Control Bar - Optimized for all orientations and mobile devices */}
+          <div className="absolute top-0 inset-x-0 p-1.5 xs:p-2 sm:p-3 md:p-4 bg-gradient-to-b from-black/95 via-black/50 to-transparent pointer-events-auto">
+            <div className="w-full max-w-7xl mx-auto flex items-center justify-center sm:justify-between gap-1 xs:gap-2">
               
-              {/* Left: Title display - Hidden on mobile, visible on desktop */}
-              <div className="hidden sm:flex items-center gap-2 min-w-0 flex-shrink">
+              {/* Left: Title display - Hidden on mobile portrait, visible on landscape and desktop */}
+              <div className="hidden landscape:flex sm:flex items-center gap-2 min-w-0 flex-shrink">
                 <div className="truncate min-w-0">
-                  <p className="text-[9px] font-bold text-miraj-gold tracking-wider uppercase leading-tight">
+                  <p className="text-[8px] xs:text-[9px] font-bold text-miraj-gold tracking-wider uppercase leading-tight">
                     {type === 'sports' ? 'LIVE SPORTS' : 
                      type === 'tv_live' ? 'LIVE TV' : 
                      type.toUpperCase()}
                   </p>
-                  <h4 className="text-white text-[11px] font-bold truncate max-w-[120px] md:max-w-xs leading-tight">{title}</h4>
+                  <h4 className="text-white text-[10px] xs:text-[11px] font-bold truncate max-w-[100px] landscape:max-w-[150px] md:max-w-xs leading-tight">{title}</h4>
                 </div>
               </div>
 
-              {/* CENTER: Compact Controls - Centered on mobile */}
-              <div className="flex items-center gap-1 sm:gap-1.5 bg-black/60 backdrop-blur-xl px-2 py-1.5 sm:py-1.5 rounded-full border border-white/20 shadow-2xl">
+              {/* CENTER: Compact Controls - Fully responsive for all orientations */}
+              <div className="flex items-center gap-0.5 xs:gap-1 sm:gap-1.5 bg-black/70 backdrop-blur-xl px-1.5 xs:px-2 py-1 xs:py-1.5 sm:py-1.5 rounded-full border border-white/30 shadow-2xl max-w-[95vw] landscape:max-w-none overflow-x-auto">
                 {streams.length > 1 && (
-                  <div className="relative group/select">
+                  <div className="relative group/select flex-shrink-0">
                     <select 
                       value={activeServer} 
                       onChange={(e) => setActiveServer(Number(e.target.value))} 
-                      className="bg-transparent text-white text-[10px] sm:text-[10px] font-black border-none rounded-full py-1 pl-2 pr-6 sm:pr-6 focus:outline-none appearance-none cursor-pointer uppercase tracking-tight transition-all duration-200 hover:text-miraj-gold"
+                      className="bg-transparent text-white text-[9px] xs:text-[10px] font-black border-none rounded-full py-1 pl-1.5 xs:pl-2 pr-5 xs:pr-6 focus:outline-none appearance-none cursor-pointer uppercase tracking-tight transition-all duration-200 hover:text-miraj-gold touch-manipulation min-h-[32px]"
                       aria-label="Select server"
                     >
                       {streams.map((s, i) => (
@@ -615,45 +622,45 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
                         </option>
                       ))}
                     </select>
-                    <ChevronDown size={12} className="absolute right-1.5 top-1/2 -translate-y-1/2 text-miraj-gold pointer-events-none transition-transform duration-200 group-hover/select:translate-y-[1px]" />
+                    <ChevronDown size={10} className="xs:w-3 xs:h-3 absolute right-1 xs:right-1.5 top-1/2 -translate-y-1/2 text-miraj-gold pointer-events-none transition-transform duration-200 group-hover/select:translate-y-[1px]" />
                   </div>
                 )}
                 
                 {streams.length > 1 && (
-                  <div className="w-[1px] h-4 bg-white/20" />
+                  <div className="w-[1px] h-3 xs:h-4 bg-white/30 flex-shrink-0" />
                 )}
                 
-                <div className="relative group/filter">
+                <div className="relative group/filter flex-shrink-0">
                   <select 
                     value={videoFilter} 
                     onChange={(e) => setVideoFilter(e.target.value)} 
-                    className="bg-transparent text-white text-[10px] sm:text-[10px] font-black border-none rounded-full py-1 pl-2 pr-6 sm:pr-6 focus:outline-none appearance-none cursor-pointer uppercase tracking-tight transition-all duration-200 hover:text-miraj-gold"
+                    className="bg-transparent text-white text-[9px] xs:text-[10px] font-black border-none rounded-full py-1 pl-1.5 xs:pl-2 pr-5 xs:pr-6 focus:outline-none appearance-none cursor-pointer uppercase tracking-tight transition-all duration-200 hover:text-miraj-gold touch-manipulation min-h-[32px]"
                     aria-label="Select video filter"
                   >
                     {Object.keys(filterPresets).map(p => (
                       <option key={p} value={p} className="bg-miraj-black">{p}</option>
                     ))}
                   </select>
-                  <ChevronDown size={12} className="absolute right-1.5 top-1/2 -translate-y-1/2 text-miraj-gold pointer-events-none transition-transform duration-200 group-hover/filter:translate-y-[1px]" />
+                  <ChevronDown size={10} className="xs:w-3 xs:h-3 absolute right-1 xs:right-1.5 top-1/2 -translate-y-1/2 text-miraj-gold pointer-events-none transition-transform duration-200 group-hover/filter:translate-y-[1px]" />
                 </div>
                 
-                <div className="w-[1px] h-4 bg-white/20" />
+                <div className="w-[1px] h-3 xs:h-4 bg-white/30 flex-shrink-0" />
                 
                 <button 
                   onClick={toggleFullscreen} 
-                  className="p-1.5 sm:p-1.5 bg-black/60 backdrop-blur-md rounded-full border border-white/20 hover:text-miraj-gold text-white transition-all duration-300 shadow-lg flex-shrink-0 hover:bg-black/80 hover:scale-110 active:scale-95"
+                  className="p-1 xs:p-1.5 bg-black/70 backdrop-blur-md rounded-full border border-white/30 hover:text-miraj-gold text-white transition-all duration-300 shadow-lg flex-shrink-0 hover:bg-black/90 hover:scale-110 active:scale-95 touch-manipulation min-h-[32px] min-w-[32px] flex items-center justify-center"
                   aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
                 >
                   {isFullscreen ? (
-                    <Minimize2 size={16} className="sm:w-4 sm:h-4 transition-transform duration-300"/>
+                    <Minimize2 size={14} className="xs:w-[15px] xs:h-[15px] sm:w-4 sm:h-4 transition-transform duration-300"/>
                   ) : (
-                    <Maximize2 size={16} className="sm:w-4 sm:h-4 transition-transform duration-300"/>
+                    <Maximize2 size={14} className="xs:w-[15px] xs:h-[15px] sm:w-4 sm:h-4 transition-transform duration-300"/>
                   )}
                 </button>
               </div>
 
               {/* Right: Empty spacer for balance on desktop */}
-              <div className="hidden sm:block w-[80px] md:w-[120px]"></div>
+              <div className="hidden landscape:block sm:block w-[60px] landscape:w-[80px] md:w-[120px] flex-shrink-0"></div>
             </div>
           </div>
         </div>
