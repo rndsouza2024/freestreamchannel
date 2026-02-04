@@ -8,7 +8,7 @@ interface SEOProps {
   type?: string;
   schema?: Record<string, any>;
   path?: string;
-  keywords?: string[];
+  keywords?: string[];ZZ
 }
 
 const SEO: React.FC<SEOProps> = ({ 
@@ -22,7 +22,7 @@ const SEO: React.FC<SEOProps> = ({
 }) => {
   const siteUrl = "https://uwatchfree-official.vercel.app";
   const url = `${siteUrl}${path}`;
-  const formattedTitle = title.includes('UwatchFreeOfficial') ? title : `${title} | UwatchFreeOfficial`;
+  const formattedTitle = title.includes('UwatchFree Official') ? title : `${title} | UwatchFree Official`;
 
   return (
     <Head>
@@ -34,7 +34,7 @@ const SEO: React.FC<SEOProps> = ({
         <link rel="canonical" href={url} />
         
         {/* Open Graph */}
-        <meta property="og:site_name" content="UwatchFreeOfficial" />
+        <meta property="og:site_name" content="UwatchFree Official" />
         <meta property="og:title" content={formattedTitle} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
@@ -53,7 +53,7 @@ const SEO: React.FC<SEOProps> = ({
         <meta name="robots" content="index, follow" />
         <meta name="language" content="English" />
         <meta name="revisit-after" content="7 days" />
-        <meta name="author" content="UwatchFreeOfficial" />
+        <meta name="author" content="UwatchFree Official" />
         
         {/* Apple Touch Icons */}
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />

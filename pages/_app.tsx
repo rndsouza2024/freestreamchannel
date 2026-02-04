@@ -103,11 +103,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="theme-color" content="#0a0a0a" />
         <meta name="robots" content="index, follow" />
+         
         <meta name="google-site-verification" content="4gdbnCGat0T4Ow3Y_RYzPM4vwtsXvhUel5Q-2yULK6k" />
         <meta name="yandex-verification" content="8e67191dae691f5f" />
         <link rel="icon" href="/logo.png" type="image/png" />
         <link rel="canonical" href="https://uwatchfree-official.vercel.app/" />
-        <title>UwatchFreeOfficial</title>
+        <title>UwatchFree Official</title>
         
         {/* Google Analytics */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-T2Z6QBBYR8"></script>
