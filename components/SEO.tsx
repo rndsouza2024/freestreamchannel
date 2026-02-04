@@ -8,7 +8,7 @@ interface SEOProps {
   type?: string;
   schema?: Record<string, any>;
   path?: string;
-  keywords?: string[];ZZ
+  keywords?: string[];
 }
 
 const SEO: React.FC<SEOProps> = ({ 
