@@ -12,14 +12,76 @@ body {
   color: rgb(var(--foreground-rgb));
   background: #0a0a0a;
   font-family: 'Inter', sans-serif;
+  top: 0 !important; /* Force top 0 to remove Google Translate white bar space */
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
+/* --- GOOGLE TRANSLATE FIXES --- */
+
+/* Hide the powered by branding and gadget icon */
+.goog-te-gadget span,
+.goog-te-gadget-icon,
+.goog-te-banner-frame {
+    display: none !important;
+}
+
+.goog-te-gadget {
+    color: transparent !important;
+    font-size: 0 !important;
+}
+
+/* Style the ACTUAL dropdown select box */
+.goog-te-combo {
+    background-color: transparent !important;
+    color: #ffffff !important;
+    border: none !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    cursor: pointer !important;
+    outline: none !important;
+    padding: 4px 0 !important;
+    width: auto !important;
+    max-width: 140px !important;
+}
+
+/* Dark mode for the dropdown options */
+.goog-te-combo option {
+    background-color: #0a0a0a !important;
+    color: #ffffff !important;
+    padding: 10px !important;
+}
+
+/* Hide the "Original Text" tooltip when hovering translated text */
+#goog-gt-tt, .goog-te-balloon-frame {
+    display: none !important;
+}
+.goog-text-highlight {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Remove forced padding from body */
+.skiptranslate {
+    display: none;
+}
+.skiptranslate.goog-te-gadget {
+    display: block !important;
+}
+
+/* --- UTILITIES --- */
+
 .no-scrollbar::-webkit-scrollbar {
     display: none;
 }
-/* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Fix for Google Translate frame iframe */
+iframe.goog-te-menu-frame {
+    z-index: 1000000 !important;
+    top: 70px !important;
 }
