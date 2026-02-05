@@ -123,8 +123,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           }}
         />
       </Head>
-      <h3>What is UWatchFree Official?</h3>
-      <p>UWatchFree Official is an online streaming site. UwatchFree Official is completely free to use. You can watch movies, TV shows, and live channels without paying any subscription fees..</p>
+      {/* <h3>What is UWatchFree Official?</h3>
+      <p>UWatchFree Official is an online streaming site. UwatchFree Official is completely free to use. You can watch movies, TV shows, and live channels without paying any subscription fees..</p> */}
       {/* Security Warning Toast */}
       <div 
         className={`fixed top-24 left-1/2 transform -translate-x-1/2 z-[100] transition-all duration-300 pointer-events-none ${
