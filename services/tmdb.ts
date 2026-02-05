@@ -8,7 +8,7 @@ const getEnv = (key: string) => {
     }
     if (typeof window !== 'undefined') {
         const publicKey = `NEXT_PUBLIC_${key.replace('VITE_', '')}`;
-        if (window[publicKey]) return window[publicKey];
+        if ((window as any)[publicKey]) return (window as any)[publicKey];
     }
     return undefined;
 }
@@ -774,9 +774,8 @@ export const UNIQUE_MOVIES: MediaItem[] = [
     genres: ["Mystery", "Drama", "Thriller"],
     streams: {
       "Server 1": "https://stmix.io/e/9QQnTyfcCRiB",
-      // "Server 2": "https://byseqekaho.com/e/vo038510cxcp",
     },
-    overview: "When Riya’s husband is away, an ordinary evening takes an unexpected turn. Out of boredom, she begins chatting online with a stranger — someone charming yet mysterious. But soon, a pizza delivery boy shows up at her door with an order she never placed. As the night progresses, strange events begin to unfold. The delivery boy insists she accept the pizza, and the online stranger seems to know more about her than she ever shared. Caught between reality and suspicion, Riya must uncover who is behind the web of deceit — the delivery boy, the man on the cam, or someone else entirely. A gripping mystery–thriller where every message, every knock, and every face hides a secret.",
+    overview: "When Riya's husband is away, an ordinary evening takes an unexpected turn. Out of boredom, she begins chatting online with a stranger — someone charming yet mysterious. But soon, a pizza delivery boy shows up at her door with an order she never placed. As the night progresses, strange events begin to unfold. The delivery boy insists she accept the pizza, and the online stranger seems to know more about her than she ever shared. Caught between reality and suspicion, Riya must uncover who is behind the web of deceit — the delivery boy, the man on the cam, or someone else entirely. A gripping mystery–thriller where every message, every knock, and every face hides a secret.",
   },
   {
     id: "tu-meri-main-tera-main-tera-tu-meri-2026",
@@ -790,7 +789,6 @@ export const UNIQUE_MOVIES: MediaItem[] = [
     genres: ["Romance", "Drama", "Thriller"],
     streams: {
       "Server 1": "https://stmix.io/e/DoMsumAkAZVA",
-      // "Server 2": "https://byseqekaho.com/e/vo038510cxcp",
     },
     overview: "When a carefree NRI wedding planner and a headstrong novelist collide during a wild summer in Croatia, sparks fly in ways neither expected. What begins as playful clashes soon transforms into something deeper – only to be tested when love, family, and tradition pull them in opposite directions.",
   },
@@ -806,39 +804,10 @@ export const UNIQUE_MOVIES: MediaItem[] = [
     genres: ["Action", "Crime", "Thriller"],
     streams: {
       "Server 1": "https://stmix.io/e/5FigxkywkeEG",
-      // "Server 2": "https://byseqekaho.com/e/vo038510cxcp",
     },
-    overview: "Arjun, a UK based cab driver who is financially struggling to get his estranged wife and daughter back, finds an opportunity to make GBP 25,000 The job is simple: Deliver a parcel to a given address. Along the way, helps a hitchhiker Liza by giving her a ride. But what he doesn’t know is how he is endangering both their lives.",
+    overview: "Arjun, a UK based cab driver who is financially struggling to get his estranged wife and daughter back, finds an opportunity to make GBP 25,000 The job is simple: Deliver a parcel to a given address. Along the way, helps a hitchhiker Liza by giving her a ride. But what he doesn't know is how he is endangering both their lives.",
   }
 ];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export const UNIQUE_HINDI_DUBBED: MediaItem[] = [
   {
@@ -901,7 +870,6 @@ export const UNIQUE_HINDI_DUBBED: MediaItem[] = [
     genres: ["Romance ", "Comedy", "Drama"],
     streams: {
       "Server 1 - Multi-Lang": "https://stmix.io/e/fzh60cMcTmlf",
-      // "Server 2 - Multi-Lang": "https://byseqekaho.com/e/286iv24wz00l",
     },
     overview: "When TV producer Leah Caldwell aims to become the first woman running New York's top morning show, her ex competes for the same role. Leah stays focused on her career, until chemistry with her ex challenges her priorities.",
   },
@@ -917,7 +885,6 @@ export const UNIQUE_HINDI_DUBBED: MediaItem[] = [
     genres: ["Romance ", "Comedy", "Drama"],
     streams: {
       "Server 1 - Multi-Lang": "https://stmix.io/e/TP5qsutqmLRk",
-      // "Server 2 - Multi-Lang": "https://byseqekaho.com/e/286iv24wz00l",
     },
     overview: "A high school girl wakes up each day with no memory of yesterday. When she agrees to date a shy classmate, can their love grow with every new beginning?",
   },
@@ -933,29 +900,10 @@ export const UNIQUE_HINDI_DUBBED: MediaItem[] = [
     genres: ["Romance ", "Comedy", "Drama"],
     streams: {
       "Server 1 - Multi-Lang": "https://stmix.io/e/CiPRB7uPObye",
-      // "Server 2 - Multi-Lang": "https://byseqekaho.com/e/286iv24wz00l",
     },
     overview: "A young man's life turns upside down when he finds himself caught between two women, leading to an unexpected love triangle filled with emotions, misunderstandings, and tough decisions. As relationships intertwine, he must confront his feelings, face reality, and choose what truly matters, blending romance with heartfelt family drama.",
   }
 ];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export const UNIQUE_ADULT: MediaItem[] = [
   {
@@ -1104,22 +1052,6 @@ export const UNIQUE_ADULT: MediaItem[] = [
     overview: "Lena and Mara are drawn into a secret affair that defies boundaries and threatens everything they've built. When Mara uncovers her groom's betrayal, she finds solace in Lena, a newfound friend who soon becomes something more. As passion and secrecy collide, their choices endanger careers, fracture relationships, and lead to devastating consequences.",
   },
   {
-    id: "sirena-2026",
-    title: "Sirena (2026)",
-    poster_path: "https://image.tmdb.org/t/p/w500/vOI7DzSJQylwqo1UgiIBZIftY7h.jpg",
-    backdrop_path: "https://image.tmdb.org/t/p/original/bbjLZffHvztUrq4IfoepMzhE4VR.jpg",
-    release_date: "2026-01-26",
-    vote_average: 6.2,
-    duration: "1h 19m",
-    media_type: 'movie',
-    genres: ["Adult", "Romance", "Drama"],
-    streams: {
-      "Server 1": "https://stmix.io/e/5XJazmKmm5l5Y",
-      "Server 2": "https://byseqekaho.com/e/35nhuh8xcxvs",
-    },
-    overview: "NA",
-  },
-  {
     id: "patikim-ni-robb-guinto-2026",
     title: "Patikim ni Robb Guinto (2026)",
     poster_path: "https://media.themoviedb.org/t/p/w500/4rL4XpHnngzElgdYDqaDtZnmtEH.jpg",
@@ -1131,26 +1063,10 @@ export const UNIQUE_ADULT: MediaItem[] = [
     genres: ["Adult", "Romance", "Drama"],
     streams: {
       "Server 1": "https://stmix.io/e/7tyq4fhUZ3xx",
-      // "Server 2": "https://byseqekaho.com/e/aq6rr0tgebsi",
     },
     overview: "VMX hottie Christy Imperial gives fans a taste of VMX GL Crush Robb Guinto's spiciest and tastiest scenes",
   }
 ];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export const UNIQUE_TV_SHOWS: MediaItem[] = [
   {
@@ -1323,7 +1239,6 @@ export const UNIQUE_TV_SHOWS: MediaItem[] = [
     genres: ["War ", "Political", "Drama"],
     streams: {
       "Server 1 - Multi-Lang": "https://stmix.io/e/Bc7L0bPOfyok",
-      // "Server 2 - Multi-Lang": "https://byseqekaho.com/e/286iv24wz00l",
     },
     overview: "Mayasabha is a period political drama set in Mid 70s Andhra Pradesh. Krishnama Naidu, an idealistic student leader and a charismatic MS Rami Reddy wade into the world of Andhra politics. As they turn thick friends, they strive to use politics as a means to achieve public good. But caste fault lines erupt, loyalties are tested and their bond is pushed to the brink. Will their friendship sustain the brutal ascent of power where there is place for only one at the summit?",
   }
@@ -1381,14 +1296,11 @@ export const getTVShows = async (category: any = 'popular', page = 1) => {
 export const getSports = async () => UNIQUE_SPORTS;
 export const getLiveTV = async () => UNIQUE_TV_LIVE;
 
-// FIXED: Corrected getDetails function to properly search all movie arrays
 export const getDetails = async (type: string, id: number | string): Promise<ContentDetails> => {
   let staticItem: MediaItem | undefined;
   const idStr = String(id);
   
-  // Check all possible arrays based on type
   if (type === 'movie') {
-    // Check all movie arrays
     staticItem = UNIQUE_MOVIES.find(m => String(m.id) === idStr) ||
                  UNIQUE_HINDI_DUBBED.find(m => String(m.id) === idStr) ||
                  UNIQUE_ADULT.find(m => String(m.id) === idStr);
@@ -1429,11 +1341,9 @@ export const getCast = async (type: any, id: any) => {
   } catch (e) { return []; }
 };
 
-// FIXED: Updated getRecommendations to handle all movie types properly
 export const getRecommendations = async (type: string, id: any) => {
   const idStr = String(id);
   
-  // Check which array the item belongs to first
   if (type === 'movie') {
     if (UNIQUE_ADULT.some(item => String(item.id) === idStr)) {
       return UNIQUE_ADULT.filter(item => String(item.id) !== idStr);
@@ -1466,7 +1376,6 @@ export const searchContent = async (query: string) => {
   const searchTerm = query.trim().toLowerCase();
   console.log(`Searching for: "${searchTerm}"`);
   
-  // SEARCH LOCAL DATA FIRST
   const localData = [
     ...UNIQUE_MOVIES,
     ...UNIQUE_HINDI_DUBBED,
@@ -1480,12 +1389,10 @@ export const searchContent = async (query: string) => {
     const title = (item.title || item.name || '').toLowerCase();
     const overview = (item.overview || '').toLowerCase();
     
-    // Check title and overview
     if (title.includes(searchTerm) || overview.includes(searchTerm)) {
       return true;
     }
     
-    // Check genres
     if (item.genres && Array.isArray(item.genres)) {
       const genreString = item.genres
         .map(g => typeof g === 'string' ? g : g.name)
@@ -1501,7 +1408,6 @@ export const searchContent = async (query: string) => {
   
   console.log(`Found ${localResults.length} local results`);
   
-  // SEARCH TMDB API
   let tmdbResults: any[] = [];
   try {
     console.log('Fetching from TMDB API...');
@@ -1533,7 +1439,6 @@ export const searchContent = async (query: string) => {
     console.log('TMDB API search failed, using local results only');
   }
   
-  // Combine and deduplicate results
   const combinedResults = [...localResults];
   const seenIds = new Set(localResults.map(item => `${item.media_type}-${item.id}`));
   
@@ -1545,7 +1450,6 @@ export const searchContent = async (query: string) => {
     }
   });
   
-  // Return unique results (limit to 50)
   const uniqueResults = combinedResults.slice(0, 50);
   console.log(`Total combined results: ${uniqueResults.length}`);
   
