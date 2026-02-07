@@ -18,7 +18,7 @@ const SEO: React.FC<SEOProps> = ({
   type = "website",
   schema,
   path = "",
-  keywords = ['online movies', 'watch movies online', 'movie streaming', 'film', 'cinema', 'entertainment', 'hollywood movies', 'bollywood movies', 'hollywood dubbed movies', '123movies', 'fmovies', 'putlocker', 'hdtoday', 'web Series Online', 'live sports', 'streaming', 'free movies', 'HD streaming']
+  keywords = ['uwatchfree', 'online movies', 'watch movies online', 'movie streaming', 'film', 'cinema', 'entertainment', 'hollywood movies', 'bollywood movies', 'hollywood dubbed movies', 'web Series Online', 'live sports', 'streaming', 'free movies', 'HD streaming']
 }) => {
   const siteUrl = "https://uwatchfree-official.vercel.app";
   const url = `${siteUrl}${path}`;
