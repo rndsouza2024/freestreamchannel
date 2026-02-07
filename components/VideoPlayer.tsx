@@ -1276,17 +1276,16 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       return [
         { id: 'f-1', name: 'Server 1', url: `https://xprime.today/watch/${tmdbId}`, quality: 'HD', type: 'iframe' },
         { id: 'f-2', name: 'Server 2', url: `https://cinemaos.tech/player/${tmdbId}`, quality: 'HD', type: 'iframe' },
-        { id: 'f-3', name: 'Server 3', url: `https://zxcstream.xyz/player/movie/${tmdbId}/english?autoplay=false&back=true&server=0`, quality: 'HD', type: 'iframe' },
-        { id: 'f-4', name: 'Server 4', url: `https://www.cinezo.net/watch/movie/${tmdbId}`, quality: 'HD', type: 'iframe' },
-        { id: 'f-5', name: 'Server 5', url: `https://vidsrc-embed.ru/embed/movie/${tmdbId}`, quality: 'HD', type: 'iframe' },
-        { id: 'f-6', name: 'Server 6', url: `https://api.cinezo.net/embed/tmdb-movie-${tmdbId}`, quality: 'HD', type: 'iframe' },
-        { id: 'f-7', name: 'Server 7 - HINDI', url: `https://zxcstream.xyz/player/movie/${tmdbId}/hindi?autoplay=false&back=true&server=0`, quality: 'HD', type: 'iframe' },
+        { id: 'f-3', name: 'Server 3', url: `https://www.vidking.net/embed/movie/${tmdbId}?autoPlay=true&nextEpisode=true&episodeSelector=true`, quality: 'HD', type: 'iframe' },
+        { id: 'f-4', name: 'Server 4', url: `https://vidsrc-embed.ru/embed/movie/${tmdbId}`, quality: 'HD', type: 'iframe' },
+        { id: 'f-5', name: 'Server 5', url: `https://api.cinezo.net/embed/tmdb-movie-${tmdbId}`, quality: 'HD', type: 'iframe' },
+        // { id: 'f-6', name: 'Server 6 - Multi-Lang', url: `https://zxcstream.xyz/player/movie/${tmdbId}/hindi?autoplay=false&back=true&server=0`, quality: 'HD', type: 'iframe' },
       ];
     }
     
     if (type === 'tv') {
       return [
-        { id: 'f-1', name: 'Server 1', url: `https://zxcstream.xyz/player/tv/${tmdbId}/s=${season}/e=${episode}/english?autoplay=false&back=true&server=0`, quality: 'HD', type: 'iframe' },
+        { id: 'f-1', name: 'Server 1', url: `https://www.vidking.net/embed/tv/${tmdbId}/${season}/${episode}?autoPlay=true&nextEpisode=true&episodeSelector=true`, quality: 'HD', type: 'iframe' },
         { id: 'f-2', name: 'Server 2', url: `https://xprime.today/watch/${tmdbId}/${season}/${episode}`, quality: 'HD', type: 'iframe' },
         { id: 'f-3', name: 'Server 3', url: `https://api.cinezo.net/embed/tmdb-tv-${tmdbId}/${season}/${episode}`, quality: 'HD', type: 'iframe' },
         { id: 'f-4', name: 'Server 4', url: `https://www.cinezo.net/watch/tv/${tmdbId}?season=${season}&episode=${episode}`, quality: 'HD', type: 'iframe' },
