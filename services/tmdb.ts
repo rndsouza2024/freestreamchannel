@@ -28,52 +28,26 @@ const getFixedMatchTime = (hoursAdd: number, minutesSet = 0) => {
 
 export const UNIQUE_SPORTS: MediaItem[] = [
   {
-    id: "womens-premier-league",
-    title: "Women's Premier League : Gujarat Giants W vs Mumbai Indians W",
-    poster_path: "https://img.cricketnmore.com/uploads/2026/01/gujarat-giants-vs-mumbai-indians-match-19-wpl-2026-who-will-win-today-gg-w-vs-mi-w-match-mdl.jpg",
-    backdrop_path: "https://img.cricketnmore.com/uploads/2026/01/gujarat-giants-vs-mumbai-indians-match-19-wpl-2026-who-will-win-today-gg-w-vs-mi-w-match-mdl.jpg",
+    id: "comming-soon",
+    title: "Coming Soon: New Sports Content",
+    poster_path: "https://www.shutterstock.com/image-vector/speedinspired-coming-soon-typography-dynamic-260nw-2654096517.jpg",
+    backdrop_path: "https://www.shutterstock.com/shutterstock/videos/3646580559/thumb/1.jpg?ip=x480",
+    // Fixed Time: Current Hour - 1 (e.g. if now is 14:20, this was 13:00). Ensures it is LIVE.
     release_date: getFixedMatchTime(6, 30), 
     vote_average: 9.2,
     duration: "Live",
     media_type: 'sports',
-    genres: [{ id: 1, name: "Cricket" }, { id: 2, name: "Women's Premier League" }],
+    genres: ["Sports", "Live Sports"],
     streams: {
-      "Server 1 (Main)": "https://embedsports.top/embed/charlie/gujarat-giants-vs-mumbai-indians-1629480889/1",
-      "Server 2 (Backup)": "https://daddyhd.com/stream/stream-346.php",
+      "Server 1 (Main)": "",
+      "Server 2 (Backup)": "",
+      "Server 3 (Backup)": "",
+      "Server 4 (Backup)": "",
+      "Server 5 (Backup)": "",
     },
-    overview: "Live coverage of the Women's Premier League Gujarat Giants vs Mumbai Indians Match 19, WPL 2026.",
-  },
-  {
-    id: "twenty20",
-    title: "England tour of Sri Lanka 2026 | Twenty20 : England vs Sri Lanka",
-    poster_path: "https://images.slivcdn.com/videoasset_images/manage_file/1000013839/1768923753324600_SL_vs_EG_2026_GOB_Landscape_Thumb.jpg?w=1000&q=low",
-    backdrop_path: "https://images.slivcdn.com/videoasset_images/manage_file/1000013839/1768923753324600_SL_vs_EG_2026_GOB_Landscape_Thumb.jpg?w=1000&q=low",
-    release_date: getFixedMatchTime(6, 0),
-    vote_average: 9.5,
-    duration: "Live",
-    media_type: 'sports',
-    genres: [{ id: 1, name: "Cricket" }, { id: 2, name: "Twenty20" }],
-    streams: {
-      "Server 1 (Main)": "https://embedsports.top/embed/charlie/sri-lanka-vs-england-1629480887/1",
-      "Server 2 (Backup)": "https://daddyhd.com/stream/stream-31.php",
-    },
-    overview: "England tour of Sri Lanka 2026 | Twenty20 : England vs Sri Lanka",
-  },
-  {
-    id: "australian-open-semi-final",
-    title: "Australian Open Semi-Final (2026)",
-    poster_path: "https://images.slivcdn.com/videoasset_images/manage_file/1000013951/1769076305688640_AO2026_GOB_Landscape_Thumb_SP_2.jpg?w=1000&q=low",
-    backdrop_path: "https://images.slivcdn.com/videoasset_images/manage_file/1000013951/1769076305688640_AO2026_GOB_Landscape_Thumb_SP_2.jpg?w=1000&q=low",
-    release_date: getFixedMatchTime(9, 30),
-    vote_average: 8.9,
-    duration: "Live",
-    media_type: 'sports',
-    genres: [{ id: 1, name: "Golf" }, { id: 2, name: "PGA Tour" }],
-    streams: {
-      "Server 1 (Main)": "https://embedsports.top/embed/charlie/farmers-insurance-open-featured-holes-3-8-11-and-16-first-round-1629480833/1",
-    },
-    overview: "Watch Live Golf: PGA Tour Farmers Insurance Open",
-  },
+    overview: "Coming Soon: Server are getting ready to stream live sports content. Stay tuned for thrilling matches and exciting sports action, all available in high definition on 7Movierulz Stream.",
+  }
+ 
 ];
 
 export const UNIQUE_TV_LIVE: MediaItem[] = [
@@ -683,7 +657,7 @@ export const UNIQUE_MOVIES: MediaItem[] = [
     streams: {
       "Server 1": "https://xprime.today/watch/1213898",
       "Server 2": "https://cinemaos.tech/player/1213898",
-      "Server 3": "https://zxcstream.xyz/player/movie/1213898/hindi?autoplay=false&back=true&server=0",
+     "Server 3": "https://www.vidking.net/embed/movie/1213898?autoPlay=true&nextEpisode=true&episodeSelector=true",
       "Server 4": "https://short.icu/fCjlBHVLI?thumbnail=https://media.themoviedb.org/t/p/w780/nPuXMmWmHJySh0cyOs0MjEQA67w.jpg",
       "Server 5": "https://www.cinezo.net/watch/movie/1213898",
       "Server 6": "https://vidsrc-embed.ru/embed/movie/1213898",
@@ -704,7 +678,7 @@ export const UNIQUE_MOVIES: MediaItem[] = [
     streams: {
       "Server 1": "https://stmix.io/e/kYuQQzKDopYa",
       "Server 2": "https://cinemaos.tech/player/1339876-3",
-      "Server 3": "https://zxcstream.xyz/player/movie/1339876-3/hindi?autoplay=false&back=true&server=0",
+      "Server 3": "https://www.vidking.net/embed/movie/1339876?autoPlay=true&nextEpisode=true&episodeSelector=true",
     },
     overview: "Mardaani 3 (2026)",
   },
@@ -721,7 +695,7 @@ export const UNIQUE_MOVIES: MediaItem[] = [
     streams: {
       "Server 1": "https://stmix.io/e/BbQpHGHdJKZGn",
       "Server 2": "https://cinemaos.tech/player/786567",
-      "Server 3": "https://zxcstream.xyz/player/movie/786567/english?autoplay=false&back=true&server=0",
+      "Server 3": "https://www.vidking.net/embed/movie/786567?autoPlay=true&nextEpisode=true&episodeSelector=true",
       "Server 4 - MAIN": "https://short.icu/PhuS5WVOq?thumbnail=https://media.themoviedb.org/t/p/w780/4Cqad6ZpWJRhBumGE1QwHs9pVuB.jpg",
       "Server 5": "https://byseqekaho.com/e/oi0zc05mbgjt",
       "Server 6": "https://www.cinezo.net/watch/movie/786567",
@@ -743,6 +717,13 @@ export const UNIQUE_MOVIES: MediaItem[] = [
     streams: {
       "Server 1": "https://stmix.io/e/cTWgLAJ4I50v7",
       "Server 2": "https://byseqekaho.com/e/ptpj1jv2799q",
+      "Server 3": "https://www.vidking.net/embed/movie/1617852?autoPlay=true&nextEpisode=true&episodeSelector=true",
+      "Server 4": "https://cinemaos.tech/player/1617852",
+      "Server 5": "https://xprime.today/watch/1617852",
+      "Server 6": "https://www.cinezo.net/watch/movie/1617852",
+      "Server 7": "https://vidsrc-embed.ru/embed/movie/1617852",
+      "Server 8": "https://api.cinezo.net/embed/tmdb-movie-1617852",
+      
     },
     overview: "Ace and his crew of elite street racers are forced into a high-stakes mission when a shadowy organization threatens someone close to him. In the aftermath of Four Amigos, they find themselves working for the infamous Church of Assassins, tasked with pulling off an impossible job. But as they push their limits, they uncover a chilling truth-failure was always part of the plan. Betrayal, speed, and survival collide in this adrenaline-fueled thriller where the real race isn't just for victory, but for their lives.",
   },
@@ -759,6 +740,12 @@ export const UNIQUE_MOVIES: MediaItem[] = [
     streams: {
       "Server 1": "https://stmix.io/e/acWrQSPMfmrqZ",
       "Server 2": "https://byseqekaho.com/e/vo038510cxcp",
+      "Server 3": "https://www.vidking.net/embed/movie/1592019?autoPlay=true&nextEpisode=true&episodeSelector=true",
+      "Server 4": "https://cinemaos.tech/player/1592019",
+      "Server 5": "https://xprime.today/watch/1592019",
+      "Server 6": "https://www.cinezo.net/watch/movie/1592019",
+      "Server 7": "https://vidsrc-embed.ru/embed/movie/1592019",
+      "Server 8": "https://api.cinezo.net/embed/tmdb-movie-1592019",
     },
     overview: "Strangers Kelly and Parker both end up on the same Italian cruise, but after missing the boat during a stop, they're forced to team up and race across southern Italy to catch up.",
   },
@@ -774,6 +761,7 @@ export const UNIQUE_MOVIES: MediaItem[] = [
     genres: ["Mystery", "Drama", "Thriller"],
     streams: {
       "Server 1": "https://stmix.io/e/9QQnTyfcCRiB",
+      "Server 2": "https://byseqekaho.com/e/4l8x3qvzikp0/",
     },
     overview: "When Riya's husband is away, an ordinary evening takes an unexpected turn. Out of boredom, she begins chatting online with a stranger — someone charming yet mysterious. But soon, a pizza delivery boy shows up at her door with an order she never placed. As the night progresses, strange events begin to unfold. The delivery boy insists she accept the pizza, and the online stranger seems to know more about her than she ever shared. Caught between reality and suspicion, Riya must uncover who is behind the web of deceit — the delivery boy, the man on the cam, or someone else entirely. A gripping mystery–thriller where every message, every knock, and every face hides a secret.",
   },
@@ -789,12 +777,14 @@ export const UNIQUE_MOVIES: MediaItem[] = [
     genres: ["Romance", "Drama", "Thriller"],
     streams: {
       "Server 1": "https://stmix.io/e/DoMsumAkAZVA",
+      "Server 2": "https://byseqekaho.com/e/ibdepxzeu8vz/",
+      
     },
     overview: "When a carefree NRI wedding planner and a headstrong novelist collide during a wild summer in Croatia, sparks fly in ways neither expected. What begins as playful clashes soon transforms into something deeper – only to be tested when love, family, and tradition pull them in opposite directions.",
   },
   {
-    id: "human-cocaine-2025",
-    title: "Human Cocaine (2025) ",
+    id: "human-cocaine-2026",
+    title: "Human Cocaine (2026) ", 
     poster_path: "https://media.themoviedb.org/t/p/w500/5u4PzItZ835kr7PyT6yuR5gI9p0.jpg",
     backdrop_path: "https://media.themoviedb.org/t/p/w780/ado1wdhkVOOUkDnRP0mnJmQ5iWC.jpg",
     release_date: "2026-01-16",
@@ -804,8 +794,58 @@ export const UNIQUE_MOVIES: MediaItem[] = [
     genres: ["Action", "Crime", "Thriller"],
     streams: {
       "Server 1": "https://stmix.io/e/5FigxkywkeEG",
+      "Server 2": "https://www.vidking.net/embed/movie/1568964?autoPlay=true&nextEpisode=true&episodeSelector=true",
+      "Server 3": "https://cinemaos.tech/player/1568964",
+      "Server 4": "https://xprime.today/watch/1568964",
+      "Server 5": "https://www.cinezo.net/watch/movie/1568964",
+      "Server 6": "https://vidsrc-embed.ru/embed/movie/1568964",
+      "Server 7": "https://api.cinezo.net/embed/tmdb-movie-1568964",
     },
     overview: "Arjun, a UK based cab driver who is financially struggling to get his estranged wife and daughter back, finds an opportunity to make GBP 25,000 The job is simple: Deliver a parcel to a given address. Along the way, helps a hitchhiker Liza by giving her a ride. But what he doesn't know is how he is endangering both their lives.",
+  },
+  {
+    id: "vadh-2-2026",
+    title: "Vadh 2 (2026) ", 
+    poster_path: "https://media.themoviedb.org/t/p/w500/pOJAaLMsc7T5rwVDTA7SRg9SAEU.jpg",
+    backdrop_path: "https://media.themoviedb.org/t/p/w780/5z7eorMubo7nB11P8s5a0GMXf2D.jpg",
+    release_date: "2026-01-16",
+    vote_average: 6.4,
+    duration: "2h 40m",
+    media_type: 'movie',
+    genres: ["Action", "Crime", "Thriller"],
+    streams: {
+      "Server 1": "https://stmix.io/e/3tIsnubKKjK2",
+      "Server 2": "https://byseqekaho.com/e/aclqmbxitdv4/",
+      "Server 3": "https://www.vidking.net/embed/movie/1595507?autoPlay=true&nextEpisode=true&episodeSelector=true",
+      "Server 4": "https://cinemaos.tech/player/1595507",
+      "Server 5": "https://xprime.today/watch/1595507",
+      "Server 6": "https://www.cinezo.net/watch/movie/1595507",
+      "Server 7": "https://vidsrc-embed.ru/embed/movie/1595507",
+      "Server 8": "https://api.cinezo.net/embed/tmdb-movie-1595507",
+    },
+    overview: "A police officer's pursuit of truth in a shocking prison crime intertwines with the lives of a widowed prison guard and a soon to be released inmate, unravelling a web of morality and redemption.",
+  },
+  {
+    id: "bhabiji-ghar-par-hain-2026",
+    title: "VBhabiji Ghar Par Hain! (2026) ", 
+    poster_path: "https://media.themoviedb.org/t/p/w500/v8G1NudtXq7BP56TgmAfpDx10FQ.jpg",
+    backdrop_path: "https://media.themoviedb.org/t/p/w780/g3varY1uTosvAheX729NY2g9EKv.jpg",
+    release_date: "2026-01-16",
+    vote_average: 6.4,
+    duration: "2h 40m",
+    media_type: 'movie',
+    genres: ["Comedy", "Family", "Drama"],
+    streams: {
+      "Server 1": "https://stmix.io/e/PIwgWmce3PzM",
+      "Server 2": "https://byseqekaho.com/e/4p0e0o3vtyn0/",
+      "Server 3": "https://www.vidking.net/embed/movie/1587124?autoPlay=true&nextEpisode=true&episodeSelector=true",
+      "Server 4": "https://cinemaos.tech/player/1587124",
+      "Server 5": "https://xprime.today/watch/1587124",
+      "Server 6": "https://www.cinezo.net/watch/movie/1587124",
+      "Server 7": "https://vidsrc-embed.ru/embed/movie/1587124",
+      "Server 8": "https://api.cinezo.net/embed/tmdb-movie-1587124",
+    },
+    overview: "In a whirlwind of misunderstandings, two rival neighbours, Vibhuti and Tiwari, find themselves on a riotous road trip with their wives, only to get tangled up with lovable gangster brothers, Shanti and Kranti, who turn a simple journey into an unforgettable comedy of errors.",
   }
 ];
 
@@ -870,6 +910,7 @@ export const UNIQUE_HINDI_DUBBED: MediaItem[] = [
     genres: ["Romance ", "Comedy", "Drama"],
     streams: {
       "Server 1 - Multi-Lang": "https://stmix.io/e/fzh60cMcTmlf",
+      "Server 2 - Multi-Lang": "https://byseqekaho.com/e/1hppdabczy1n/",
     },
     overview: "When TV producer Leah Caldwell aims to become the first woman running New York's top morning show, her ex competes for the same role. Leah stays focused on her career, until chemistry with her ex challenges her priorities.",
   },
@@ -885,6 +926,7 @@ export const UNIQUE_HINDI_DUBBED: MediaItem[] = [
     genres: ["Romance ", "Comedy", "Drama"],
     streams: {
       "Server 1 - Multi-Lang": "https://stmix.io/e/TP5qsutqmLRk",
+      "Server 2 - Multi-Lang": "https://byseqekaho.com/e/4xk7wo9mqyg0/",
     },
     overview: "A high school girl wakes up each day with no memory of yesterday. When she agrees to date a shy classmate, can their love grow with every new beginning?",
   },
@@ -900,9 +942,50 @@ export const UNIQUE_HINDI_DUBBED: MediaItem[] = [
     genres: ["Romance ", "Comedy", "Drama"],
     streams: {
       "Server 1 - Multi-Lang": "https://stmix.io/e/CiPRB7uPObye",
+      "Server 2 - Multi-Lang": "https://byseqekaho.com/e/ffypfpdjkg6v/",
     },
     overview: "A young man's life turns upside down when he finds himself caught between two women, leading to an unexpected love triangle filled with emotions, misunderstandings, and tough decisions. As relationships intertwine, he must confront his feelings, face reality, and choose what truly matters, blending romance with heartfelt family drama.",
+  },
+  {
+    id: "the-investigation-of-lucy-letby-2026-multi-lang",
+    title: "The Investigation of Lucy Letby (2026) Multi-Lang",
+    poster_path: "https://media.themoviedb.org/t/p/w500/qhNThwc72GqihJhXaP29Af5hJ2A.jpg",
+    backdrop_path: "https://media.themoviedb.org/t/p/w780/qhSfXdkrIzwYsyQ3Z9ehFmO3zjy.jpg",
+    release_date: "2026-01-16",
+    vote_average: 6.4,
+    duration: "2h 40m",
+    media_type: 'movie',
+    genres: ["Crime ", "Documentary", "Drama"],
+    streams: {
+      "Server 1 - Multi-Lang": "https://stmix.io/e/84Xt99ybdoYAo",
+      "Server 2 - Multi-Lang": "https://byseqekaho.com/e/u50jr9d6b0tx/",
+      "Server 3": "https://www.vidking.net/embed/movie/1620991?autoPlay=true&nextEpisode=true&episodeSelector=true",
+      "Server 4": "https://cinemaos.tech/player/1620991",
+      "Server 5": "https://xprime.today/watch/1620991",
+      "Server 6": "https://www.cinezo.net/watch/movie/1620991",
+      "Server 7": "https://vidsrc-embed.ru/embed/movie/1620991",
+      "Server 8": "https://api.cinezo.net/embed/tmdb-movie-1620991",
+    },
+    overview: "An engaging and thought-provoking look at Lucy Letby, the former nurse serving life in prison after being convicted of the murders of seven infants and the attempted murders of seven others.",
+  },
+  {
+    id: "unfamiliar-s01-2026-multi-lang",
+    title: "Unfamiliar S01 (2026) Multi-Lang",
+    poster_path: "https://media.themoviedb.org/t/p/w500/fX0Kvvo6hj9feqS3JyFpVmscz2Y.jpg",
+    backdrop_path: "https://media.themoviedb.org/t/p/w780/qDq3dG4ElRohih5fUGNQRLHuBaC.jpg",
+    release_date: "2026-01-16",
+    vote_average: 6.4,
+    duration: "2h 40m",
+    media_type: 'movie',
+    genres: ["Crime ", "Action", "Drama"],
+    streams: {
+      "Server 1 - Multi-Lang": "https://stmix.io/e/of0qQX1SdWpvo",
+      "Server 2 - Multi-Lang": "https://byseqekaho.com/e/ajssdlwajoj4/",
+      "Server 3": "https://api.cinezo.net/embed/tmdb-tv-274776",
+    },
+    overview: "When the past catches up with two former spies, their biggest challenge isn't car chases, shootouts or fistfights — it's telling each other the truth.",
   }
+  
 ];
 
 export const UNIQUE_ADULT: MediaItem[] = [
@@ -917,9 +1000,9 @@ export const UNIQUE_ADULT: MediaItem[] = [
     media_type: 'movie',
     genres: ["Adult", "Romance", "Drama"],
     streams: {
-      "Server 1": "https://stmix.io/e/KzdrsSXHjFgKS",
+      "Server 1": "https://www.vidking.net/embed/movie/1614077?autoPlay=true&nextEpisode=true&episodeSelector=true",
       "Server 2": "https://cinemaos.tech/player/1614077",
-      "Server 3": "https://zxcstream.xyz/player/movie/1614077/tagalog?autoplay=false&back=true&server=0",
+      "Server 3": "https://stmix.io/e/KzdrsSXHjFgKS",
       "Server 4": "https://xprime.today/watch/1614077",
       "Server 5": "https://www.cinezo.net/watch/movie/1614077",
       "Server 6": "https://vidsrc-embed.ru/embed/movie/1614077",
@@ -939,8 +1022,8 @@ export const UNIQUE_ADULT: MediaItem[] = [
     genres: ["Adult", "Romance", "Drama"],
     streams: {
       "Server 1": "https://stmix.io/v/BA8XvvvsU7zmm",
-      "Server 2": "https://cinemaos.tech/player/1555917",
-      "Server 3": "https://zxcstream.xyz/player/movie/1555917/tagalog?autoplay=false&back=true&server=0",
+      "Server 2": "https://www.vidking.net/embed/movie/1555917?autoPlay=true&nextEpisode=true&episodeSelector=true",
+      "Server 3": "https://cinemaos.tech/player/1555917",
       "Server 4": "https://xprime.today/watch/1555917",
       "Server 5": "https://www.cinezo.net/watch/movie/1555917",
       "Server 6": "https://vidsrc-embed.ru/embed/movie/1555917",
@@ -962,12 +1045,11 @@ export const UNIQUE_ADULT: MediaItem[] = [
     streams: {
       "Server 1": "https://stmix.io/e/vAlUJTcd8elxH",
       "Server 2": "https://cinemaos.tech/player/1597538",
-      "Server 3": "https://zxcstream.xyz/player/movie/1597538/tagalog?autoplay=false&back=true&server=0",
-      "Server 4": "https://xprime.today/watch/1597538",
-      "Server 5": "https://www.cinezo.net/watch/movie/1597538",
-      "Server 6": "https://vidsrc-embed.ru/embed/movie/1597538",
-      "Server 7": "https://api.cinezo.net/embed/tmdb-movie-1597538",
-      "Server 8": "https://byseqekaho.com/e/7j7jdm0pcl8o",
+      "Server 3": "https://xprime.today/watch/1597538",
+      "Server 4": "https://www.cinezo.net/watch/movie/1597538",
+      "Server 5": "https://vidsrc-embed.ru/embed/movie/1597538",
+      "Server 6": "https://api.cinezo.net/embed/tmdb-movie-1597538",
+      "Server 7": "https://byseqekaho.com/e/7j7jdm0pcl8o",
     },
     overview: "Cess Garcia and VMX's next big thing Dara Lima star in a steamy drama about two sisters and the man who sparks their sensual awakening. A female lawyer hires a young man as tutor for her younger sister but unknown to her, their review sessions are becoming wild",
   },
@@ -982,8 +1064,9 @@ export const UNIQUE_ADULT: MediaItem[] = [
     media_type: 'movie',
     genres: ["Adult", "Romance", "Drama"],
     streams: {
-      "Server 1": "https://short.icu/tQkMTCEon?thumbnail=https://media.themoviedb.org/t/p/w780/zaciqbV1bdUlbvrjUmPynXx9rdr.jpg",
-    },
+      "Server 1": "https://www.vidking.net/embed/movie/1612071?autoPlay=true&nextEpisode=true&episodeSelector=true",
+      "Server 2": "https://short.icu/tQkMTCEon?thumbnail=https://media.themoviedb.org/t/p/w780/zaciqbV1bdUlbvrjUmPynXx9rdr.jpg",  
+       },
     overview: "In Elaichi, the spice of desire, Sonal's quiet domestic life explodes into nights of burning lust when a chance encounter with a younger actor turns into a frivolous sexual affair - pushing her deeper into obsession until her family, her body, and her soul are scorched by betrayal.`",
   },
   {
@@ -1032,6 +1115,9 @@ export const UNIQUE_ADULT: MediaItem[] = [
     streams: {
       "Server 1": "https://stmix.io/e/5XJazmKmm5l5Y",
       "Server 2": "https://byseqekaho.com/e/35nhuh8xcxvs",
+      "Server 3": "https://www.vidking.net/embed/movie/1621394?autoPlay=true&nextEpisode=true&episodeSelector=true",
+      "Server 4": "https://cinemaos.tech/player/1621394",
+      "Server 5": "https://xprime.today/watch/1621394",
     },
     overview: "Lena and Mara are drawn into a secret affair that defies boundaries and threatens everything they've built. When Mara uncovers her groom's betrayal, she finds solace in Lena, a newfound friend who soon becomes something more. As passion and secrecy collide, their choices endanger careers, fracture relationships, and lead to devastating consequences.",
   },
@@ -1063,9 +1149,30 @@ export const UNIQUE_ADULT: MediaItem[] = [
     genres: ["Adult", "Romance", "Drama"],
     streams: {
       "Server 1": "https://stmix.io/e/7tyq4fhUZ3xx",
+      "Server 2": "https://www.vidking.net/embed/movie/1559596?autoPlay=true&nextEpisode=true&episodeSelector=true",
+      "Server 3": "https://cinemaos.tech/player/1559596",
+      "Server 4": "https://xprime.today/watch/1559596",
+      
     },
     overview: "VMX hottie Christy Imperial gives fans a taste of VMX GL Crush Robb Guinto's spiciest and tastiest scenes",
-  }
+  },
+  {
+    id: "audacity-2026",
+    title: "Audacity (2026)",
+    poster_path: "https://www.coolmoviez.baby/files/images/Audacity_(2026)_Part_2_Atrangii_Hindi_Unrated_Webseries.jpg",
+    backdrop_path: "https://i.ytimg.com/vi/tULnumoXoWk/maxresdefault.jpg",
+    release_date: "2026-01-26",
+    vote_average: 6.2,
+    duration: "1h 19m",
+    media_type: 'movie',
+    genres: ["Adult", "Romance", "Drama"],
+    streams: {
+      "Server 1": "https://stmix.io/e/jOktxgon2ZQlO",
+      "Server 2": "https://byseqekaho.com/e/zldtte3alzfk/",
+      },
+    overview: "VMX hottie Christy Imperial gives fans a taste of VMX GL Crush Robb Guinto's spiciest and tastiest scenes",
+  },
+  
 ];
 
 export const UNIQUE_TV_SHOWS: MediaItem[] = [
@@ -1170,7 +1277,7 @@ export const UNIQUE_TV_SHOWS: MediaItem[] = [
     duration: "45m",
     media_type: 'tv',
     streams: {
-      "Server 1": "https://zxcstream.xyz/player/tv/243826/s=1/e=1/hindi?autoplay=false&back=true&server=0",
+     "Server 1": "https://www.vidking.net/embed/tv/243826/1/8?autoPlay=true&nextEpisode=true&episodeSelector=true",
       "Server 2": "https://xprime.today/watch/243826/1/1",
       "Server 3 - HINDI": "https://short.icu/PqYLFFeKU?thumbnail=https://media.themoviedb.org/t/p/w780/n1qDEYpr3pq7bJ9GGaF9zVNjdNq.jpg"
     },
@@ -1239,6 +1346,7 @@ export const UNIQUE_TV_SHOWS: MediaItem[] = [
     genres: ["War ", "Political", "Drama"],
     streams: {
       "Server 1 - Multi-Lang": "https://stmix.io/e/Bc7L0bPOfyok",
+      "Server 2 - Multi-Lang": "https://byseqekaho.com/e/57tgagfdddcd",
     },
     overview: "Mayasabha is a period political drama set in Mid 70s Andhra Pradesh. Krishnama Naidu, an idealistic student leader and a charismatic MS Rami Reddy wade into the world of Andhra politics. As they turn thick friends, they strive to use politics as a means to achieve public good. But caste fault lines erupt, loyalties are tested and their bond is pushed to the brink. Will their friendship sustain the brutal ascent of power where there is place for only one at the summit?",
   }
