@@ -7,9 +7,9 @@ export default function Document() {
     "@graph": [
       {
         "@type": "WebSite",
-        "name": "UwatchFreeOfficial",
+        "name": "UwatchFree Official",
         "url": "https://uwatchfree-official.vercel.app/",
-        "description": "Stream thousands of Movies, TV Shows, and Live Sports for free in HD quality. No registration required.",
+        "description": "UwatchFree Official - Stream thousands of Movies, TV Shows, and Live Sports for free in HD quality. No registration required.",
         "potentialAction": {
           "@type": "SearchAction",
           "target": "https://uwatchfree-official.vercel.app/#/?search={search_term_string}",
@@ -18,7 +18,7 @@ export default function Document() {
       },
       {
         "@type": "Organization",
-        "name": "UwatchFreeOfficial",
+        "name": "UwatchFree Official",
         "url": "https://uwatchfree-official.vercel.app/",
         "logo": "https://uwatchfree-official.vercel.app/logo.png",
         "sameAs": [

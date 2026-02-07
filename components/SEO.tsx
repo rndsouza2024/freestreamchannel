@@ -13,7 +13,7 @@ interface SEOProps {
 
 const SEO: React.FC<SEOProps> = ({ 
   title, 
-  description = "Stream thousands of Movies, TV Shows, and Live Sports for free in HD quality. No registration required.",
+  description = "UwatchFree Official - Stream thousands of Movies, TV Shows, and Live Sports for free in HD quality. No registration required.",
   image = "https://uwatchfree-official.vercel.app/og-image.jpg",
   type = "website",
   schema,
