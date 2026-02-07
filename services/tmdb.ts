@@ -967,24 +967,8 @@ export const UNIQUE_HINDI_DUBBED: MediaItem[] = [
       "Server 8": "https://api.cinezo.net/embed/tmdb-movie-1620991",
     },
     overview: "An engaging and thought-provoking look at Lucy Letby, the former nurse serving life in prison after being convicted of the murders of seven infants and the attempted murders of seven others.",
-  },
-  {
-    id: "unfamiliar-s01-2026-multi-lang",
-    title: "Unfamiliar S01 (2026) Multi-Lang",
-    poster_path: "https://media.themoviedb.org/t/p/w500/fX0Kvvo6hj9feqS3JyFpVmscz2Y.jpg",
-    backdrop_path: "https://media.themoviedb.org/t/p/w780/qDq3dG4ElRohih5fUGNQRLHuBaC.jpg",
-    release_date: "2026-01-16",
-    vote_average: 6.4,
-    duration: "2h 40m",
-    media_type: 'movie',
-    genres: ["Crime ", "Action", "Drama"],
-    streams: {
-      "Server 1 - Multi-Lang": "https://stmix.io/e/of0qQX1SdWpvo",
-      "Server 2 - Multi-Lang": "https://byseqekaho.com/e/ajssdlwajoj4/",
-      "Server 3": "https://api.cinezo.net/embed/tmdb-tv-274776",
-    },
-    overview: "When the past catches up with two former spies, their biggest challenge isn't car chases, shootouts or fistfights — it's telling each other the truth.",
   }
+  
   
 ];
 
@@ -1349,6 +1333,23 @@ export const UNIQUE_TV_SHOWS: MediaItem[] = [
       "Server 2 - Multi-Lang": "https://byseqekaho.com/e/57tgagfdddcd",
     },
     overview: "Mayasabha is a period political drama set in Mid 70s Andhra Pradesh. Krishnama Naidu, an idealistic student leader and a charismatic MS Rami Reddy wade into the world of Andhra politics. As they turn thick friends, they strive to use politics as a means to achieve public good. But caste fault lines erupt, loyalties are tested and their bond is pushed to the brink. Will their friendship sustain the brutal ascent of power where there is place for only one at the summit?",
+  },
+  {
+    id: "unfamiliar-s01-2026-multi-lang",
+    title: "Unfamiliar S01 (2026) Multi-Lang",
+    poster_path: "https://media.themoviedb.org/t/p/w500/fX0Kvvo6hj9feqS3JyFpVmscz2Y.jpg",
+    backdrop_path: "https://media.themoviedb.org/t/p/w780/qDq3dG4ElRohih5fUGNQRLHuBaC.jpg",
+    release_date: "2026-01-16",
+    vote_average: 6.4,
+    duration: "2h 40m",
+    media_type: 'tv',
+    genres: ["Crime ", "Action", "Drama"],
+    streams: {
+      "Server 1 - Multi-Lang": "https://stmix.io/e/of0qQX1SdWpvo",
+      "Server 2 - Multi-Lang": "https://byseqekaho.com/e/ajssdlwajoj4/",
+      "Server 3": "https://api.cinezo.net/embed/tmdb-tv-274776",
+    },
+    overview: "When the past catches up with two former spies, their biggest challenge isn't car chases, shootouts or fistfights — it's telling each other the truth.",
   }
 ];
 
