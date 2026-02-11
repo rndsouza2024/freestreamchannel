@@ -89,7 +89,7 @@ const Hero: React.FC<HeroProps> = ({ items }) => {
             {/* Buttons - Dynamic Mobile/Desktop Layout */}
             <div className="flex flex-row items-center gap-3 mt-2 w-full sm:w-auto animate-in slide-in-from-bottom-5 duration-700 delay-500">
                 <Link
-                    href={`/watch/${type}/${slug}`}
+                    href={`/stream/${type}/${slug}`}
                     className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-miraj-gold hover:bg-white text-black font-bold py-2.5 px-4 sm:py-3 sm:px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(251,191,36,0.4)] text-sm sm:text-base whitespace-nowrap"
                 >
                     <Play fill="currentColor" size={18} className="w-4 h-4 sm:w-5 sm:h-5" />

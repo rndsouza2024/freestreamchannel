@@ -24,7 +24,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ item }) => {
   };
 
   return (
-    <Link href={`/watch/${type}/${item.id}`} className="group relative block h-full">
+    <Link href={`/stream/${type}/${item.id}`} className="group relative block h-full">
       <div className="relative aspect-[2/3] overflow-hidden rounded-xl bg-miraj-gray border border-white/5 shadow-lg transition-transform duration-300 md:group-hover:scale-105 group-hover:shadow-miraj-red/20 group-hover:border-miraj-gold/30">
         <img
           src={getImageUrl(item.poster_path)}
